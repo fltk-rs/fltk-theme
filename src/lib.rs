@@ -14,8 +14,9 @@ fltk-theme = "0.1"
 ```rust,no_run
 use fltk::{prelude::*, *};
 use fltk_theme::Theme;
+
 let a = app::App::default().with_scheme(app::Scheme::Gtk);
-let theme = Theme::load("examples/dark.map").unwrap();
+let theme = Theme::load("examples/themes/black.map").unwrap();
 theme.apply();
 let mut win = window::Window::default().with_size(400, 300);
 let mut btn = button::Button::new(160, 200, 80, 40, "Hello");
