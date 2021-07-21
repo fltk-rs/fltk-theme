@@ -26,3 +26,13 @@ fn main() {
     a.run().unwrap();
 }
 ```
+
+![alt_test](screenshots/black.jpg)
+
+![alt_test](screenshots/dark.jpg)
+
+![alt_test](screenshots/plain-gray.jpg)
+
+![alt_test](screenshots/tan.jpg)
+
+![alt_test](screenshots/shake.jpg)
