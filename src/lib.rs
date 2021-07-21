@@ -32,31 +32,46 @@ fn main() {
 use fltk::{app, enums::Color, prelude::FltkError};
 use std::path;
 
-/// Color map struct
+/// Color map struct. (index, r, g, b)
 #[derive(Default, Clone, Debug)]
 pub struct ColorMap {
-    index: u8,
-    r: u8,
-    g: u8,
-    b: u8,
+    pub index: u8,
+    pub r: u8,
+    pub g: u8,
+    pub b: u8,
+}
+
+#[macro_export]
+macro_rules! cmap {
+    ($i:literal, $r:literal, $g:literal, $b:literal) => {
+        ColorMap {
+            index: $i,
+            r: $r,
+            g: $g,
+            b: $b,
+        }
+    }
 }
 
 /// A theme is just a Vec of colormaps
 #[derive(Debug, Clone)]
 pub struct Theme(Vec<ColorMap>);
 
-/// Predefined themes
-pub enum BuiltinTheme {
-    Dark,
-    Black,
-    PlainGray,
-    Shake,
-    Tan,
-}
-
 impl Theme {
     fn load_(path: &path::Path) -> Result<Theme, FltkError> {
         let buf = std::fs::read_to_string(path)?;
+        Ok(Self::from_str(&buf))
+    }
+
+    /// Load from a theme file
+    pub fn load<P: AsRef<path::Path>>(path: P) -> Result<Theme, FltkError> {
+        Self::load_(path.as_ref())
+    }
+
+    /// Load from a string
+    /// # Panics
+    /// Panics on parse failure
+    pub fn from_str(buf: &str) -> Theme {
         let mut vec: Vec<ColorMap> = vec![];
         for line in buf.lines() {
             let line = line.trim_start();
@@ -70,12 +85,12 @@ impl Theme {
                 vec.push(cmap);
             }
         }
-        Ok(Theme(vec))
+        Theme(vec)
     }
 
-    /// Load from a theme file
-    pub fn load<P: AsRef<path::Path>>(path: P) -> Result<Theme, FltkError> {
-        Self::load_(path.as_ref())
+    /// Load from a color map
+    pub fn from_color_map(map: &[ColorMap]) -> Theme {
+        Theme(map.to_vec())
     }
 
     /// Select the theme
