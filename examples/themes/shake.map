@@ -37,7 +37,7 @@ cmap 51 90 90 90
 cmap 52 96 96 96
 cmap 53 101 101 101
 cmap 54 106 106 106
-cmap 55 110 110 110		# BG COLOR FOR SELECTED MENU ITEMS (color #55 must have enough contrast from #56 to be readable)
+cmap 55 110 110 110		# BG COLOR FOR apply()ED MENU ITEMS (color #55 must have enough contrast from #56 to be readable)
 cmap 56 150 150 150		# FG COLOR FOR MENU ITEMS          (color #56 must have enough contrast from #55 to be readable)
 cmap 59 80 150 80		# "Done" green
 cmap 63 0 180 0
@@ -46,7 +46,7 @@ cmap 88 180 0 0
 cmap 90 180 80 40		# Die/Pause orange
 cmap 91 180 120 0
 cmap 94 150 110 20		# report button 'running a command'
-cmap 95 120 120 36		# text selection color (bg)
+cmap 95 120 120 36		# text apply()ion color (bg)
 cmap 124 107 92 57		# "End" and "Add Nevercpu" button color (orange)
 cmap 254 60 70 70           # bgcolor of 'current jobid' lines in tty browser
 cmap 255 50 50 50

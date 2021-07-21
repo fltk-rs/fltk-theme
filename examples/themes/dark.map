@@ -77,7 +77,7 @@
     #   cmap 92 255 145 0
     #   cmap 93 255 182 0
     #   cmap 94 255 218 0
-    cmap 95 180 180 0		# text selection color
+    cmap 95 180 180 0		# text apply()ion color
     #   cmap 96 0 0 63
     #   cmap 97 0 36 63
     #   cmap 98 0 72 63

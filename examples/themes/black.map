@@ -102,7 +102,7 @@ cmap 91  110 47  0
 cmap 92  110 63  0  
 cmap 93  110 79  0  
 cmap 94  110 94  0		# report button 'running a command'
-cmap 95  110 110 0		# text selection color (bg)
+cmap 95  110 110 0		# text apply()ion color (bg)
 cmap 96  0   0   28 
 cmap 97  0   16  28 
 cmap 98  0   31  28 
@@ -279,7 +279,7 @@ cmap 15  200 50  50		# "checks" in checkboxes (Edit|Preferences..)
 cmap 59  40 140  40		# "Done" green
 cmap 90  160 120 40		# Die/Pause orange
 cmap 94  120 80  20		# report button 'running a command'
-cmap 95  140 140 100	# text selection color
+cmap 95  140 140 100	# text apply()ion color
 cmap 124 90  68  30		# "End" and "Add Nevercpu" button color (orange)
 cmap 254 50  70  70		# bgcolor of 'current jobid' lines in tty browser
 cmap 255 70  70  70		# FL_WHITE -- tty browser bg color
