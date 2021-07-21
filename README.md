@@ -17,7 +17,7 @@ use fltk_theme::Theme;
 fn main() {
     let a = app::App::default().with_scheme(app::Scheme::Gtk);
     let theme = Theme::load("examples/dark.map").unwrap();
-    theme.apply()();
+    theme.apply();
     let mut win = window::Window::default().with_size(400, 300);
     let mut btn = button::Button::new(160, 200, 80, 40, "Hello");
     btn.set_color(btn.color().lighter());
@@ -26,13 +26,17 @@ fn main() {
     a.run().unwrap();
 }
 ```
-
+- Black theme
 ![alt_test](screenshots/black.jpg)
 
+- Dark theme
 ![alt_test](screenshots/dark.jpg)
 
+- Plain gray theme
 ![alt_test](screenshots/plain-gray.jpg)
 
+- Tan theme
 ![alt_test](screenshots/tan.jpg)
 
+- Shake theme
 ![alt_test](screenshots/shake.jpg)
