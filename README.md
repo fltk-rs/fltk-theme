@@ -88,5 +88,5 @@ fn main() {
 - Metro (Windows 8 theme)
 ![alt_test](screenshots/metro.jpg)
 
-- Greybird (linux)
+- Greybird (Gnome xfce)
 ![alt_test](screenshots/greybird.jpg)
