@@ -1,5 +1,5 @@
 use fltk::{prelude::*, *};
-use fltk_theme::{cmap, ColorMap, Theme};
+use fltk_theme::{cmap, ColorMap, ColorTheme};
 
 fn main() {
     let mut map = vec![];
@@ -19,7 +19,7 @@ fn main() {
         b += 9;
     }
     let a = app::App::default().with_scheme(app::Scheme::Gtk);
-    let theme = Theme::from_colormap(&map);
+    let theme = ColorTheme::from_colormap(&map);
     theme.apply();
     let mut win = window::Window::default().with_size(400, 300);
     button::Button::new(160, 200, 80, 40, "Hello");

@@ -13,10 +13,10 @@ fltk-theme = "0.1"
 ## Example
 ```rust,no_run
 use fltk::{prelude::*, *};
-use fltk_theme::Theme;
+use fltk_theme::{ColorTheme, color_themes};
 
 let a = app::App::default().with_scheme(app::Scheme::Gtk);
-let theme = Theme::load("examples/themes/black.map").unwrap();
+let theme = ColorTheme::from_colormap(color_themes::BLACK_THEME);
 theme.apply();
 let mut win = window::Window::default().with_size(400, 300);
 let mut btn = button::Button::new(160, 200, 80, 40, "Hello");
@@ -27,8 +27,8 @@ a.run().unwrap();
 ```
 */
 
-use fltk::{app, enums::Color, prelude::FltkError};
-use std::path;
+use fltk::{app, enums::Color};
+pub mod color_themes;
 
 /// Color map struct. (index, r, g, b)
 #[derive(Default, Clone, Debug)]
@@ -53,43 +53,12 @@ macro_rules! cmap {
 
 /// A theme is just a Vec of colormaps
 #[derive(Debug, Clone)]
-pub struct Theme(Vec<ColorMap>);
+pub struct ColorTheme(pub Vec<ColorMap>);
 
-impl Theme {
-    fn load_(path: &path::Path) -> Result<Theme, FltkError> {
-        let buf = std::fs::read_to_string(path)?;
-        Ok(Self::from_string(&buf))
-    }
-
-    /// Load from a theme file
-    pub fn load<P: AsRef<path::Path>>(path: P) -> Result<Theme, FltkError> {
-        Self::load_(path.as_ref())
-    }
-
-    /// Load from a string
-    /// # Panics
-    /// Panics on parse failure
-    pub fn from_string(buf: &str) -> Theme {
-        let mut vec: Vec<ColorMap> = vec![];
-        for line in buf.lines() {
-            let line = line.trim_start();
-            if line.starts_with("cmap") {
-                let map: Vec<&str> = line.split_whitespace().collect();
-                let cmap = ColorMap {
-                    index: map[1].parse().expect("Parse Error!"),
-                    r: map[2].parse().expect("Parse Error!"),
-                    g: map[3].parse().expect("Parse Error!"),
-                    b: map[4].parse().expect("Parse Error!"),
-                };
-                vec.push(cmap);
-            }
-        }
-        Theme(vec)
-    }
-
+impl ColorTheme {
     /// Load from a color map
-    pub fn from_colormap(map: &[ColorMap]) -> Theme {
-        Theme(map.to_vec())
+    pub fn from_colormap(map: &[ColorMap]) -> ColorTheme {
+        ColorTheme(map.to_vec())
     }
 
     /// apply() the theme

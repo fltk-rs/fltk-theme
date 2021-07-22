@@ -12,11 +12,11 @@ fltk-theme = "0.1"
 ## Example
 ```rust
 use fltk::{prelude::*, *};
-use fltk_theme::Theme;
+use fltk_theme::{ColorTheme, color_themes};
 
 fn main() {
     let a = app::App::default().with_scheme(app::Scheme::Gtk);
-    let theme = Theme::load("examples/themes/black.map").unwrap();
+    let theme = ColorTheme::from_colormap(color_themes::BLACK_THEME);
     theme.apply();
     let mut win = window::Window::default().with_size(400, 300);
     let mut btn = button::Button::new(160, 200, 80, 40, "Hello");

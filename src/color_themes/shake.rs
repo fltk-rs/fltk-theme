@@ -1,7 +1,6 @@
-use fltk::{prelude::*, *};
-use fltk_theme::{cmap, ColorMap, ColorTheme};
+use crate::{cmap, ColorMap};
 
-const MAP: &[ColorMap] = &[
+pub const SHAKE_THEME: &[crate::ColorMap] = &[
     cmap!(0, 180, 180, 180),
     cmap!(1, 162, 48, 48),
     cmap!(2, 90, 180, 0),
@@ -55,15 +54,3 @@ const MAP: &[ColorMap] = &[
     cmap!(254, 60, 70, 70),
     cmap!(255, 50, 50, 50),
 ];
-
-fn main() {
-    let a = app::App::default().with_scheme(app::Scheme::Gtk);
-    let theme = ColorTheme::from_colormap(MAP);
-    theme.apply();
-    let mut win = window::Window::default().with_size(400, 300);
-    let mut btn = button::Button::new(160, 200, 80, 40, "Hello");
-    btn.set_color(btn.color().lighter());
-    win.end();
-    win.show();
-    a.run().unwrap();
-}
