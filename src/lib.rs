@@ -29,6 +29,7 @@ a.run().unwrap();
 
 use fltk::{app, enums::Color};
 pub mod color_themes;
+pub mod widget_themes;
 
 /// Color map struct. (index, r, g, b)
 #[derive(Default, Clone, Debug)]
@@ -67,5 +68,44 @@ impl ColorTheme {
             app::set_color(Color::by_index(elem.index), elem.r, elem.g, elem.b);
         }
         app::reload_scheme().ok();
+    }
+}
+
+/// Lists support themes
+#[derive(Debug, Clone, Copy)]
+pub enum WidgetThemeType {
+    Classic,
+    Aero,
+    Metro,
+    Aqua,
+    Greybird,
+    Ocean,
+    Blue,
+    Olive,
+    RoseGold,
+    Dark,
+    BrushedMetal,
+    HighContrast,
+}
+
+pub struct WidgetTheme {
+    theme: WidgetThemeType,
+}
+
+impl WidgetTheme {
+    /// Create a Widget theme object
+    pub fn new(theme: WidgetThemeType) -> Self {
+        Self {
+            theme
+        }
+    }
+
+    /// Apply the widget theme
+    pub fn apply(&self) {
+        match self.theme {
+            WidgetThemeType::Classic => widget_themes::classic::use_classic_theme(),
+            WidgetThemeType::Aero => widget_themes::aero::use_aero_theme(),
+            _ => (),
+        }
     }
 }
