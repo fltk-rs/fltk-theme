@@ -73,7 +73,7 @@ impl ColorTheme {
 
 /// Lists support themes
 #[derive(Debug, Clone, Copy)]
-pub enum WidgetThemeType {
+pub enum ThemeType {
     Classic,
     Aero,
     Metro,
@@ -89,12 +89,12 @@ pub enum WidgetThemeType {
 }
 
 pub struct WidgetTheme {
-    theme: WidgetThemeType,
+    theme: ThemeType,
 }
 
 impl WidgetTheme {
     /// Create a Widget theme object
-    pub fn new(theme: WidgetThemeType) -> Self {
+    pub fn new(theme: ThemeType) -> Self {
         Self {
             theme
         }
@@ -103,9 +103,10 @@ impl WidgetTheme {
     /// Apply the widget theme
     pub fn apply(&self) {
         match self.theme {
-            WidgetThemeType::Classic => widget_themes::classic::use_classic_theme(),
-            WidgetThemeType::Aero => widget_themes::aero::use_aero_theme(),
-            _ => (),
+            ThemeType::Classic => widget_themes::classic::use_classic_theme(),
+            ThemeType::Aero => widget_themes::aero::use_aero_theme(),
+            ThemeType::Aqua => widget_themes::aqua::use_aqua_theme(),
+            _ => unimplemented!(),
         }
     }
 }

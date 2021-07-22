@@ -10,6 +10,7 @@ use fltk::{
 
 pub mod aero;
 pub mod classic;
+pub mod aqua;
 
 pub const OS_BUTTON_UP_BOX: FrameType = FrameType::GtkUpBox;
 pub const OS_CHECK_DOWN_BOX: FrameType = FrameType::GtkDownBox;
@@ -92,4 +93,8 @@ pub(crate) fn horizontal_gradient(x1: i32, y1: i32, x2: i32, y2: i32, c1: Color,
 			draw_yxline(x1+i, y1, y2);
 		}
 	}
+}
+
+pub(crate) fn devalued(c: Color, w: f32) -> Color {
+	Color::color_average(Color::Black, c, w)
 }
