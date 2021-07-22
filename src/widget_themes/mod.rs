@@ -1,5 +1,5 @@
 #![allow(unused_variables)]
-#![allow(dead_code)]
+#![allow(clippy::many_single_char_names)]
 
 use fltk::{
     app,
@@ -8,9 +8,14 @@ use fltk::{
     misc::Tooltip,
 };
 
-pub mod aero;
-pub mod classic;
-pub mod aqua;
+pub(crate) mod aero;
+pub(crate) mod aqua;
+pub(crate) mod blue;
+pub(crate) mod classic;
+pub(crate) mod dark;
+pub(crate) mod greybird;
+pub(crate) mod high_contrast;
+pub(crate) mod metro;
 
 pub const OS_BUTTON_UP_BOX: FrameType = FrameType::GtkUpBox;
 pub const OS_CHECK_DOWN_BOX: FrameType = FrameType::GtkDownBox;
@@ -58,43 +63,41 @@ pub(crate) fn use_native_settings() {
 }
 
 pub(crate) fn vertical_gradient(x1: i32, y1: i32, x2: i32, y2: i32, c1: Color, c2: Color) {
-	let imax = y2 - y1;
-	let d = if imax > 0 { imax } else { 1 };
-	if app::draw_frame_active() {
-		for i in 0..=imax {
-			let w = 1.0 - i as f32 / d as f32;
-			set_draw_color(Color::color_average(c1, c2, w));
-			draw_xyline(x1, y1+i, x2);
-		}
-	}
-	else {
-		for i in 0..=imax {
-			let w = 1.0 - i as f32 / d as f32;
-			set_draw_color(Color::inactive(&Color::color_average(c1, c2, w)));
-			draw_xyline(x1, y1+i, x2);
-		}
-	}
+    let imax = y2 - y1;
+    let d = if imax > 0 { imax } else { 1 };
+    if app::draw_frame_active() {
+        for i in 0..=imax {
+            let w = 1.0 - i as f32 / d as f32;
+            set_draw_color(Color::color_average(c1, c2, w));
+            draw_xyline(x1, y1 + i, x2);
+        }
+    } else {
+        for i in 0..=imax {
+            let w = 1.0 - i as f32 / d as f32;
+            set_draw_color(Color::inactive(&Color::color_average(c1, c2, w)));
+            draw_xyline(x1, y1 + i, x2);
+        }
+    }
 }
 
 pub(crate) fn horizontal_gradient(x1: i32, y1: i32, x2: i32, y2: i32, c1: Color, c2: Color) {
-	let imax = x2 - x1;
-	let d = if imax > 0 { imax } else { 1 };
-	if app::draw_frame_active() {
-		for i in 0..=imax {
-			let w = 1.0 - i as f32 / d as f32;
-			set_draw_color(Color::color_average(c1, c2, w));
-			draw_yxline(x1+i, y1, y2);
-		}
-	}
-	else {
-		for i in 0..=imax {
-			let w = 1.0 - i as f32 / d as f32;
-			set_draw_color(Color::inactive(&Color::color_average(c1, c2, w)));
-			draw_yxline(x1+i, y1, y2);
-		}
-	}
+    let imax = x2 - x1;
+    let d = if imax > 0 { imax } else { 1 };
+    if app::draw_frame_active() {
+        for i in 0..=imax {
+            let w = 1.0 - i as f32 / d as f32;
+            set_draw_color(Color::color_average(c1, c2, w));
+            draw_yxline(x1 + i, y1, y2);
+        }
+    } else {
+        for i in 0..=imax {
+            let w = 1.0 - i as f32 / d as f32;
+            set_draw_color(Color::inactive(&Color::color_average(c1, c2, w)));
+            draw_yxline(x1 + i, y1, y2);
+        }
+    }
 }
 
 pub(crate) fn devalued(c: Color, w: f32) -> Color {
-	Color::color_average(Color::Black, c, w)
+    Color::color_average(Color::Black, c, w)
 }

@@ -10,6 +10,9 @@ fltk-theme = "0.1"
 ```
 
 ## Example
+
+Setting the color theme:
+
 ```rust
 use fltk::{prelude::*, *};
 use fltk_theme::{ColorTheme, color_themes};
@@ -26,6 +29,27 @@ fn main() {
     a.run().unwrap();
 }
 ```
+
+Setting the widget theme:
+
+```rust
+use fltk::{prelude::*, *};
+use fltk_theme::{widget_themes, WidgetTheme, ThemeType};
+
+fn main() {
+    let a = app::App::default();
+    let widget_theme = WidgetTheme::new(ThemeType::Aqua);
+    widget_theme.apply();
+    let mut win = window::Window::default().with_size(400, 300);
+    let mut btn = button::Button::new(160, 200, 80, 30, "Hello");
+    btn.set_frame(widget_themes::OS_DEFAULT_BUTTON_UP_BOX);
+    win.end();
+    win.show();
+    a.run().unwrap();
+}
+```
+## Color themes
+
 - Black theme
 ![alt_test](screenshots/black.jpg)
 
@@ -40,3 +64,29 @@ fn main() {
 
 - Shake theme
 ![alt_test](screenshots/shake.jpg)
+
+## Widget themes
+
+- Classic (old Windows theme)
+![alt_test](screenshots/classic.jpg)
+
+- Aero (Windows 7 theme)
+![alt_test](screenshots/aero.jpg)
+
+- Aqua (MacOS theme)
+![alt_test](screenshots/aqua.jpg)
+
+- Dark
+![alt_test](screenshots/dark.jpg)
+
+- High Contrast
+![alt_test](screenshots/high_contrast.jpg)
+
+- Blue
+![alt_test](screenshots/blue.jpg)
+
+- Metro (Windows 8 theme)
+![alt_test](screenshots/metro.jpg)
+
+- Greybird (linux)
+![alt_test](screenshots/greybird.jpg)
