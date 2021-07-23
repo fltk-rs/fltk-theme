@@ -75,14 +75,13 @@ fn main() {
 - Greybird (Gnome xfce)
 ![alt_test](screenshots/greybird.jpg)
 
-
 ## Color themes
 
 - Black theme
 ![alt_test](screenshots/black.jpg)
 
 - Dark theme
-![alt_test](screenshots/dark_color.JPG)
+![alt_test](screenshots/dark_color.jpg)
 
 - Plain gray theme
 ![alt_test](screenshots/plain-gray.jpg)
@@ -92,3 +91,39 @@ fn main() {
 
 - Shake theme
 ![alt_test](screenshots/shake.jpg)
+
+## FrameTypes
+
+Choosing a WidgetTheme will also define a set of FrameTypes which can be used for your widgets.
+```
+OS_BUTTON_UP_BOX
+OS_CHECK_DOWN_BOX
+OS_BUTTON_UP_FRAME
+OS_CHECK_DOWN_FRAME
+OS_PANEL_THIN_UP_BOX
+OS_SPACER_THIN_DOWN_BOX
+OS_PANEL_THIN_UP_FRAME
+OS_SPACER_THIN_DOWN_FRAME
+OS_RADIO_ROUND_DOWN_BOX
+OS_HOVERED_UP_BOX
+OS_DEPRESSED_DOWN_BOX
+OS_HOVERED_UP_FRAME
+OS_DEPRESSED_DOWN_FRAME
+OS_INPUT_THIN_DOWN_BOX
+OS_INPUT_THIN_DOWN_FRAME
+OS_MINI_BUTTON_UP_BOX
+OS_MINI_DEPRESSED_DOWN_BOX
+OS_MINI_BUTTON_UP_FRAME
+OS_MINI_DEPRESSED_DOWN_FRAME
+OS_DEFAULT_BUTTON_UP_BOX
+OS_DEFAULT_HOVERED_UP_BOX
+OS_DEFAULT_DEPRESSED_DOWN_BOX
+OS_TOOLBAR_BUTTON_HOVER_BOX
+OS_TABS_BOX
+OS_SWATCH_BOX
+OS_SWATCH_FRAME
+OS_BG_BOX
+```
+
+You can check the frames example to see all `FrameType`'s you can apply to you widgets.
+![alt_test](screenshots/frames.jpg)
