@@ -48,22 +48,6 @@ fn main() {
     a.run().unwrap();
 }
 ```
-## Color themes
-
-- Black theme
-![alt_test](screenshots/black.jpg)
-
-- Dark theme
-![alt_test](screenshots/dark_color.JPG)
-
-- Plain gray theme
-![alt_test](screenshots/plain-gray.jpg)
-
-- Tan theme
-![alt_test](screenshots/tan.jpg)
-
-- Shake theme
-![alt_test](screenshots/shake.jpg)
 
 ## Widget themes
 
@@ -90,3 +74,21 @@ fn main() {
 
 - Greybird (Gnome xfce)
 ![alt_test](screenshots/greybird.jpg)
+
+
+## Color themes
+
+- Black theme
+![alt_test](screenshots/black.jpg)
+
+- Dark theme
+![alt_test](screenshots/dark_color.JPG)
+
+- Plain gray theme
+![alt_test](screenshots/plain-gray.jpg)
+
+- Tan theme
+![alt_test](screenshots/tan.jpg)
+
+- Shake theme
+![alt_test](screenshots/shake.jpg)
