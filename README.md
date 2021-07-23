@@ -81,7 +81,7 @@ fn main() {
 ![alt_test](screenshots/black.jpg)
 
 - Dark theme
-![alt_test](screenshots/dark_color.jpg)
+![alt_test](screenshots/dark_color.JPG)
 
 - Plain gray theme
 ![alt_test](screenshots/plain-gray.jpg)
