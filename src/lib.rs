@@ -6,7 +6,7 @@ A theming crate for fltk-rs, based on work by [Remy Oukaour](https://github.com/
 ## Usage
 ```toml
 [dependencies]
-fltk = "1.1.3"
+fltk = "1.1.4"
 fltk-theme = "0.1"
 ```
 
