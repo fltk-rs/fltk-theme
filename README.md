@@ -5,7 +5,7 @@ A theming crate for fltk-rs, based on work by [Remy Oukaour](https://github.com/
 ## Usage
 ```toml
 [dependencies]
-fltk = "1.1.3"
+fltk = "1.1.4"
 fltk-theme = "0.1"
 ```
 
@@ -54,7 +54,7 @@ fn main() {
 ![alt_test](screenshots/black.jpg)
 
 - Dark theme
-![alt_test](screenshots/dark.jpg)
+![alt_test](screenshots/dark_color.JPG)
 
 - Plain gray theme
 ![alt_test](screenshots/plain-gray.jpg)
