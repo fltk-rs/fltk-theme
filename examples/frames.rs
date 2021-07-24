@@ -110,7 +110,7 @@ fn main() {
             5 => WidgetTheme::new(ThemeType::Blue),
             6 => WidgetTheme::new(ThemeType::HighContrast),
             7 => WidgetTheme::new(ThemeType::Dark),
-            _ => WidgetTheme::new(ThemeType::Classic),
+            _ => unimplemented!(),
         };
         theme.apply();
     });

@@ -50,6 +50,7 @@ a.run().unwrap();
 use fltk::{app, enums::Color};
 pub mod color_themes;
 pub mod widget_themes;
+pub mod widget_schemes;
 
 /// Color map struct. (index, r, g, b)
 #[derive(Default, Clone, Debug)]
@@ -91,7 +92,15 @@ impl ColorTheme {
     }
 }
 
-/// Lists support themes
+pub(crate) fn activated_color(c: Color) -> Color {
+    if fltk::app::draw_frame_active() {
+        c
+    } else {
+        c.inactive()
+    }
+}
+
+/// Lists supported themes
 #[derive(Debug, Clone, Copy)]
 pub enum ThemeType {
     Classic,
@@ -104,6 +113,7 @@ pub enum ThemeType {
     HighContrast,
 }
 
+#[derive(Debug, Clone, Copy)]
 pub struct WidgetTheme {
     theme: ThemeType,
 }
@@ -125,6 +135,35 @@ impl WidgetTheme {
             ThemeType::Blue => widget_themes::blue::use_blue_theme(),
             ThemeType::Metro => widget_themes::metro::use_metro_theme(),
             ThemeType::Greybird => widget_themes::greybird::use_greybird_theme(),
+        }
+    }
+}
+
+/// Lists supported schemes
+#[derive(Debug, Clone, Copy)]
+pub enum SchemeType {
+    Clean,
+    Crystal,
+    Gleam,
+}
+
+#[derive(Debug, Clone, Copy)]
+pub struct WidgetScheme {
+    scheme: SchemeType,
+}
+
+impl WidgetScheme {
+    /// Create a Widget theme object
+    pub fn new(scheme: SchemeType) -> Self {
+        Self { scheme }
+    }
+
+    /// Apply the widget theme
+    pub fn apply(&self) {
+        match self.scheme {
+            SchemeType::Clean => widget_schemes::clean::use_clean_scheme(),
+            SchemeType::Crystal => widget_schemes::crystal::use_crystal_scheme(),
+            SchemeType::Gleam => widget_schemes::gleam::use_gleam_scheme(),
         }
     }
 }

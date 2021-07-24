@@ -7,6 +7,7 @@ use fltk::{
     enums::{Color, FrameType},
     misc::Tooltip,
 };
+use crate::activated_color;
 
 pub(crate) mod aero;
 pub(crate) mod aqua;
@@ -46,14 +47,6 @@ pub const OS_SWATCH_FRAME: FrameType = FrameType::EngravedFrame;
 pub const OS_BG_BOX: FrameType = FrameType::FreeBoxType;
 
 pub const OS_FONT_SIZE: i32 = if cfg!(target_os = "window") { 12 } else { 13 };
-
-pub(crate) fn activated_color(c: Color) -> Color {
-    if fltk::app::draw_frame_active() {
-        c
-    } else {
-        c.inactive()
-    }
-}
 
 pub(crate) fn use_native_settings() {
     app::set_visible_focus(false);
