@@ -14,6 +14,7 @@ pub(crate) mod aqua;
 pub(crate) mod blue;
 pub(crate) mod classic;
 pub(crate) mod dark;
+pub(crate) mod fluent;
 pub(crate) mod greybird;
 pub(crate) mod high_contrast;
 pub(crate) mod metro;

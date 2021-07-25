@@ -111,6 +111,7 @@ pub enum ThemeType {
     Blue,
     Dark,
     HighContrast,
+    Fluent,
 }
 
 #[derive(Debug, Clone, Copy)]
@@ -135,6 +136,7 @@ impl WidgetTheme {
             ThemeType::Blue => widget_themes::blue::use_blue_theme(),
             ThemeType::Metro => widget_themes::metro::use_metro_theme(),
             ThemeType::Greybird => widget_themes::greybird::use_greybird_theme(),
+            ThemeType::Fluent => widget_themes::fluent::use_fluent_theme(),
         }
     }
 }
