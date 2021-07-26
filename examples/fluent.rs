@@ -19,7 +19,7 @@ fn main() {
     let mut toggle = button::ToggleButton::new(100, 220, 80, 30, "Toggle");
     toggle.set_color(enums::Color::from_hex(0x0078D4));
     toggle.set_label_color(enums::Color::White);
-    toggle.set_down_frame(widget_themes::OS_DEFAULT_DEPRESSED_DOWN_BOX);
+    toggle.set_selection_color(toggle.color().darker());
     let mut btn = button::Button::new(220, 220, 80, 30, "Hello");
     btn.set_frame(widget_themes::OS_DEFAULT_BUTTON_UP_BOX);
     btn.set_down_frame(widget_themes::OS_DEFAULT_DEPRESSED_DOWN_BOX);
