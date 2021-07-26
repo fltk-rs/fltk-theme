@@ -12,8 +12,10 @@ fn main() {
     choice.set_frame(widget_themes::OS_PANEL_THIN_UP_BOX);
     let mut check = button::CheckButton::new(160, 150, 80, 30, "  Check");
     check.set_value(true);
+    check.set_frame(enums::FrameType::FlatBox);
     let mut round = button::RoundButton::new(160, 180, 80, 30, "  Round");
     round.set_value(true);
+    round.set_frame(enums::FrameType::FlatBox);
     let mut btn = button::Button::new(160, 220, 80, 30, "Hello");
     btn.set_frame(widget_themes::OS_DEFAULT_BUTTON_UP_BOX);
     win.end();

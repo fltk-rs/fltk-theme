@@ -12,8 +12,10 @@ fn main() {
     choice.set_frame(widget_themes::OS_PANEL_THIN_UP_BOX);
     let mut check = button::CheckButton::new(160, 150, 80, 30, "  Check");
     check.set_value(true);
+    check.set_frame(enums::FrameType::FlatBox);
     let mut round = button::RoundButton::new(160, 180, 80, 30, "  Round");
     round.set_value(true);
+    round.set_frame(enums::FrameType::FlatBox);
     let mut toggle = button::ToggleButton::new(100, 220, 80, 30, "Toggle");
     toggle.set_color(enums::Color::from_hex(0x0078D4));
     toggle.set_label_color(enums::Color::White);
