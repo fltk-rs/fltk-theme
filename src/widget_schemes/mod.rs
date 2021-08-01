@@ -8,3 +8,4 @@ use fltk::{app, draw::*, enums::Color};
 pub(crate) mod clean;
 pub(crate) mod crystal;
 pub(crate) mod gleam;
+pub(crate) mod svg_round;

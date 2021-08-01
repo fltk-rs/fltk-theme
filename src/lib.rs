@@ -6,7 +6,7 @@ A theming crate for fltk-rs, based on work by [Remy Oukaour](https://github.com/
 ## Usage
 ```toml
 [dependencies]
-fltk = "1.1.4"
+fltk = "1.1.6"
 fltk-theme = "0.1"
 ```
 
@@ -103,14 +103,23 @@ pub(crate) fn activated_color(c: Color) -> Color {
 /// Lists supported themes
 #[derive(Debug, Clone, Copy)]
 pub enum ThemeType {
+    /// Windows classic
     Classic,
+    /// Windows 7
     Aero,
+    /// Windows 8
     Metro,
+    /// MacOS
     Aqua,
+    /// Xfce
     Greybird,
+    /// Windows 2000
     Blue,
+    /// Dark
     Dark,
+    /// High Contrast
     HighContrast,
+    /// Windows 10
     Fluent,
 }
 
@@ -144,9 +153,26 @@ impl WidgetTheme {
 /// Lists supported schemes
 #[derive(Debug, Clone, Copy)]
 pub enum SchemeType {
+    /// Taken from the NTK fork
     Clean,
+    /// Taken from the NTK fork
     Crystal,
+    /// Taken from the NTK fork, a modification of the FLTK Gleam scheme
     Gleam,
+    /**
+    Draws the following FrameTypes using scalable vector graphics:
+    - RoundedFrame
+    - RoundedBox
+    - RFlatBox
+    - RShadowBox
+    - RoundUpBox
+    - RoundDownBox
+    - OvalBox
+    - OvalFrame
+    - OFlatFrame
+    - OShadowBox
+    */
+    SvgRound,
 }
 
 #[derive(Debug, Clone, Copy)]
@@ -166,6 +192,7 @@ impl WidgetScheme {
             SchemeType::Clean => widget_schemes::clean::use_clean_scheme(),
             SchemeType::Crystal => widget_schemes::crystal::use_crystal_scheme(),
             SchemeType::Gleam => widget_schemes::gleam::use_gleam_scheme(),
+            SchemeType::SvgRound => widget_schemes::svg_round::use_svg_round_scheme(),
         }
     }
 }
