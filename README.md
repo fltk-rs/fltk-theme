@@ -142,6 +142,9 @@ OS_SWATCH_FRAME
 OS_BG_BOX
 ```
 
+You can check the frames example to see all `FrameType`'s you can apply to you widgets.
+![alt_test](screenshots/frames.jpg)
+
 ## Widget Schemes
 
 These provide schemes for widgets without color theming. Currently there are 4 schemes:
@@ -154,9 +157,6 @@ These provide schemes for widgets without color theming. Currently there are 4 s
 - Gleam: Taken from NTK's gleam scheme.
 ![alt_test](screenshots/gleam.jpg)
 
-- SvgBased: This overrides FLTK's Base scheme round/rounded/oval FrameTypes Round/Rounded/Oval which are drawn using scalable vector graphics.
+- SvgBased: This overrides FLTK's Base scheme round/rounded/oval FrameTypes which are drawn using scalable vector graphics.
 ![alt_test](screenshots/svgbased.jpg)
 
-
-You can check the frames example to see all `FrameType`'s you can apply to you widgets.
-![alt_test](screenshots/frames.jpg)
