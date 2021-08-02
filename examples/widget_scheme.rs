@@ -5,6 +5,7 @@ fn main() {
     let a = app::App::default();
     let scheme = WidgetScheme::new(SchemeType::Clean);
     scheme.apply();
+    app::background(0xfa, 0xfa, 0xfa);
     let mut win = window::Window::default().with_size(400, 300);
     let mut choice = menu::Choice::new(100, 100, 200, 30, None);
     choice.add_choice("Clean|Crystal|Gleam");

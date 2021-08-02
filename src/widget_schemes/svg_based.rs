@@ -96,7 +96,7 @@ fn oshadow_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
 }
 
 
-pub(crate) fn use_svg_round_scheme() {
+pub(crate) fn use_svg_based_scheme() {
     use fltk::enums::FrameType::*;
     app::reload_scheme().ok();
     app::set_scheme(app::Scheme::Base);

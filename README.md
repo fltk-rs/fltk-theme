@@ -1,11 +1,11 @@
 # fltk-theme
 
-A theming crate for fltk-rs, based on work by [Remy Oukaour](https://github.com/roukaour/viz-brain-visualizer) and [Greg Ercolano](https://groups.google.com/g/fltkgeneral/c/3A5VC_854ok/m/sDpJsmuLBAAJ).
+A theming crate for fltk-rs, based on work by [Remy Oukaour](https://github.com/roukaour/viz-brain-visualizer) and [Greg Ercolano](https://groups.google.com/g/fltkgeneral/c/3A5VC_854ok/m/sDpJsmuLBAAJ), and schemes developed by the NTK GUI library.
 
 ## Usage
 ```toml
 [dependencies]
-fltk = "1.1.4"
+fltk = "1.1.6"
 fltk-theme = "0.1"
 ```
 
@@ -43,6 +43,23 @@ fn main() {
     let mut win = window::Window::default().with_size(400, 300);
     let mut btn = button::Button::new(160, 200, 80, 30, "Hello");
     btn.set_frame(widget_themes::OS_DEFAULT_BUTTON_UP_BOX);
+    win.end();
+    win.show();
+    a.run().unwrap();
+}
+```
+
+Setting the widget scheme:
+```rust
+use fltk::{prelude::*, *};
+use fltk_theme::{WidgetScheme, SchemeType};
+
+fn main() {
+    let a = app::App::default();
+    let widget_scheme = WidgetScheme::new(SchemeType::Clean);
+    widget_scheme.apply();
+    let mut win = window::Window::default().with_size(400, 300);
+    let mut btn = button::Button::new(160, 200, 80, 30, "Hello");
     win.end();
     win.show();
     a.run().unwrap();
@@ -92,7 +109,7 @@ fn main() {
 - Shake theme
 ![alt_test](screenshots/shake.jpg)
 
-## FrameTypes
+## Theme FrameTypes
 
 Choosing a WidgetTheme will also define a set of FrameTypes which can be used for your widgets.
 ```
@@ -124,6 +141,22 @@ OS_SWATCH_BOX
 OS_SWATCH_FRAME
 OS_BG_BOX
 ```
+
+## Widget Schemes
+
+These provide schemes for widgets without color theming. Currently there are 4 schemes:
+- Clean: Taken from NTK's clear scheme.
+![alt_test](screenshots/clean.jpg)
+
+- Crystal: Taken from NTK's crystal scheme.
+![alt_test](screenshots/crystal.jpg)
+
+- Gleam: Taken from NTK's gleam scheme.
+![alt_test](screenshots/gleam.jpg)
+
+- SvgBased: This overrides FLTK's Base scheme round/rounded/oval FrameTypes Round/Rounded/Oval which are drawn using scalable vector graphics.
+![alt_test](screenshots/svgbased.jpg)
+
 
 You can check the frames example to see all `FrameType`'s you can apply to you widgets.
 ![alt_test](screenshots/frames.jpg)

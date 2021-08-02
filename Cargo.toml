@@ -10,7 +10,8 @@ keywords = ["gui", "ui", "widgets", "bindings", "graphics"]
 categories = ["gui"]
 readme = "README.md"
 license = "MIT"
+exclude = ["/screenshots", "./examples"]
 
 [dependencies]
-fltk = { git = "https://github.com/fltk-rs/fltk-rs" }
+fltk = "1.1.6"
 
