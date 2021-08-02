@@ -92,23 +92,6 @@ fn main() {
 - Greybird (Gnome xfce)
 ![alt_test](screenshots/greybird.jpg)
 
-## Color themes
-
-- Black theme
-![alt_test](screenshots/black.jpg)
-
-- Dark theme
-![alt_test](screenshots/dark_color.jpg)
-
-- Plain gray theme
-![alt_test](screenshots/plain-gray.jpg)
-
-- Tan theme
-![alt_test](screenshots/tan.jpg)
-
-- Shake theme
-![alt_test](screenshots/shake.jpg)
-
 ## Theme FrameTypes
 
 Choosing a WidgetTheme will also define a set of FrameTypes which can be used for your widgets.
@@ -144,6 +127,25 @@ OS_BG_BOX
 
 You can check the frames example to see all `FrameType`'s you can apply to you widgets.
 ![alt_test](screenshots/frames.jpg)
+
+
+## Color themes
+
+- Black theme
+![alt_test](screenshots/black.jpg)
+
+- Dark theme
+![alt_test](screenshots/dark_color.jpg)
+
+- Plain gray theme
+![alt_test](screenshots/plain-gray.jpg)
+
+- Tan theme
+![alt_test](screenshots/tan.jpg)
+
+- Shake theme
+![alt_test](screenshots/shake.jpg)
+
 
 ## Widget Schemes
 
