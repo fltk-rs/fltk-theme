@@ -5,13 +5,9 @@ const FRAMES: &[FrameType] = &[
     RoundedFrame,
     RoundedBox,
     RFlatBox,
-    RShadowBox,
-    RoundUpBox,
-    RoundDownBox,
     OvalBox,
     OvalFrame,
     OFlatFrame,
-    OShadowBox,
 ];
 
 fn add_frames(frames: &[FrameType]) {
@@ -30,10 +26,8 @@ fn main() {
     scheme.apply();
     let mut win = window::Window::default().with_size(600, 400);
     let mut vgrid = group::VGrid::new(5, 5, 590, 390, None);
-    vgrid.set_params(4, 3, 5);
+    vgrid.set_params(3, 2, 5);
     add_frames(FRAMES);
-    frame::Frame::default();
-    frame::Frame::default();
     vgrid.end();
     win.end();
     win.show();

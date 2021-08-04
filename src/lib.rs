@@ -181,13 +181,9 @@ pub enum SchemeType {
     - RoundedFrame
     - RoundedBox
     - RFlatBox
-    - RShadowBox
-    - RoundUpBox
-    - RoundDownBox
     - OvalBox
     - OvalFrame
     - OFlatFrame
-    - OShadowBox
     */
     SvgBased,
 }
