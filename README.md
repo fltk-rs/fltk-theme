@@ -1,6 +1,9 @@
 # fltk-theme
 
-A theming crate for fltk-rs, based on work by [Remy Oukaour](https://github.com/roukaour/viz-brain-visualizer) and [Greg Ercolano](https://groups.google.com/g/fltkgeneral/c/3A5VC_854ok/m/sDpJsmuLBAAJ), and schemes developed by the NTK GUI library.
+A theming crate for fltk-rs.
+- The widget themes are based on work by [Remy Oukaour](https://github.com/roukaour/viz-brain-visualizer) and [Rangi42](https://github.com/Rangi42/tilemap-studio).
+- The color themes are based on work by [Greg Ercolano](https://groups.google.com/g/fltkgeneral/c/3A5VC_854ok/m/sDpJsmuLBAAJ).
+- The widget schemes are based on work by the NTK GUI library.
 
 ## Usage
 ```toml
