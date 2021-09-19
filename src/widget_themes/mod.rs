@@ -1,16 +1,18 @@
 #![allow(unused_variables)]
 #![allow(clippy::many_single_char_names)]
 
+use crate::activated_color;
 use fltk::{
     app,
     draw::*,
     enums::{Color, FrameType},
     misc::Tooltip,
 };
-use crate::activated_color;
 
 pub(crate) mod aero;
 pub(crate) mod aqua;
+#[cfg(target_os = "macos")]
+pub(crate) mod aqua2;
 pub(crate) mod blue;
 pub(crate) mod classic;
 pub(crate) mod dark;

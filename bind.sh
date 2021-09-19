@@ -1,0 +1,1 @@
+bindgen src/cocoa_helper.h -o src/cocoa_helper.rs

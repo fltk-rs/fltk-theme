@@ -35,5 +35,6 @@ fn main() {
         };
         theme.apply();
     });
+
     a.run().unwrap();
 }

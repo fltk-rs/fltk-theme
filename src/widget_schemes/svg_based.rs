@@ -55,7 +55,6 @@ fn oflat_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     image.draw(x, y, w, h);
 }
 
-
 pub(crate) fn use_svg_based_scheme() {
     use fltk::enums::FrameType::*;
     app::reload_scheme().ok();
