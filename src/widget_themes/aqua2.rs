@@ -24,12 +24,8 @@ macro_rules! get_colors {
 }
 
 lazy_static::lazy_static! {
-    static ref BG_COL: (u8, u8, u8, u8) = {
-        get_colors!(my_windowBackgroundColor)
-    };
-    static ref FG_COL: (u8, u8, u8, u8) = {
-        get_colors!(my_labelColor)
-    };
+    static ref BG_COL: (u8, u8, u8, u8) = get_colors!(my_windowBackgroundColor);
+    static ref FG_COL: (u8, u8, u8, u8) = get_colors!(my_labelColor);
     static ref BG2_COL: (u8, u8, u8, u8) = {
         if FG_COL.0 > 250 && FG_COL.1 > 250 && FG_COL.2 > 250 {
             (0, 0, 0, 255)
@@ -37,9 +33,39 @@ lazy_static::lazy_static! {
             (255, 255, 255, 255)
         }
     };
-    static ref CONTROL_COL: (u8, u8, u8, u8) = {
-        get_colors!(my_controlBackgroundColor)
-    };
+    static ref CONTROL_COL: (u8, u8, u8, u8) = get_colors!(my_controlBackgroundColor);
+    static ref FRAME_COL: (u8, u8, u8, u8) = get_colors!(my_windowFrameColor);
+    static ref LABEL2_COL: (u8, u8, u8, u8) = get_colors!(my_secondaryLabelColor);
+    static ref LABEL3_COL: (u8, u8, u8, u8) = get_colors!(my_tertiaryLabelColor);
+    static ref LABEL4_COL: (u8, u8, u8, u8) = get_colors!(my_quaternaryLabelColor);
+    static ref TXT_COL: (u8, u8, u8, u8) = get_colors!(my_textColor);
+    static ref PH_TXT_COL: (u8, u8, u8, u8) = get_colors!(my_placeholderTextColor);
+    static ref SEL_TXT_COL: (u8, u8, u8, u8) = get_colors!(my_selectedTextColor);
+    static ref TXT_BG_COL: (u8, u8, u8, u8) = get_colors!(my_textBackgroundColor);
+    static ref SEL_TXT_BG_COL: (u8, u8, u8, u8) = get_colors!(my_selectedTextBackgroundColor);
+    static ref KB_IND_COL: (u8, u8, u8, u8) = get_colors!(my_keyboardFocusIndicatorColor);
+    static ref SEL_TXT2_COL: (u8, u8, u8, u8) = get_colors!(my_unemphasizedSelectedTextColor);
+    static ref SEL_TXT_BG2_COL: (u8, u8, u8, u8) = get_colors!(my_unemphasizedSelectedTextBackgroundColor);
+    static ref LINK_COL: (u8, u8, u8, u8) = get_colors!(my_linkColor);
+    static ref SEP_COL: (u8, u8, u8, u8) = get_colors!(my_separatorColor);
+    static ref SEL_BG_COL: (u8, u8, u8, u8) = get_colors!(my_selectedContentBackgroundColor);
+    static ref SEL_BG2_COL: (u8, u8, u8, u8) = get_colors!(my_unemphasizedSelectedContentBackgroundColor);
+    static ref SEL_MEN_TXT_COL: (u8, u8, u8, u8) = get_colors!(my_selectedMenuItemTextColor);
+    static ref GRID_COL: (u8, u8, u8, u8) = get_colors!(my_gridColor);
+    static ref HDR_COL: (u8, u8, u8, u8) = get_colors!(my_headerTextColor);
+    static ref CTRL_ACC_COL: (u8, u8, u8, u8) = get_colors!(my_controlAccentColor);
+    static ref CTRL_COL: (u8, u8, u8, u8) = get_colors!(my_controlColor);
+    static ref CTRL_TXT_COL: (u8, u8, u8, u8) = get_colors!(my_controlTextColor);
+    static ref DIS_CTRL_TXT_COL: (u8, u8, u8, u8) = get_colors!(my_disabledControlTextColor);
+    static ref SEL_CTRL_COL: (u8, u8, u8, u8) = get_colors!(my_selectedControlColor);
+    static ref SEL_CTRL_TXT_COL: (u8, u8, u8, u8) = get_colors!(my_selectedControlTextColor);
+    static ref ALT_SEL_CTRL_TXT_COL: (u8, u8, u8, u8) = get_colors!(my_alternateSelectedControlTextColor);
+    static ref SCRUB_BG_COL: (u8, u8, u8, u8) = get_colors!(my_scrubberTexturedBackgroundColor);
+    static ref WIN_FRM_TXT_COL: (u8, u8, u8, u8) = get_colors!(my_windowFrameTextColor);
+    static ref PAGE_BG_COL: (u8, u8, u8, u8) = get_colors!(my_underPageBackgroundColor);
+    static ref FIND_HLT_COL: (u8, u8, u8, u8) = get_colors!(my_findHighlightColor);
+    static ref HLT_COL: (u8, u8, u8, u8) = get_colors!(my_highlightColor);
+    static ref SHDW_COL: (u8, u8, u8, u8) = get_colors!(my_shadowColor);
 }
 
 fn aqua2_button_up_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
