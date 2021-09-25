@@ -1,7 +1,7 @@
 use super::*;
 #[cfg(target_os = "macos")]
 use crate::cocoa_helper::*;
-use fltk::{app, enums::Color, misc::Tooltip};
+use fltk::{app, enums::Color, image, misc::Tooltip, prelude::ImageExt};
 
 #[cfg(target_os = "macos")]
 fn convert_colors(colors: (f64, f64, f64, f64)) -> (u8, u8, u8, u8) {
@@ -107,72 +107,24 @@ lazy_static::lazy_static! {
 }
 
 fn aqua_dark_button_up_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
-    // top outer border
-    set_draw_color(activated_color(Color::from_rgb(0x9A, 0x9A, 0x9A)));
-    draw_xyline(x + 3, y, x + w - 4);
-    // side outer borders
-    set_draw_color(activated_color(Color::from_rgb(0x91, 0x91, 0x91)));
-    draw_yxline(x, y + 3, y + h - 4);
-    draw_yxline(x + w - 1, y + 3, y + h - 4);
-    // bottom outer border
-    set_draw_color(activated_color(Color::from_rgb(0x90, 0x90, 0x90)));
-    draw_xyline(x + 3, y + h - 1, x + w - 4);
-    // top inner border
-    set_draw_color(activated_color(Color::from_rgb(0xFF, 0xFF, 0xFF)));
-    draw_xyline(x + 3, y + 1, x + w - 4);
-    // side top inner borders
-    set_draw_color(activated_color(Color::from_rgb(0xFC, 0xFC, 0xFC)));
-    draw_yxline(x + 1, y + 3, y + h / 2 - 1);
-    draw_yxline(x + w - 2, y + 3, y + h / 2 - 1);
-    // side bottom inner borders
-    set_draw_color(activated_color(Color::from_rgb(0xF4, 0xF4, 0xF4)));
-    draw_yxline(x + 1, y + h / 2 - 1, y + h - 4);
-    draw_yxline(x + w - 2, y + 3, y + h - 4);
-    // bottom inner border
-    set_draw_color(activated_color(Color::from_rgb(0xF3, 0xF2, 0xF0)));
-    draw_xyline(x + 3, y + h - 2, x + w - 4);
-    // corners
-    set_draw_color(activated_color(Color::from_rgb(0xAF, 0xAF, 0xAF)));
-    draw_arc(x, y, 8, 8, 90.0, 180.0);
-    draw_arc(x, y + h - 8, 8, 8, 180.0, 270.0);
-    draw_arc(x + w - 8, y + h - 8, 8, 8, 270.0, 360.0);
-    draw_arc(x + w - 8, y, 8, 8, 0.0, 90.0);
+    
 }
 
 fn aqua_dark_button_up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
-    if w >= h {
-        // top gradient
-        vertical_gradient(
-            x + 2,
-            y + 2,
-            x + w - 3,
-            y + h / 2 - 1,
-            Color::from_rgb(0xFF, 0xFF, 0xFF),
-            Color::from_rgb(0xF6, 0xF5, 0xF4),
-        );
-        // bottom fill
-        set_draw_color(activated_color(Color::from_rgb(0xED, 0xEC, 0xEA)));
-        draw_rectf(x + 2, y + h / 2, w - 4, h - h / 2 - 3);
-        // bottom gradient
-        set_draw_color(activated_color(Color::from_rgb(0xEF, 0xEE, 0xEC)));
-        draw_xyline(x + 2, y + h - 3, x + w - 3);
-    } else {
-        // left gradient
-        horizontal_gradient(
-            x + 2,
-            y + 2,
-            x + w / 2 - 1,
-            y + h - 3,
-            Color::from_rgb(0xFF, 0xFF, 0xFF),
-            Color::from_rgb(0xF6, 0xF5, 0xF4),
-        );
-        // right fill
-        set_draw_color(activated_color(Color::from_rgb(0xED, 0xEC, 0xEA)));
-        draw_rectf(x + w / 2, y + 2, w - w / 2 - 3, h - 4);
-        // right gradient
-        set_draw_color(activated_color(Color::from_rgb(0xEF, 0xEE, 0xEC)));
-        draw_yxline(x + w - 3, y + 2, y + h - 3);
-    }
+    let col = &FRAME_COL;
+    let svg = format!(
+        "<svg width='{0}' height='{1}'>
+  <defs>
+    <linearGradient id='grad1' x1='0%' y1='0%' x2='0%' y2='100%'>
+      <stop offset='0%' style='stop-color:rgb({2}, {3}, {4});stop-opacity:1' />
+      <stop offset='100%' style='stop-color:rgb({5},{6},{7});stop-opacity:1' />
+    </linearGradient>
+  </defs>
+  <rect width='{0}' height='{1}' rx='{8}' fill='url(#grad1)' />
+    </svg>", w, h, col.0 - 10, col.1 - 10, col.2 - 10, col.0, col.1, col.2, h/3
+    );
+    let mut image = image::SvgImage::from_data(&svg).unwrap();
+    image.draw(x, y, w, h);
     aqua_dark_button_up_frame(x, y, w, h, c);
 }
 
@@ -233,56 +185,52 @@ fn aqua_dark_radio_round_down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
 }
 
 fn aqua_dark_depressed_down_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
-    // top outer border
-    set_draw_color(activated_color(Color::from_rgb(0x4C, 0x54, 0xAA)));
-    draw_xyline(x + 3, y, x + w - 4);
-    // side outer borders
-    set_draw_color(activated_color(Color::from_rgb(0x49, 0x4C, 0x8F)));
-    draw_yxline(x, y + 3, y + h - 4);
-    draw_yxline(x + w - 1, y + 3, y + h - 4);
-    // bottom outer border
-    set_draw_color(activated_color(Color::from_rgb(0x43, 0x46, 0x72)));
-    draw_xyline(x + 3, y + h - 1, x + w - 4);
-    // top inner border
-    set_draw_color(activated_color(Color::from_rgb(0xBC, 0xD6, 0xEF)));
-    draw_xyline(x + 3, y + 1, x + w - 4);
-    // side top inner borders
-    set_draw_color(activated_color(Color::from_rgb(0x7C, 0xAB, 0xE9)));
-    draw_yxline(x + 1, y + 3, y + h / 2 - 1);
-    draw_yxline(x + w - 2, y + 3, y + h / 2 - 1);
-    // side bottom inner borders
-    set_draw_color(activated_color(Color::from_rgb(0x5F, 0xA1, 0xEA)));
-    draw_yxline(x + 1, y + h / 2, y + h - 4);
-    draw_yxline(x + w - 2, y + h / 2, y + h - 4);
-    // top corners
-    set_draw_color(activated_color(Color::from_rgb(0x79, 0x81, 0xBC)));
-    draw_arc(x, y, 8, 8, 90.0, 180.0);
-    draw_arc(x + w - 8, y, 8, 8, 0.0, 90.0);
-    // bottom corners
-    set_draw_color(activated_color(Color::from_rgb(0x72, 0x79, 0x96)));
-    draw_arc(x, y + h - 8, 8, 8, 180.0, 270.0);
-    draw_arc(x + w - 8, y + h - 8, 8, 8, 270.0, 360.0);
+    // // top outer border
+    // set_draw_color(activated_color(Color::from_rgb(0x4C, 0x54, 0xAA)));
+    // draw_xyline(x + 3, y, x + w - 4);
+    // // side outer borders
+    // set_draw_color(activated_color(Color::from_rgb(0x49, 0x4C, 0x8F)));
+    // draw_yxline(x, y + 3, y + h - 4);
+    // draw_yxline(x + w - 1, y + 3, y + h - 4);
+    // // bottom outer border
+    // set_draw_color(activated_color(Color::from_rgb(0x43, 0x46, 0x72)));
+    // draw_xyline(x + 3, y + h - 1, x + w - 4);
+    // // top inner border
+    // set_draw_color(activated_color(Color::from_rgb(0xBC, 0xD6, 0xEF)));
+    // draw_xyline(x + 3, y + 1, x + w - 4);
+    // // side top inner borders
+    // set_draw_color(activated_color(Color::from_rgb(0x7C, 0xAB, 0xE9)));
+    // draw_yxline(x + 1, y + 3, y + h / 2 - 1);
+    // draw_yxline(x + w - 2, y + 3, y + h / 2 - 1);
+    // // side bottom inner borders
+    // set_draw_color(activated_color(Color::from_rgb(0x5F, 0xA1, 0xEA)));
+    // draw_yxline(x + 1, y + h / 2, y + h - 4);
+    // draw_yxline(x + w - 2, y + h / 2, y + h - 4);
+    // // top corners
+    // set_draw_color(activated_color(Color::from_rgb(0x79, 0x81, 0xBC)));
+    // draw_arc(x, y, 8, 8, 90.0, 180.0);
+    // draw_arc(x + w - 8, y, 8, 8, 0.0, 90.0);
+    // // bottom corners
+    // set_draw_color(activated_color(Color::from_rgb(0x72, 0x79, 0x96)));
+    // draw_arc(x, y + h - 8, 8, 8, 180.0, 270.0);
+    // draw_arc(x + w - 8, y + h - 8, 8, 8, 270.0, 360.0);
 }
 
 fn aqua_dark_depressed_down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
-    // top gradient
-    vertical_gradient(
-        x + 2,
-        y + 2,
-        x + w - 3,
-        y + h / 2 - 1,
-        Color::from_rgb(0xA3, 0xC1, 0xEF),
-        Color::from_rgb(0x67, 0xA1, 0xE9),
+    let col = &FRAME_COL;
+    let svg = format!(
+        "<svg width='{0}' height='{1}'>
+  <defs>
+    <linearGradient id='grad1' x1='0%' y1='0%' x2='0%' y2='100%'>
+      <stop offset='0%' style='stop-color:rgb({2}, {3}, {4});stop-opacity:1' />
+      <stop offset='100%' style='stop-color:rgb({5},{6},{7});stop-opacity:1' />
+    </linearGradient>
+  </defs>
+  <rect width='{0}' height='{1}' rx='{8}' fill='url(#grad1)' />
+    </svg>", w, h, col.0 - 20, col.1 - 20, col.2 - 20, col.0, col.1, col.2, h/3
     );
-    // bottom gradient
-    vertical_gradient(
-        x + 2,
-        y + h / 2,
-        x + w - 3,
-        y + h - 2,
-        Color::from_rgb(0x46, 0x93, 0xE9),
-        Color::from_rgb(0xAA, 0xD4, 0xF0),
-    );
+    let mut image = image::SvgImage::from_data(&svg).unwrap();
+    image.draw(x, y, w, h);
     aqua_dark_depressed_down_frame(x, y, w, h, c);
 }
 
@@ -308,56 +256,52 @@ fn aqua_dark_input_thin_down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
 }
 
 fn aqua_dark_default_button_up_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
-    // top outer border
-    set_draw_color(activated_color(Color::from_rgb(0x4E, 0x59, 0xA6)));
-    draw_xyline(x + 3, y, x + w - 4);
-    // side outer borders
-    set_draw_color(activated_color(Color::from_rgb(0x4C, 0x52, 0x89)));
-    draw_yxline(x, y + 3, y + h - 4);
-    draw_yxline(x + w - 1, y + 3, y + h - 4);
-    // bottom outer border
-    set_draw_color(activated_color(Color::from_rgb(0x48, 0x4F, 0x69)));
-    draw_xyline(x + 3, y + h - 1, x + w - 4);
-    // top inner border
-    set_draw_color(activated_color(Color::from_rgb(0xD0, 0xEA, 0xF6)));
-    draw_xyline(x + 3, y + 1, x + w - 4);
-    // side top inner borders
-    set_draw_color(activated_color(Color::from_rgb(0x7A, 0xBF, 0xEF)));
-    draw_yxline(x + 1, y + 3, y + h / 2 - 1);
-    draw_yxline(x + w - 2, y + 3, y + h / 2 - 1);
-    // side bottom inner borders
-    set_draw_color(activated_color(Color::from_rgb(0x53, 0xAF, 0xEF)));
-    draw_yxline(x + 1, y + h / 2, y + h - 4);
-    draw_yxline(x + w - 2, y + h / 2, y + h - 4);
-    // top corners
-    set_draw_color(activated_color(Color::from_rgb(0x76, 0x80, 0xB5)));
-    draw_arc(x, y, 8, 8, 90.0, 180.0);
-    draw_arc(x + w - 8, y, 8, 8, 0.0, 90.0);
-    // bottom corners
-    set_draw_color(activated_color(Color::from_rgb(0x6F, 0x75, 0x89)));
-    draw_arc(x, y + h - 8, 8, 8, 180.0, 270.0);
-    draw_arc(x + w - 8, y + h - 8, 8, 8, 270.0, 360.0);
+    // // top outer border
+    // set_draw_color(activated_color(Color::from_rgb(0x4E, 0x59, 0xA6)));
+    // draw_xyline(x + 3, y, x + w - 4);
+    // // side outer borders
+    // set_draw_color(activated_color(Color::from_rgb(0x4C, 0x52, 0x89)));
+    // draw_yxline(x, y + 3, y + h - 4);
+    // draw_yxline(x + w - 1, y + 3, y + h - 4);
+    // // bottom outer border
+    // set_draw_color(activated_color(Color::from_rgb(0x48, 0x4F, 0x69)));
+    // draw_xyline(x + 3, y + h - 1, x + w - 4);
+    // // top inner border
+    // set_draw_color(activated_color(Color::from_rgb(0xD0, 0xEA, 0xF6)));
+    // draw_xyline(x + 3, y + 1, x + w - 4);
+    // // side top inner borders
+    // set_draw_color(activated_color(Color::from_rgb(0x7A, 0xBF, 0xEF)));
+    // draw_yxline(x + 1, y + 3, y + h / 2 - 1);
+    // draw_yxline(x + w - 2, y + 3, y + h / 2 - 1);
+    // // side bottom inner borders
+    // set_draw_color(activated_color(Color::from_rgb(0x53, 0xAF, 0xEF)));
+    // draw_yxline(x + 1, y + h / 2, y + h - 4);
+    // draw_yxline(x + w - 2, y + h / 2, y + h - 4);
+    // // top corners
+    // set_draw_color(activated_color(Color::from_rgb(0x76, 0x80, 0xB5)));
+    // draw_arc(x, y, 8, 8, 90.0, 180.0);
+    // draw_arc(x + w - 8, y, 8, 8, 0.0, 90.0);
+    // // bottom corners
+    // set_draw_color(activated_color(Color::from_rgb(0x6F, 0x75, 0x89)));
+    // draw_arc(x, y + h - 8, 8, 8, 180.0, 270.0);
+    // draw_arc(x + w - 8, y + h - 8, 8, 8, 270.0, 360.0);
 }
 
 fn aqua_dark_default_button_up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
-    // top gradient
-    vertical_gradient(
-        x + 2,
-        y + 2,
-        x + w - 3,
-        y + h / 2 - 1,
-        Color::from_rgb(0xBF, 0xDC, 0xF7),
-        Color::from_rgb(0x84, 0xC4, 0xF1),
+    let col = &FRAME_COL;
+    let svg = format!(
+        "<svg width='{0}' height='{1}'>
+  <defs>
+    <linearGradient id='grad1' x1='0%' y1='0%' x2='0%' y2='100%'>
+      <stop offset='0%' style='stop-color:rgb({2}, {3}, {4});stop-opacity:1' />
+      <stop offset='100%' style='stop-color:rgb({5},{6},{7});stop-opacity:1' />
+    </linearGradient>
+  </defs>
+  <rect width='{0}' height='{1}' rx='{8}' fill='url(#grad1)' />
+    </svg>", w, h, col.0, col.1, col.2, col.0 + 10, col.1 + 10, col.2 + 10, h/3
     );
-    // bottom gradient
-    vertical_gradient(
-        x + 2,
-        y + h / 2,
-        x + w - 3,
-        y + h - 2,
-        Color::from_rgb(0x59, 0xB5, 0xF1),
-        Color::from_rgb(0xBA, 0xE9, 0xF7),
-    );
+    let mut image = image::SvgImage::from_data(&svg).unwrap();
+    image.draw(x, y, w, h);
     aqua_dark_default_button_up_frame(x, y, w, h, c);
 }
 
