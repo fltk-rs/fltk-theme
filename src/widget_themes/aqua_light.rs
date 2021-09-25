@@ -1,7 +1,112 @@
 use super::*;
+#[cfg(target_os = "macos")]
+use crate::cocoa_helper::*;
 use fltk::{app, enums::Color, misc::Tooltip};
 
-fn aqua_button_up_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
+#[cfg(target_os = "macos")]
+fn convert_colors(colors: (f64, f64, f64, f64)) -> (u8, u8, u8, u8) {
+    let r = (colors.0 * 255.0) as u8;
+    let g = (colors.1 * 255.0) as u8;
+    let b = (colors.2 * 255.0) as u8;
+    let a = (colors.3 * 255.0) as u8;
+    (r, g, b, a)
+}
+
+#[cfg(target_os = "macos")]
+macro_rules! get_colors {
+    ($s:ident) => {{
+        let mut r = 1.0;
+        let mut g = 1.0;
+        let mut b = 1.0;
+        let mut a = 1.0;
+        unsafe {
+            $s(&mut r, &mut g, &mut b, &mut a);
+        }
+        convert_colors((r, g, b, a))
+    }};
+}
+
+#[cfg(target_os = "macos")]
+lazy_static::lazy_static! {
+    static ref BG2_COL: (u8, u8, u8, u8) = (0, 0, 0, 255);
+    static ref BG_COL: (u8, u8, u8, u8) = get_colors!(my_windowBackgroundColor);
+    static ref FG_COL: (u8, u8, u8, u8) = get_colors!(my_labelColor);
+    static ref CONTROL_COL: (u8, u8, u8, u8) = get_colors!(my_controlBackgroundColor);
+    static ref FRAME_COL: (u8, u8, u8, u8) = get_colors!(my_windowFrameColor);
+    static ref LABEL2_COL: (u8, u8, u8, u8) = get_colors!(my_secondaryLabelColor);
+    static ref LABEL3_COL: (u8, u8, u8, u8) = get_colors!(my_tertiaryLabelColor);
+    static ref LABEL4_COL: (u8, u8, u8, u8) = get_colors!(my_quaternaryLabelColor);
+    static ref TXT_COL: (u8, u8, u8, u8) = get_colors!(my_textColor);
+    static ref PH_TXT_COL: (u8, u8, u8, u8) = get_colors!(my_placeholderTextColor);
+    static ref SEL_TXT_COL: (u8, u8, u8, u8) = get_colors!(my_selectedTextColor);
+    static ref TXT_BG_COL: (u8, u8, u8, u8) = get_colors!(my_textBackgroundColor);
+    static ref SEL_TXT_BG_COL: (u8, u8, u8, u8) = get_colors!(my_selectedTextBackgroundColor);
+    static ref KB_IND_COL: (u8, u8, u8, u8) = get_colors!(my_keyboardFocusIndicatorColor);
+    static ref SEL_TXT2_COL: (u8, u8, u8, u8) = get_colors!(my_unemphasizedSelectedTextColor);
+    static ref SEL_TXT_BG2_COL: (u8, u8, u8, u8) = get_colors!(my_unemphasizedSelectedTextBackgroundColor);
+    static ref LINK_COL: (u8, u8, u8, u8) = get_colors!(my_linkColor);
+    static ref SEP_COL: (u8, u8, u8, u8) = get_colors!(my_separatorColor);
+    static ref SEL_BG_COL: (u8, u8, u8, u8) = get_colors!(my_selectedContentBackgroundColor);
+    static ref SEL_BG2_COL: (u8, u8, u8, u8) = get_colors!(my_unemphasizedSelectedContentBackgroundColor);
+    static ref SEL_MEN_TXT_COL: (u8, u8, u8, u8) = get_colors!(my_selectedMenuItemTextColor);
+    static ref GRID_COL: (u8, u8, u8, u8) = get_colors!(my_gridColor);
+    static ref HDR_COL: (u8, u8, u8, u8) = get_colors!(my_headerTextColor);
+    static ref CTRL_ACC_COL: (u8, u8, u8, u8) = get_colors!(my_controlAccentColor);
+    static ref CTRL_COL: (u8, u8, u8, u8) = get_colors!(my_controlColor);
+    static ref CTRL_TXT_COL: (u8, u8, u8, u8) = get_colors!(my_controlTextColor);
+    static ref DIS_CTRL_TXT_COL: (u8, u8, u8, u8) = get_colors!(my_disabledControlTextColor);
+    static ref SEL_CTRL_COL: (u8, u8, u8, u8) = get_colors!(my_selectedControlColor);
+    static ref SEL_CTRL_TXT_COL: (u8, u8, u8, u8) = get_colors!(my_selectedControlTextColor);
+    static ref ALT_SEL_CTRL_TXT_COL: (u8, u8, u8, u8) = get_colors!(my_alternateSelectedControlTextColor);
+    static ref SCRUB_BG_COL: (u8, u8, u8, u8) = get_colors!(my_scrubberTexturedBackgroundColor);
+    static ref WIN_FRM_TXT_COL: (u8, u8, u8, u8) = get_colors!(my_windowFrameTextColor);
+    static ref PAGE_BG_COL: (u8, u8, u8, u8) = get_colors!(my_underPageBackgroundColor);
+    static ref FIND_HLT_COL: (u8, u8, u8, u8) = get_colors!(my_findHighlightColor);
+    static ref HLT_COL: (u8, u8, u8, u8) = get_colors!(my_highlightColor);
+    static ref SHDW_COL: (u8, u8, u8, u8) = get_colors!(my_shadowColor);
+}
+
+#[cfg(not(target_os = "macos"))]
+lazy_static::lazy_static! {
+    static ref BG2_COL: (u8, u8, u8, u8) = (255, 255, 255, 255);
+    static ref BG_COL: (u8, u8, u8, u8) = (231, 231, 231, 255);
+    static ref FG_COL: (u8, u8, u8, u8) = (0, 0, 0, 216);
+    static ref CONTROL_COL: (u8, u8, u8, u8) = (255, 254, 254, 255);
+    static ref FRAME_COL: (u8, u8, u8, u8) = (153, 153, 153, 255);
+    static ref LABEL2_COL: (u8, u8, u8, u8) = (0, 0, 0, 127);
+    static ref LABEL3_COL: (u8, u8, u8, u8) = (0, 0, 0, 66);
+    static ref LABEL4_COL: (u8, u8, u8, u8) = (0, 0, 0, 25);
+    static ref TXT_COL: (u8, u8, u8, u8) = (0, 0, 0, 255);
+    static ref PH_TXT_COL: (u8, u8, u8, u8) = (0, 0, 0, 63);
+    static ref SEL_TXT_COL: (u8, u8, u8, u8) = (0, 0, 0, 255);
+    static ref TXT_BG_COL: (u8, u8, u8, u8) = (255, 254, 254, 255);
+    static ref SEL_TXT_BG_COL: (u8, u8, u8, u8) = (164, 204, 254, 255);
+    static ref KB_IND_COL: (u8, u8, u8, u8) = (7, 75, 240, 63);
+    static ref SEL_TXT2_COL: (u8, u8, u8, u8) = (0, 0, 0, 255);
+    static ref SEL_TXT_BG2_COL: (u8, u8, u8, u8) = (211, 211, 211, 255);
+    static ref LINK_COL: (u8, u8, u8, u8) = (8, 79, 209, 255);
+    static ref SEP_COL: (u8, u8, u8, u8) = (0, 0, 0, 25);
+    static ref SEL_BG_COL: (u8, u8, u8, u8) = (7, 73, 217, 255);
+    static ref SEL_BG2_COL: (u8, u8, u8, u8) = (211, 211, 211, 255);
+    static ref SEL_MEN_TXT_COL: (u8, u8, u8, u8) = (255, 254, 254, 255);
+    static ref GRID_COL: (u8, u8, u8, u8) = (223, 223, 223, 255);
+    static ref HDR_COL: (u8, u8, u8, u8) = (0, 0, 0, 216);
+    static ref CTRL_ACC_COL: (u8, u8, u8, u8) = (10, 95, 254, 255);
+    static ref CTRL_COL: (u8, u8, u8, u8) = (255, 254, 254, 255);
+    static ref CTRL_TXT_COL: (u8, u8, u8, u8) = (0, 0, 0, 216);
+    static ref DIS_CTRL_TXT_COL: (u8, u8, u8, u8) = (0, 0, 0, 63);
+    static ref SEL_CTRL_COL: (u8, u8, u8, u8) = (164, 204, 254, 255);
+    static ref SEL_CTRL_TXT_COL: (u8, u8, u8, u8) = (0, 0, 0, 216);
+    static ref ALT_SEL_CTRL_TXT_COL: (u8, u8, u8, u8) = (255, 254, 254, 255);
+    static ref SCRUB_BG_COL: (u8, u8, u8, u8) = (255, 254, 254, 255);
+    static ref WIN_FRM_TXT_COL: (u8, u8, u8, u8) = (0, 0, 0, 216);
+    static ref PAGE_BG_COL: (u8, u8, u8, u8) = (131, 131, 131, 229);
+    static ref FIND_HLT_COL: (u8, u8, u8, u8) = (255, 255, 10, 255);
+    static ref HLT_COL: (u8, u8, u8, u8) = (255, 254, 254, 255);
+    static ref SHDW_COL: (u8, u8, u8, u8) = (0, 0, 0, 255);
+}
+
+fn aqua_light_button_up_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
     // top outer border
     set_draw_color(activated_color(Color::from_rgb(0x9A, 0x9A, 0x9A)));
     draw_xyline(x + 3, y, x + w - 4);
@@ -34,7 +139,7 @@ fn aqua_button_up_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
     draw_arc(x + w - 8, y, 8, 8, 0.0, 90.0);
 }
 
-fn aqua_button_up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
+fn aqua_light_button_up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     if w >= h {
         // top gradient
         vertical_gradient(
@@ -68,21 +173,21 @@ fn aqua_button_up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
         set_draw_color(activated_color(Color::from_rgb(0xEF, 0xEE, 0xEC)));
         draw_yxline(x + w - 3, y + 2, y + h - 3);
     }
-    aqua_button_up_frame(x, y, w, h, c);
+    aqua_light_button_up_frame(x, y, w, h, c);
 }
 
-fn aqua_panel_thin_up_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
+fn aqua_light_panel_thin_up_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
     set_draw_color(activated_color(devalued(c, 0.06751)));
     draw_rect(x, y, w, h);
 }
 
-fn aqua_panel_thin_up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
+fn aqua_light_panel_thin_up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     set_draw_color(activated_color(c));
     draw_rectf(x + 1, y + 1, w - 2, h - 2);
-    aqua_panel_thin_up_frame(x, y, w, h, c);
+    aqua_light_panel_thin_up_frame(x, y, w, h, c);
 }
 
-fn aqua_spacer_thin_down_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
+fn aqua_light_spacer_thin_down_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
     // top and left borders
     set_draw_color(activated_color(Color::from_rgb(0xD6, 0xD6, 0xD6)));
     draw_yxline2(x, y + h - 2, y, x + w - 2);
@@ -91,18 +196,18 @@ fn aqua_spacer_thin_down_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
     draw_xyline2(x, y + h - 1, x + w - 1, y);
 }
 
-fn aqua_spacer_thin_down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
+fn aqua_light_spacer_thin_down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     set_draw_color(activated_color(c));
     draw_rectf(x + 1, y + 1, w - 2, h - 2);
-    aqua_spacer_thin_down_frame(x, y, w, h, c);
+    aqua_light_spacer_thin_down_frame(x, y, w, h, c);
 }
 
-fn aqua_radio_round_down_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
+fn aqua_light_radio_round_down_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
     set_draw_color(activated_color(devalued(c, 0.42194)));
     draw_arc(x, y, w, h, 0.0, 360.0);
 }
 
-fn aqua_radio_round_down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
+fn aqua_light_radio_round_down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     // top edges
     set_draw_color(activated_color(Color::from_rgb(0xF6, 0xF6, 0xF6)));
     draw_arc(x + 1, y + 1, w - 2, h - 2, 0.0, 180.0);
@@ -124,10 +229,10 @@ fn aqua_radio_round_down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     // bottom gradient
     set_draw_color(activated_color(Color::from_rgb(0xEF, 0xEE, 0xEC)));
     draw_xyline(x + 2, y + h - 3, x + w - 3);
-    aqua_radio_round_down_frame(x, y, w, h, c);
+    aqua_light_radio_round_down_frame(x, y, w, h, c);
 }
 
-fn aqua_depressed_down_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
+fn aqua_light_depressed_down_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
     // top outer border
     set_draw_color(activated_color(Color::from_rgb(0x4C, 0x54, 0xAA)));
     draw_xyline(x + 3, y, x + w - 4);
@@ -159,7 +264,7 @@ fn aqua_depressed_down_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
     draw_arc(x + w - 8, y + h - 8, 8, 8, 270.0, 360.0);
 }
 
-fn aqua_depressed_down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
+fn aqua_light_depressed_down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     // top gradient
     vertical_gradient(
         x + 2,
@@ -178,10 +283,10 @@ fn aqua_depressed_down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
         Color::from_rgb(0x46, 0x93, 0xE9),
         Color::from_rgb(0xAA, 0xD4, 0xF0),
     );
-    aqua_depressed_down_frame(x, y, w, h, c);
+    aqua_light_depressed_down_frame(x, y, w, h, c);
 }
 
-fn aqua_input_thin_down_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
+fn aqua_light_input_thin_down_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
     // top outer border
     set_draw_color(activated_color(Color::from_rgb(0x9B, 0x9B, 0x9B)));
     draw_xyline(x, y, x + w - 1);
@@ -196,13 +301,13 @@ fn aqua_input_thin_down_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
     draw_yxline3(x + 1, y + h - 2, y + 2, x + w - 2, y + h - 2);
 }
 
-fn aqua_input_thin_down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
+fn aqua_light_input_thin_down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     set_draw_color(activated_color(Color::from_rgb(0xFF, 0xFF, 0xFF)));
     draw_rectf(x + 2, y + 3, w - 4, h - 4);
-    aqua_input_thin_down_frame(x, y, w, h, c);
+    aqua_light_input_thin_down_frame(x, y, w, h, c);
 }
 
-fn aqua_default_button_up_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
+fn aqua_light_default_button_up_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
     // top outer border
     set_draw_color(activated_color(Color::from_rgb(0x4E, 0x59, 0xA6)));
     draw_xyline(x + 3, y, x + w - 4);
@@ -234,7 +339,7 @@ fn aqua_default_button_up_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
     draw_arc(x + w - 8, y + h - 8, 8, 8, 270.0, 360.0);
 }
 
-fn aqua_default_button_up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
+fn aqua_light_default_button_up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     // top gradient
     vertical_gradient(
         x + 2,
@@ -253,10 +358,10 @@ fn aqua_default_button_up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
         Color::from_rgb(0x59, 0xB5, 0xF1),
         Color::from_rgb(0xBA, 0xE9, 0xF7),
     );
-    aqua_default_button_up_frame(x, y, w, h, c);
+    aqua_light_default_button_up_frame(x, y, w, h, c);
 }
 
-fn aqua_tabs_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
+fn aqua_light_tabs_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
     // top outer border
     set_draw_color(activated_color(Color::from_rgb(0xAE, 0xAE, 0xAE)));
     draw_xyline(x + 3, y, x + w - 4);
@@ -287,13 +392,13 @@ fn aqua_tabs_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
     draw_arc(x + w - 8, y + h - 8, 8, 8, 270.0, 360.0);
 }
 
-fn aqua_tabs_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
+fn aqua_light_tabs_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     set_draw_color(activated_color(c));
     draw_rectf(x + 2, y + 2, w - 4, h - 4);
-    aqua_tabs_frame(x, y, w, h, c);
+    aqua_light_tabs_frame(x, y, w, h, c);
 }
 
-fn aqua_swatch_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
+fn aqua_light_swatch_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
     // outer border
     set_draw_color(activated_color(Color::from_rgb(0xA3, 0xA3, 0xA3)));
     draw_rect(x, y, w, h);
@@ -302,31 +407,45 @@ fn aqua_swatch_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
     draw_rect(x + 1, y + 1, w - 2, h - 2);
 }
 
-fn aqua_swatch_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
+fn aqua_light_swatch_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     set_draw_color(activated_color(c));
     draw_rectf(x + 2, y + 2, w - 4, h - 4);
-    aqua_swatch_frame(x, y, w, h, c);
+    aqua_light_swatch_frame(x, y, w, h, c);
 }
 
-fn use_aqua_scheme() {
+fn use_aqua_light_scheme() {
     app::set_scheme(app::Scheme::Gtk);
-    app::set_frame_type_cb(OS_BUTTON_UP_BOX, aqua_button_up_box, 1, 1, 2, 2);
+    app::set_frame_type_cb(OS_BUTTON_UP_BOX, aqua_light_button_up_box, 1, 1, 2, 2);
     app::set_frame_type2(OS_CHECK_DOWN_BOX, OS_BUTTON_UP_BOX);
-    app::set_frame_type_cb(OS_BUTTON_UP_FRAME, aqua_button_up_frame, 1, 1, 2, 2);
+    app::set_frame_type_cb(OS_BUTTON_UP_FRAME, aqua_light_button_up_frame, 1, 1, 2, 2);
     app::set_frame_type2(OS_CHECK_DOWN_FRAME, OS_BUTTON_UP_FRAME);
-    app::set_frame_type_cb(OS_PANEL_THIN_UP_BOX, aqua_panel_thin_up_box, 1, 1, 2, 2);
     app::set_frame_type_cb(
-        OS_SPACER_THIN_DOWN_BOX,
-        aqua_spacer_thin_down_box,
+        OS_PANEL_THIN_UP_BOX,
+        aqua_light_panel_thin_up_box,
         1,
         1,
         2,
         2,
     );
-    app::set_frame_type_cb(OS_PANEL_THIN_UP_FRAME, aqua_panel_thin_up_frame, 1, 1, 2, 2);
+    app::set_frame_type_cb(
+        OS_SPACER_THIN_DOWN_BOX,
+        aqua_light_spacer_thin_down_box,
+        1,
+        1,
+        2,
+        2,
+    );
+    app::set_frame_type_cb(
+        OS_PANEL_THIN_UP_FRAME,
+        aqua_light_panel_thin_up_frame,
+        1,
+        1,
+        2,
+        2,
+    );
     app::set_frame_type_cb(
         OS_SPACER_THIN_DOWN_FRAME,
-        aqua_spacer_thin_down_frame,
+        aqua_light_spacer_thin_down_frame,
         1,
         1,
         2,
@@ -334,27 +453,41 @@ fn use_aqua_scheme() {
     );
     app::set_frame_type_cb(
         OS_RADIO_ROUND_DOWN_BOX,
-        aqua_radio_round_down_box,
+        aqua_light_radio_round_down_box,
         2,
         2,
         4,
         4,
     );
     app::set_frame_type2(OS_HOVERED_UP_BOX, OS_BUTTON_UP_BOX);
-    app::set_frame_type_cb(OS_DEPRESSED_DOWN_BOX, aqua_depressed_down_box, 1, 1, 2, 2);
-    app::set_frame_type2(OS_HOVERED_UP_FRAME, OS_BUTTON_UP_FRAME);
     app::set_frame_type_cb(
-        OS_DEPRESSED_DOWN_FRAME,
-        aqua_depressed_down_frame,
+        OS_DEPRESSED_DOWN_BOX,
+        aqua_light_depressed_down_box,
         1,
         1,
         2,
         2,
     );
-    app::set_frame_type_cb(OS_INPUT_THIN_DOWN_BOX, aqua_input_thin_down_box, 2, 3, 4, 6);
+    app::set_frame_type2(OS_HOVERED_UP_FRAME, OS_BUTTON_UP_FRAME);
+    app::set_frame_type_cb(
+        OS_DEPRESSED_DOWN_FRAME,
+        aqua_light_depressed_down_frame,
+        1,
+        1,
+        2,
+        2,
+    );
+    app::set_frame_type_cb(
+        OS_INPUT_THIN_DOWN_BOX,
+        aqua_light_input_thin_down_box,
+        2,
+        3,
+        4,
+        6,
+    );
     app::set_frame_type_cb(
         OS_INPUT_THIN_DOWN_FRAME,
-        aqua_input_thin_down_frame,
+        aqua_light_input_thin_down_frame,
         2,
         3,
         4,
@@ -362,7 +495,7 @@ fn use_aqua_scheme() {
     );
     app::set_frame_type_cb(
         OS_DEFAULT_BUTTON_UP_BOX,
-        aqua_default_button_up_box,
+        aqua_light_default_button_up_box,
         1,
         1,
         2,
@@ -371,8 +504,8 @@ fn use_aqua_scheme() {
     app::set_frame_type2(OS_DEFAULT_HOVERED_UP_BOX, OS_HOVERED_UP_BOX);
     app::set_frame_type2(OS_DEFAULT_DEPRESSED_DOWN_BOX, OS_DEPRESSED_DOWN_BOX);
     app::set_frame_type2(OS_TOOLBAR_BUTTON_HOVER_BOX, FrameType::FlatBox);
-    app::set_frame_type_cb(OS_TABS_BOX, aqua_tabs_box, 2, 1, 4, 2);
-    app::set_frame_type_cb(OS_SWATCH_BOX, aqua_swatch_box, 2, 2, 4, 4);
+    app::set_frame_type_cb(OS_TABS_BOX, aqua_light_tabs_box, 2, 1, 4, 2);
+    app::set_frame_type_cb(OS_SWATCH_BOX, aqua_light_swatch_box, 2, 2, 4, 4);
     app::set_frame_type2(OS_MINI_BUTTON_UP_BOX, OS_BUTTON_UP_BOX);
     app::set_frame_type2(OS_MINI_DEPRESSED_DOWN_BOX, OS_DEPRESSED_DOWN_BOX);
     app::set_frame_type2(OS_MINI_BUTTON_UP_FRAME, OS_BUTTON_UP_FRAME);
@@ -384,10 +517,10 @@ fn use_aqua_scheme() {
     // app::set_frame_type_cb(OS_BG_DOWN_BOX, OS_BG_BOX);
 }
 
-fn use_aqua_colors() {
-    app::background(0xED, 0xED, 0xED);
-    app::background2(0xFF, 0xFF, 0xFF);
-    app::foreground(0x00, 0x00, 0x00);
+fn use_aqua_light_colors() {
+    app::background(BG_COL.0, BG_COL.1, BG_COL.2);
+    app::foreground(FG_COL.0, FG_COL.1, FG_COL.2);
+    app::background2(BG2_COL.0, BG2_COL.1, BG2_COL.2);
     app::set_color(Color::Inactive, 0x4D, 0x4D, 0x69);
     app::set_color(Color::Selection, 0x30, 0x60, 0xF6);
     app::set_color(Color::Free, 0xFB, 0xFB, 0xFB);
@@ -395,8 +528,8 @@ fn use_aqua_colors() {
     Tooltip::set_text_color(Color::ForeGround);
 }
 
-pub(crate) fn use_aqua_theme() {
-    use_aqua_scheme();
-    use_aqua_colors();
+pub(crate) fn use_aqua_light_theme() {
+    use_aqua_light_scheme();
+    use_aqua_light_colors();
     use_native_settings();
 }

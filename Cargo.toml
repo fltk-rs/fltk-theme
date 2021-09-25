@@ -14,8 +14,6 @@ exclude = ["/screenshots", "./examples"]
 
 [dependencies]
 fltk = "1.1.6"
-
-[target.'cfg(target_os = "macos")'.dependencies]
 lazy_static = "1.4"
 
 [target.'cfg(target_os = "macos")'.build-dependencies]

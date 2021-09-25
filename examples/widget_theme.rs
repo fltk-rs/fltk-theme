@@ -3,11 +3,11 @@ use fltk_theme::{widget_themes, ThemeType, WidgetTheme};
 
 fn main() {
     let a = app::App::default();
-    let theme = WidgetTheme::new(ThemeType::Aqua);
+    let theme = WidgetTheme::new(ThemeType::AquaClassic);
     theme.apply();
     let mut win = window::Window::default().with_size(400, 300);
     let mut choice = menu::Choice::new(100, 100, 200, 30, None);
-    choice.add_choice("Classic|Aero|Metro|Aqua|Greybird|Blue|HighContrast|Dark|Fluent");
+    choice.add_choice("Classic|Aero|Metro|AquaClassic|Greybird|Blue|HighContrast|Dark|Fluent");
     choice.set_value(3);
     choice.set_frame(widget_themes::OS_PANEL_THIN_UP_BOX);
     let mut check = button::CheckButton::new(160, 150, 80, 30, "  Check");
@@ -25,7 +25,7 @@ fn main() {
             0 => WidgetTheme::new(ThemeType::Classic),
             1 => WidgetTheme::new(ThemeType::Aero),
             2 => WidgetTheme::new(ThemeType::Metro),
-            3 => WidgetTheme::new(ThemeType::Aqua),
+            3 => WidgetTheme::new(ThemeType::AquaClassic),
             4 => WidgetTheme::new(ThemeType::Greybird),
             5 => WidgetTheme::new(ThemeType::Blue),
             6 => WidgetTheme::new(ThemeType::HighContrast),

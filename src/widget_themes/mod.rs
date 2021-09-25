@@ -10,9 +10,9 @@ use fltk::{
 };
 
 pub(crate) mod aero;
-pub(crate) mod aqua;
-#[cfg(target_os = "macos")]
-pub(crate) mod aqua2;
+pub(crate) mod aqua_classic;
+pub(crate) mod aqua_dark;
+pub(crate) mod aqua_light;
 pub(crate) mod blue;
 pub(crate) mod classic;
 pub(crate) mod dark;

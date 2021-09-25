@@ -132,10 +132,11 @@ pub enum ThemeType {
     /// Windows 8
     Metro,
     /// Classic MacOS
-    Aqua,
-    #[cfg(target_os = "macos")]
-    /// Modern MacOS using system colors, supports Dark theme
-    Aqua2,
+    AquaClassic,
+    /// Modern MacOS using system colors, Dark theme
+    AquaDark,
+    /// Modern MacOS using system colors, light theme
+    AquaLight,
     /// Xfce
     Greybird,
     /// Windows 2000
@@ -164,9 +165,9 @@ impl WidgetTheme {
         match self.theme {
             ThemeType::Classic => widget_themes::classic::use_classic_theme(),
             ThemeType::Aero => widget_themes::aero::use_aero_theme(),
-            ThemeType::Aqua => widget_themes::aqua::use_aqua_theme(),
-            #[cfg(target_os = "macos")]
-            ThemeType::Aqua2 => widget_themes::aqua2::use_aqua2_theme(),
+            ThemeType::AquaClassic => widget_themes::aqua_classic::use_aqua_classic_theme(),
+            ThemeType::AquaDark => widget_themes::aqua_dark::use_aqua_dark_theme(),
+            ThemeType::AquaLight => widget_themes::aqua_light::use_aqua_light_theme(),
             ThemeType::Dark => widget_themes::dark::use_dark_theme(),
             ThemeType::HighContrast => widget_themes::high_contrast::use_high_contrast_theme(),
             ThemeType::Blue => widget_themes::blue::use_blue_theme(),
