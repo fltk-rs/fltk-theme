@@ -6,7 +6,7 @@ fn main() {
     let widget_theme = WidgetTheme::new(ThemeType::AquaDark);
     widget_theme.apply();
     let mut win = window::Window::default().with_size(400, 300);
-    input::Input::new(50, 10, 300, 30, None);
+    input::Input::new(50, 50, 300, 30, None);
     let mut check = button::CheckButton::new(160, 150, 80, 30, "  Check");
     check.set_value(true);
     check.set_frame(enums::FrameType::FlatBox);

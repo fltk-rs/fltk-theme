@@ -176,6 +176,17 @@ fn aqua_dark_default_button_up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     image.draw(x, y, w, h);
 }
 
+fn aqua_dark_radio_round_down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
+    let col = &CTRL_ACC_COL;
+    let svg = format!(
+        "<svg width='{}' height='{}'>
+  <circle cx='{}' cy='{}' r='{}' fill='rgb({},{},{})'/>
+    </svg>", w, h, w/2, h/2, w/2, col.0, col.1, col.2
+    );
+    let mut image = image::SvgImage::from_data(&svg).unwrap();
+    image.draw(x, y, w, h);
+}
+
 fn use_aqua_dark_scheme() {
     app::set_scheme(app::Scheme::Gtk);
     app::set_frame_type_cb(FrameType::UpBox, aqua_dark_button_up_box, 1, 1, 2, 2);
@@ -196,7 +207,15 @@ fn use_aqua_dark_scheme() {
         2,
         2,
     );
-
+    app::set_frame_type_cb(
+        OS_RADIO_ROUND_DOWN_BOX,
+        aqua_dark_radio_round_down_box,
+        2,
+        2,
+        4,
+        4,
+    );
+    app::set_frame_type2(FrameType::RoundDownBox, OS_RADIO_ROUND_DOWN_BOX);
     app::set_frame_type2(OS_BG_BOX, FrameType::FlatBox);
     // app::set_frame_type_cb(OS_BG_DOWN_BOX, OS_BG_BOX);
 }
