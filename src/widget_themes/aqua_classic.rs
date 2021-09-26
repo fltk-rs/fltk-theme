@@ -314,7 +314,14 @@ fn use_aqua_classic_scheme() {
     app::set_frame_type2(OS_CHECK_DOWN_BOX, OS_BUTTON_UP_BOX);
     app::set_frame_type_cb(OS_BUTTON_UP_FRAME, aqua_classic_button_up_frame, 1, 1, 2, 2);
     app::set_frame_type2(OS_CHECK_DOWN_FRAME, OS_BUTTON_UP_FRAME);
-    app::set_frame_type_cb(OS_PANEL_THIN_UP_BOX, aqua_classic_panel_thin_up_box, 1, 1, 2, 2);
+    app::set_frame_type_cb(
+        OS_PANEL_THIN_UP_BOX,
+        aqua_classic_panel_thin_up_box,
+        1,
+        1,
+        2,
+        2,
+    );
     app::set_frame_type_cb(
         OS_SPACER_THIN_DOWN_BOX,
         aqua_classic_spacer_thin_down_box,
@@ -323,7 +330,14 @@ fn use_aqua_classic_scheme() {
         2,
         2,
     );
-    app::set_frame_type_cb(OS_PANEL_THIN_UP_FRAME, aqua_classic_panel_thin_up_frame, 1, 1, 2, 2);
+    app::set_frame_type_cb(
+        OS_PANEL_THIN_UP_FRAME,
+        aqua_classic_panel_thin_up_frame,
+        1,
+        1,
+        2,
+        2,
+    );
     app::set_frame_type_cb(
         OS_SPACER_THIN_DOWN_FRAME,
         aqua_classic_spacer_thin_down_frame,
@@ -341,7 +355,14 @@ fn use_aqua_classic_scheme() {
         4,
     );
     app::set_frame_type2(OS_HOVERED_UP_BOX, OS_BUTTON_UP_BOX);
-    app::set_frame_type_cb(OS_DEPRESSED_DOWN_BOX, aqua_classic_depressed_down_box, 1, 1, 2, 2);
+    app::set_frame_type_cb(
+        OS_DEPRESSED_DOWN_BOX,
+        aqua_classic_depressed_down_box,
+        1,
+        1,
+        2,
+        2,
+    );
     app::set_frame_type2(OS_HOVERED_UP_FRAME, OS_BUTTON_UP_FRAME);
     app::set_frame_type_cb(
         OS_DEPRESSED_DOWN_FRAME,
@@ -351,7 +372,14 @@ fn use_aqua_classic_scheme() {
         2,
         2,
     );
-    app::set_frame_type_cb(OS_INPUT_THIN_DOWN_BOX, aqua_classic_input_thin_down_box, 2, 3, 4, 6);
+    app::set_frame_type_cb(
+        OS_INPUT_THIN_DOWN_BOX,
+        aqua_classic_input_thin_down_box,
+        2,
+        3,
+        4,
+        6,
+    );
     app::set_frame_type_cb(
         OS_INPUT_THIN_DOWN_FRAME,
         aqua_classic_input_thin_down_frame,

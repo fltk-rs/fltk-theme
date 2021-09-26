@@ -109,34 +109,32 @@ lazy_static::lazy_static! {
 }
 
 fn aqua_dark_button_up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
-    let col = &FRAME_COL;
+    let col = &CTRL_COL;
+    let bg = &BG_COL;
     let svg = format!(
         "<svg width='{0}' height='{1}'>
   <defs>
     <linearGradient id='grad1' x1='0%' y1='0%' x2='0%' y2='100%'>
-      <stop offset='0%' style='stop-color:rgb({2}, {3}, {4});stop-opacity:1' />
-      <stop offset='100%' style='stop-color:rgb({5},{6},{7});stop-opacity:1' />
+      <stop offset='0%' style='stop-color:rgb({2},{3},{4});stop-opacity:{5}' />
+      <stop offset='100%' style='stop-color:rgb({6},{7},{8});stop-opacity:{5}' />
     </linearGradient>
   </defs>
-  <rect width='{0}' height='{1}' rx='{8}' fill='url(#grad1)' />
-    </svg>", w, h, col.0 - 10, col.1 - 10, col.2 - 10, col.0, col.1, col.2, h/4
-    );
-    let mut image = image::SvgImage::from_data(&svg).unwrap();
-    image.draw(x, y, w, h);
-}
-
-fn aqua_dark_button_down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
-    let col = &FRAME_COL;
-    let svg = format!(
-        "<svg width='{0}' height='{1}'>
-  <defs>
-    <linearGradient id='grad1' x1='0%' y1='0%' x2='0%' y2='100%'>
-      <stop offset='0%' style='stop-color:rgb({2}, {3}, {4});stop-opacity:1' />
-      <stop offset='100%' style='stop-color:rgb({5},{6},{7});stop-opacity:1' />
-    </linearGradient>
-  </defs>
-  <rect width='{0}' height='{1}' rx='{8}' fill='url(#grad1)' />
-    </svg>", w, h, col.0 - 10, col.1 - 10, col.2 - 10, col.0, col.1, col.2, h/4
+  <rect width='{0}' height='{1}' rx='{9}' fill='rgb({10},{11},{12})' />
+  <rect width='{0}' height='{1}' rx='{9}' fill='url(#grad1)' />
+    </svg>",
+        w,
+        h,
+        col.0,
+        col.1,
+        col.2,
+        col.3 as f64 / 255.0,
+        col.0 - 10,
+        col.1 - 10,
+        col.2 - 10,
+        h / 4,
+        bg.0,
+        bg.1,
+        bg.2
     );
     let mut image = image::SvgImage::from_data(&svg).unwrap();
     image.draw(x, y, w, h);
@@ -148,29 +146,21 @@ fn aqua_dark_depressed_down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
         "<svg width='{0}' height='{1}'>
   <defs>
     <linearGradient id='grad1' x1='0%' y1='0%' x2='0%' y2='100%'>
-      <stop offset='0%' style='stop-color:rgb({2}, {3}, {4});stop-opacity:1' />
+      <stop offset='0%' style='stop-color:rgb({2},{3},{4});stop-opacity:1' />
       <stop offset='100%' style='stop-color:rgb({5},{6},{7});stop-opacity:1' />
     </linearGradient>
   </defs>
   <rect width='{0}' height='{1}' rx='{8}' fill='url(#grad1)' />
-    </svg>", w, h, col.0 - 10, col.1 - 10, col.2 - 10, col.0, col.1, col.2, h/4
-    );
-    let mut image = image::SvgImage::from_data(&svg).unwrap();
-    image.draw(x, y, w, h);
-}
-
-fn aqua_dark_default_button_up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
-    let col = &FRAME_COL;
-    let svg = format!(
-        "<svg width='{0}' height='{1}'>
-  <defs>
-    <linearGradient id='grad1' x1='0%' y1='0%' x2='0%' y2='100%'>
-      <stop offset='0%' style='stop-color:rgb({2}, {3}, {4});stop-opacity:1' />
-      <stop offset='100%' style='stop-color:rgb({5},{6},{7});stop-opacity:1' />
-    </linearGradient>
-  </defs>
-  <rect width='{0}' height='{1}' rx='{8}' fill='url(#grad1)' />
-    </svg>", w, h, col.0, col.1, col.2, col.0 + 10, col.1 + 10, col.2 + 10, h/4
+    </svg>",
+        w,
+        h,
+        col.0 - 10,
+        col.1 - 10,
+        col.2 - 10,
+        col.0,
+        col.1,
+        col.2,
+        h / 4
     );
     let mut image = image::SvgImage::from_data(&svg).unwrap();
     image.draw(x, y, w, h);
@@ -181,7 +171,15 @@ fn aqua_dark_radio_round_down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     let svg = format!(
         "<svg width='{}' height='{}'>
   <circle cx='{}' cy='{}' r='{}' fill='rgb({},{},{})'/>
-    </svg>", w, h, w/2, h/2, w/2, col.0, col.1, col.2
+    </svg>",
+        w,
+        h,
+        w / 2,
+        h / 2,
+        w / 2,
+        col.0,
+        col.1,
+        col.2
     );
     let mut image = image::SvgImage::from_data(&svg).unwrap();
     image.draw(x, y, w, h);
@@ -190,15 +188,8 @@ fn aqua_dark_radio_round_down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
 fn use_aqua_dark_scheme() {
     app::set_scheme(app::Scheme::Gtk);
     app::set_frame_type_cb(FrameType::UpBox, aqua_dark_button_up_box, 1, 1, 2, 2);
-    app::set_frame_type_cb(FrameType::DownBox, aqua_dark_button_down_box, 1, 1, 2, 2);
-    app::set_frame_type_cb(
-        OS_DEFAULT_BUTTON_UP_BOX,
-        aqua_dark_default_button_up_box,
-        1,
-        1,
-        2,
-        2,
-    );
+    app::set_frame_type2(FrameType::DownBox, FrameType::UpBox);
+    app::set_frame_type2(OS_DEFAULT_BUTTON_UP_BOX, FrameType::UpBox);
     app::set_frame_type_cb(
         OS_DEFAULT_DEPRESSED_DOWN_BOX,
         aqua_dark_depressed_down_box,
