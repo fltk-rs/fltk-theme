@@ -66,6 +66,7 @@ fn main() {
 }
 ```
 */
+#![allow(clippy::needless_doctest_main)]
 
 use fltk::{app, enums::Color};
 #[cfg(target_os = "macos")]

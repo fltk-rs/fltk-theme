@@ -29,9 +29,10 @@ macro_rules! get_colors {
 #[cfg(target_os = "macos")]
 lazy_static::lazy_static! {
     static ref BG2_COL: (u8, u8, u8, u8) = (0, 0, 0, 255);
+    static ref SYS_CYAN: (u8, u8, u8, u8) = (85, 190 , 240, 255);
     static ref BG_COL: (u8, u8, u8, u8) = get_colors!(my_windowBackgroundColor);
     static ref FG_COL: (u8, u8, u8, u8) = get_colors!(my_labelColor);
-    static ref CONTROL_COL: (u8, u8, u8, u8) = get_colors!(my_controlBackgroundColor);
+    static ref CTRL_BG_COL: (u8, u8, u8, u8) = get_colors!(my_controlBackgroundColor);
     static ref FRAME_COL: (u8, u8, u8, u8) = get_colors!(my_windowFrameColor);
     static ref LABEL2_COL: (u8, u8, u8, u8) = get_colors!(my_secondaryLabelColor);
     static ref LABEL3_COL: (u8, u8, u8, u8) = get_colors!(my_tertiaryLabelColor);
@@ -69,9 +70,10 @@ lazy_static::lazy_static! {
 #[cfg(not(target_os = "macos"))]
 lazy_static::lazy_static! {
     static ref BG2_COL: (u8, u8, u8, u8) = (255, 255, 255, 255);
+    static ref SYS_CYAN: (u8, u8, u8, u8) = (85, 190 , 240, 255);
     static ref BG_COL: (u8, u8, u8, u8) = (231, 231, 231, 255);
     static ref FG_COL: (u8, u8, u8, u8) = (0, 0, 0, 216);
-    static ref CONTROL_COL: (u8, u8, u8, u8) = (255, 254, 254, 255);
+    static ref CTRL_BG_COL: (u8, u8, u8, u8) = (255, 254, 254, 255);
     static ref FRAME_COL: (u8, u8, u8, u8) = (153, 153, 153, 255);
     static ref LABEL2_COL: (u8, u8, u8, u8) = (0, 0, 0, 127);
     static ref LABEL3_COL: (u8, u8, u8, u8) = (0, 0, 0, 66);
