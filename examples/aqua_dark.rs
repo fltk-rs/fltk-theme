@@ -1,12 +1,18 @@
-use fltk::{prelude::*, *};
-use fltk_theme::{widget_themes, WidgetTheme, ThemeType};
+use fltk::{prelude::*, enums::*, *};
+use fltk_theme::{WidgetScheme, SchemeType};
+use fltk_theme::widget_schemes::aqua::dark::*; // get all the dark aqua colors
 
 fn main() {
     let a = app::App::default();
-    let widget_theme = WidgetTheme::new(ThemeType::AquaDark);
-    widget_theme.apply();
+    app::background(BG_COL.0, BG_COL.1, BG_COL.2);
+    app::background2(CTRL_ACC_COL.0, CTRL_ACC_COL.1, CTRL_ACC_COL.2);
+    app::foreground(FG_COL.0, FG_COL.1, FG_COL.2);
+    app::set_color(Color::Selection, 255, 255, 255);
+    let widget_scheme = WidgetScheme::new(SchemeType::Aqua);
+    widget_scheme.apply();
     let mut win = window::Window::default().with_size(400, 300);
-    input::Input::new(50, 50, 300, 30, None);
+    let mut inp = input::Input::new(50, 50, 300, 30, None);
+    inp.set_color(Color::from_rgb(FRAME_COL.0, FRAME_COL.1, FRAME_COL.2));
     let mut check = button::CheckButton::new(160, 150, 80, 30, "  Check");
     check.set_value(true);
     check.set_frame(enums::FrameType::FlatBox);
@@ -14,7 +20,8 @@ fn main() {
     round.set_value(true);
     round.set_frame(enums::FrameType::FlatBox);
     let mut btn = button::Button::new(160, 230, 80, 30, "Hello");
-    btn.set_frame(widget_themes::OS_DEFAULT_BUTTON_UP_BOX);
+    btn.set_color(Color::from_rgb(CTRL_COL.0, CTRL_COL.1, CTRL_COL.2));
+    btn.set_selection_color(Color::from_rgb(SYS_CYAN.0, SYS_CYAN.1, SYS_CYAN.2));
     win.end();
     win.make_resizable(true);
     win.show();

@@ -4,7 +4,7 @@
 use crate::activated_color;
 use fltk::{app, draw::*, enums::Color};
 
-// taken from NTK's themes
+pub mod aqua;
 pub(crate) mod clean;
 pub(crate) mod crystal;
 pub(crate) mod gleam;

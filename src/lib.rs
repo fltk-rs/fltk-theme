@@ -134,10 +134,6 @@ pub enum ThemeType {
     Metro,
     /// Classic MacOS
     AquaClassic,
-    /// Modern MacOS using system colors, Dark theme
-    AquaDark,
-    /// Modern MacOS using system colors, light theme
-    AquaLight,
     /// Xfce
     Greybird,
     /// Windows 2000
@@ -167,8 +163,6 @@ impl WidgetTheme {
             ThemeType::Classic => widget_themes::classic::use_classic_theme(),
             ThemeType::Aero => widget_themes::aero::use_aero_theme(),
             ThemeType::AquaClassic => widget_themes::aqua_classic::use_aqua_classic_theme(),
-            ThemeType::AquaDark => widget_themes::aqua_dark::use_aqua_dark_theme(),
-            ThemeType::AquaLight => widget_themes::aqua_light::use_aqua_light_theme(),
             ThemeType::Dark => widget_themes::dark::use_dark_theme(),
             ThemeType::HighContrast => widget_themes::high_contrast::use_high_contrast_theme(),
             ThemeType::Blue => widget_themes::blue::use_blue_theme(),
@@ -182,6 +176,8 @@ impl WidgetTheme {
 /// Lists supported schemes
 #[derive(Debug, Clone, Copy)]
 pub enum SchemeType {
+    /// A scheme mimicking modern Aqua
+    Aqua,
     /// Taken from the NTK fork
     Clean,
     /// Taken from the NTK fork
@@ -214,6 +210,7 @@ impl WidgetScheme {
     /// Apply the widget theme
     pub fn apply(&self) {
         match self.scheme {
+            SchemeType::Aqua => widget_schemes::aqua::use_aqua_scheme(),
             SchemeType::Clean => widget_schemes::clean::use_clean_scheme(),
             SchemeType::Crystal => widget_schemes::crystal::use_crystal_scheme(),
             SchemeType::Gleam => widget_schemes::gleam::use_gleam_scheme(),
