@@ -12,7 +12,7 @@ fn main() {
     widget_scheme.apply();
     let mut win = window::Window::default().with_size(400, 300);
     let mut inp = input::Input::new(50, 50, 300, 30, None);
-    inp.set_color(Color::from_rgb(FRAME_COL.0, FRAME_COL.1, FRAME_COL.2));
+    inp.set_color(Color::from_tup(*FRAME_COL));
     let mut check = button::CheckButton::new(160, 150, 80, 30, "  Check");
     check.set_value(true);
     check.set_frame(enums::FrameType::FlatBox);
@@ -20,8 +20,8 @@ fn main() {
     round.set_value(true);
     round.set_frame(enums::FrameType::FlatBox);
     let mut btn = button::Button::new(160, 230, 80, 30, "Hello");
-    btn.set_color(Color::from_rgb(CTRL_COL.0, CTRL_COL.1, CTRL_COL.2));
-    btn.set_selection_color(Color::from_rgb(SYS_CYAN.0, SYS_CYAN.1, SYS_CYAN.2));
+    btn.set_color(Color::from_tup(*CTRL_COL));
+    btn.set_selection_color(Color::from_tup(*SYS_CYAN));
     win.end();
     win.make_resizable(true);
     win.show();

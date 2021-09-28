@@ -7,7 +7,7 @@ fn main() {
     theme.apply();
     let mut win = window::Window::default().with_size(800, 800);
     let mut choice = menu::Choice::new(300, 10, 200, 30, None);
-    choice.add_choice("Classic|Aero|Metro|AquaClassic|Greybird|Blue|HighContrast|Dark|Fluent");
+    choice.add_choice("Classic|Aero|Metro|AquaClassic|Greybird|Blue|HighContrast|Dark");
     choice.set_value(6);
     choice.set_frame(OS_PANEL_THIN_UP_BOX);
     let mut vgrid = group::VGrid::new(50, 100, 700, 700, None);
@@ -110,7 +110,6 @@ fn main() {
             5 => WidgetTheme::new(ThemeType::Blue),
             6 => WidgetTheme::new(ThemeType::HighContrast),
             7 => WidgetTheme::new(ThemeType::Dark),
-            8 => WidgetTheme::new(ThemeType::Fluent),
             _ => unimplemented!(),
         };
         theme.apply();

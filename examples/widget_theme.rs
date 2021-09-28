@@ -7,7 +7,7 @@ fn main() {
     theme.apply();
     let mut win = window::Window::default().with_size(400, 300);
     let mut choice = menu::Choice::new(100, 100, 200, 30, None);
-    choice.add_choice("Classic|Aero|Metro|AquaClassic|Greybird|Blue|HighContrast|Dark|Fluent");
+    choice.add_choice("Classic|Aero|Metro|AquaClassic|Greybird|Blue|HighContrast|Dark");
     choice.set_value(3);
     choice.set_frame(widget_themes::OS_PANEL_THIN_UP_BOX);
     let mut check = button::CheckButton::new(160, 150, 80, 30, "  Check");
@@ -30,7 +30,6 @@ fn main() {
             5 => WidgetTheme::new(ThemeType::Blue),
             6 => WidgetTheme::new(ThemeType::HighContrast),
             7 => WidgetTheme::new(ThemeType::Dark),
-            8 => WidgetTheme::new(ThemeType::Fluent),
             _ => WidgetTheme::new(ThemeType::Classic),
         };
         theme.apply();

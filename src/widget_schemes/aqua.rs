@@ -27,6 +27,7 @@ macro_rules! get_colors {
 
 #[cfg(target_os = "macos")]
 mod sys {
+    pub use crate::FromColor;
     lazy_static::lazy_static! {
         pub static ref BG_COL: (u8, u8, u8, u8) = get_colors!(my_windowBackgroundColor);
         pub static ref FG_COL: (u8, u8, u8, u8) = get_colors!(my_labelColor);
@@ -67,6 +68,7 @@ mod sys {
 }
 
 pub mod dark {
+    pub use crate::FromColor;
     lazy_static::lazy_static! {
         pub static ref BG2_COL: (u8, u8, u8, u8) = (0, 0, 0, 255);
         pub static ref SYS_CYAN: (u8, u8, u8, u8) = (90, 200 , 245, 255);
@@ -109,6 +111,7 @@ pub mod dark {
 }
 
 pub mod light {
+    pub use crate::FromColor;
     lazy_static::lazy_static! {
        pub static ref BG2_COL: (u8, u8, u8, u8) = (255, 255, 255, 255);
        pub static ref SYS_CYAN: (u8, u8, u8, u8) = (85, 190 , 240, 255);

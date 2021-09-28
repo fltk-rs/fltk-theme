@@ -142,8 +142,6 @@ pub enum ThemeType {
     Dark,
     /// High Contrast
     HighContrast,
-    /// Windows 10
-    Fluent,
 }
 
 #[derive(Debug, Clone, Copy)]
@@ -168,7 +166,6 @@ impl WidgetTheme {
             ThemeType::Blue => widget_themes::blue::use_blue_theme(),
             ThemeType::Metro => widget_themes::metro::use_metro_theme(),
             ThemeType::Greybird => widget_themes::greybird::use_greybird_theme(),
-            ThemeType::Fluent => widget_themes::fluent::use_fluent_theme(),
         }
     }
 }
@@ -182,6 +179,8 @@ pub enum SchemeType {
     Clean,
     /// Taken from the NTK fork
     Crystal,
+    /// Windows 10
+    Fluent,
     /// Taken from the NTK fork, a modification of the FLTK Gleam scheme
     Gleam,
     /**
@@ -213,8 +212,19 @@ impl WidgetScheme {
             SchemeType::Aqua => widget_schemes::aqua::use_aqua_scheme(),
             SchemeType::Clean => widget_schemes::clean::use_clean_scheme(),
             SchemeType::Crystal => widget_schemes::crystal::use_crystal_scheme(),
+            SchemeType::Fluent => widget_schemes::fluent::use_fluent_scheme(),
             SchemeType::Gleam => widget_schemes::gleam::use_gleam_scheme(),
             SchemeType::SvgBased => widget_schemes::svg_based::use_svg_based_scheme(),
         }
+    }
+}
+
+pub trait FromColor {
+    fn from_tup(tup: (u8, u8, u8, u8)) -> Color;
+}
+
+impl FromColor for Color {
+    fn from_tup(tup: (u8, u8, u8, u8)) -> Color {
+        Color::from_rgb(tup.0, tup.1, tup.2)
     }
 }
