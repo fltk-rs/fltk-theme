@@ -144,6 +144,7 @@ pub enum ThemeType {
     HighContrast,
 }
 
+/// A widget theme is a scheme + a set of default colors
 #[derive(Debug, Clone, Copy)]
 pub struct WidgetTheme {
     theme: ThemeType,
@@ -195,6 +196,7 @@ pub enum SchemeType {
     SvgBased,
 }
 
+/// A widget scheme sets the style of drawing a widget without interfering with coloring
 #[derive(Debug, Clone, Copy)]
 pub struct WidgetScheme {
     scheme: SchemeType,
