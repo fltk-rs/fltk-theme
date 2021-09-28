@@ -72,28 +72,28 @@ fn main() {
 ## Widget themes
 
 - Classic (old Windows theme)
-![alt_test](screenshots/classic.jpg)
+- ![alt_test](screenshots/classic.jpg)
 
 - Aero (Windows 7 theme)
-![alt_test](screenshots/aero.jpg)
+- ![alt_test](screenshots/aero.jpg)
 
 - Aqua (MacOS theme)
-![alt_test](screenshots/aqua.jpg)
+- ![alt_test](screenshots/aqua.jpg)
 
 - Dark
-![alt_test](screenshots/dark.jpg)
+- ![alt_test](screenshots/dark.jpg)
 
 - High Contrast
-![alt_test](screenshots/high_contrast.jpg)
+- ![alt_test](screenshots/high_contrast.jpg)
 
 - Blue
-![alt_test](screenshots/blue.jpg)
+- ![alt_test](screenshots/blue.jpg)
 
 - Metro (Windows 8 theme)
-![alt_test](screenshots/metro.jpg)
+- ![alt_test](screenshots/metro.jpg)
 
 - Greybird (Gnome xfce)
-![alt_test](screenshots/greybird.jpg)
+- ![alt_test](screenshots/greybird.jpg)
 
 ## Theme FrameTypes
 
@@ -129,45 +129,46 @@ OS_BG_BOX
 ```
 
 You can check the frames example to see all `FrameType`'s you can apply to you widgets.
-![alt_test](screenshots/frames.jpg)
+- ![alt_test](screenshots/frames.jpg)
 
 
 ## Color themes
 
 - Black theme
-![alt_test](screenshots/black.jpg)
+- ![alt_test](screenshots/black.jpg)
 
 - Dark theme
-![alt_test](screenshots/dark_color.jpg)
+- ![alt_test](screenshots/dark_color.jpg)
 
 - Plain gray theme
-![alt_test](screenshots/plain-gray.jpg)
+- ![alt_test](screenshots/plain-gray.jpg)
 
 - Tan theme
-![alt_test](screenshots/tan.jpg)
+- ![alt_test](screenshots/tan.jpg)
 
 - Shake theme
-![alt_test](screenshots/shake.jpg)
+- ![alt_test](screenshots/shake.jpg)
 
 
 ## Widget Schemes
 
 These provide schemes for widgets without color theming. Currently there are 6 schemes:
 - Aqua: Tries to mimic MacOS's styles.
-- ![alt_test](screenshots/clean.jpg)
+- ![alt_test](screenshots/aqua_scheme.jpg)
 
 - Fluent: Tries to mimic Window's 10 styles.
-- ![alt_test](screenshots/clean.jpg)
+- ![alt_test](screenshots/fluent.jpg)
+- ![alt_test](screenshots/fluent2.jpg)
 
 - Clean: Taken from NTK's clear scheme.
-![alt_test](screenshots/clean.jpg)
+- ![alt_test](screenshots/clean.jpg)
 
 - Crystal: Taken from NTK's crystal scheme.
-![alt_test](screenshots/crystal.jpg)
+- ![alt_test](screenshots/crystal.jpg)
 
 - Gleam: Taken from NTK's gleam scheme.
-![alt_test](screenshots/gleam.jpg)
+- ![alt_test](screenshots/gleam.jpg)
 
 - SvgBased: This overrides FLTK's Base scheme round/rounded/oval FrameTypes which are drawn using scalable vector graphics.
-![alt_test](screenshots/svgbased.jpg)
+- ![alt_test](screenshots/svgbased.jpg)
 

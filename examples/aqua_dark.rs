@@ -1,6 +1,7 @@
 use fltk::{prelude::*, enums::*, *};
 use fltk_theme::{WidgetScheme, SchemeType};
 use fltk_theme::widget_schemes::aqua::dark::*; // get all the dark aqua colors
+// use fltk_theme::widget_schemes::aqua::light::*;
 
 fn main() {
     let a = app::App::default();

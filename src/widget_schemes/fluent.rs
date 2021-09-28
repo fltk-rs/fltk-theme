@@ -49,16 +49,20 @@ fn border_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
 }
 
 fn round_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
-    let col = c.to_rgb();
+    let col = Color::BackGround.to_rgb();
+    let fg = Color::contrast(Color::BackGround, Color::BackGround).to_rgb();
     let svg = format!(
         "<svg width='{}' height='{}'>
-  <circle cx='{}' cy='{}' r='{}' stroke='black' stroke-width='1' fill='rgb({},{},{})'/>
+  <circle cx='{}' cy='{}' r='{}' stroke='rgb({},{},{})' stroke-width='1' fill='rgb({},{},{})'/>
     </svg>",
         w,
         h,
         w / 2,
         h / 2,
         (w as f64 - 1.0) / 2.0,
+        fg.0,
+        fg.1,
+        fg.2,
         col.0,
         col.1,
         col.2
