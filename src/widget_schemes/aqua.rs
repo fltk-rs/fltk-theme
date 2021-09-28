@@ -225,7 +225,7 @@ fn radio_round_down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
         h,
         w / 2,
         h / 2,
-        w / 2,
+        (w as f64 - 1.0) / 2.0,
         col.0,
         col.1,
         col.2
