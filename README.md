@@ -3,13 +3,13 @@
 A theming crate for fltk-rs.
 - The widget themes are based on work by [Remy Oukaour](https://github.com/roukaour/viz-brain-visualizer) and [Rangi42](https://github.com/Rangi42/tilemap-studio).
 - The color themes are based on work by [Greg Ercolano](https://groups.google.com/g/fltkgeneral/c/3A5VC_854ok/m/sDpJsmuLBAAJ).
-- The widget schemes are based on work by the NTK GUI library.
+- Some of the widget schemes are based on work by the NTK GUI library, others are nouveau.
 
 ## Usage
 ```toml
 [dependencies]
-fltk = "1.1.6"
-fltk-theme = "0.1"
+fltk = "1.2"
+fltk-theme = "0.2"
 ```
 
 ## Example
@@ -152,7 +152,13 @@ You can check the frames example to see all `FrameType`'s you can apply to you w
 
 ## Widget Schemes
 
-These provide schemes for widgets without color theming. Currently there are 4 schemes:
+These provide schemes for widgets without color theming. Currently there are 6 schemes:
+- Aqua: Tries to mimic MacOS's styles.
+- ![alt_test](screenshots/clean.jpg)
+
+- Fluent: Tries to mimic Window's 10 styles.
+- ![alt_test](screenshots/clean.jpg)
+
 - Clean: Taken from NTK's clear scheme.
 ![alt_test](screenshots/clean.jpg)
 
