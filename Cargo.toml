@@ -1,6 +1,6 @@
 [package]
 name = "fltk-theme"
-version = "0.2.1"
+version = "0.2.2"
 authors = ["MoAlyousef <mohammed.alyousef@neurosrg.com>"]
 edition = "2018"
 description = "A theming crate for fltk-rs"
@@ -13,8 +13,8 @@ license = "MIT"
 exclude = ["/screenshots", "./examples"]
 
 [dependencies]
-fltk = "1.1.6"
+fltk = "1.2"
+lazy_static = "1.4"
 
 [target.'cfg(target_os = "macos")'.dependencies]
 cocoa-colors = "0.1"
-lazy_static = "1.4"
