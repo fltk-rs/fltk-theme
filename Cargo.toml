@@ -16,5 +16,5 @@ exclude = ["/screenshots", "./examples"]
 fltk = "1.1.6"
 lazy_static = "1.4"
 
-[target.'cfg(target_os = "macos")'.build-dependencies]
-cc = "1"
+[target.'cfg(target_os = "macos")'.dependencies]
+cocoa-colors = "0.1"

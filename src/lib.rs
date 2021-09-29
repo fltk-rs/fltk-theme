@@ -39,7 +39,7 @@ use fltk::{prelude::*, *};
 use fltk_theme::{widget_themes, WidgetTheme, ThemeType};
 
 let a = app::App::default();
-let widget_theme = WidgetTheme::new(ThemeType::Aqua);
+let widget_theme = WidgetTheme::new(ThemeType::AquaClassic);
 widget_theme.apply();
 let mut win = window::Window::default().with_size(400, 300);
 let mut btn = button::Button::new(160, 200, 80, 30, "Hello");
@@ -69,8 +69,6 @@ fn main() {
 #![allow(clippy::needless_doctest_main)]
 
 use fltk::{app, enums::Color};
-#[cfg(target_os = "macos")]
-mod cocoa_helper;
 pub mod color_themes;
 pub mod widget_schemes;
 pub mod widget_themes;

@@ -41,7 +41,7 @@ use fltk_theme::{widget_themes, WidgetTheme, ThemeType};
 
 fn main() {
     let a = app::App::default();
-    let widget_theme = WidgetTheme::new(ThemeType::Aqua);
+    let widget_theme = WidgetTheme::new(ThemeType::AquaClassic);
     widget_theme.apply();
     let mut win = window::Window::default().with_size(400, 300);
     let mut btn = button::Button::new(160, 200, 80, 30, "Hello");
@@ -77,8 +77,8 @@ fn main() {
 - Aero (Windows 7 theme)
 - ![alt_test](screenshots/aero.jpg)
 
-- Aqua (MacOS theme)
-- ![alt_test](screenshots/aqua.jpg)
+- AquaClassic (classic MacOS theme),
+- ![alt_test](screenshots/aqua_classic.jpg)
 
 - Dark
 - ![alt_test](screenshots/dark.jpg)
@@ -153,7 +153,7 @@ You can check the frames example to see all `FrameType`'s you can apply to you w
 ## Widget Schemes
 
 These provide schemes for widgets without color theming. Currently there are 6 schemes:
-- Aqua: Tries to mimic MacOS's styles.
+- Aqua: Tries to mimic the modern MacOS's styles.
 - ![alt_test](screenshots/aqua_scheme.jpg)
 
 - Fluent: Tries to mimic Window's 10 styles.

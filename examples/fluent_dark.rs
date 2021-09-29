@@ -5,9 +5,9 @@ use fltk_theme::widget_schemes::fluent::colors::*;
 
 fn main() {
     let a = app::App::default();
-    app::background(0xFC, 0xFC, 0xFC);
-    app::background2(0xFF, 0xFF, 0xFF);
-    app::foreground(0x00, 0x00, 0x00);
+    app::background(0x00, 0x00, 0x00);
+    app::background2(0x00, 0x00, 0x00);
+    app::foreground(0xff, 0xff, 0xff);
     app::set_color(Color::Selection, SELECTION_COLOR.0, SELECTION_COLOR.1, SELECTION_COLOR.2);
     let theme = WidgetScheme::new(SchemeType::Fluent);
     theme.apply();
