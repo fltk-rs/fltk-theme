@@ -4,8 +4,7 @@
 #[cfg(target_os = "macos")]
 use cocoa_colors::*;
 use fltk::{
-    app,
-    draw,
+    app, draw,
     enums::{Color, FrameType},
     image,
     prelude::ImageExt,
@@ -36,8 +35,8 @@ macro_rules! get_colors {
 
 #[cfg(target_os = "macos")]
 mod sys {
-    pub use crate::FromColor;
     use super::*;
+    pub use crate::FromColor;
     lazy_static::lazy_static! {
         pub static ref windowBackgroundColor: (u8, u8, u8, u8) = get_colors!(get_windowBackgroundColor);
         pub static ref labelColor: (u8, u8, u8, u8) = get_colors!(get_labelColor);
@@ -194,7 +193,7 @@ pub mod light {
     }
 }
 
-fn button_up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
+fn up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     let col = c.to_rgb();
     let bg = Color::BackGround.to_rgb();
     let svg = format!(
@@ -230,7 +229,43 @@ fn button_up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     image.draw(x, y, w, h);
 }
 
-fn button_down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
+fn default_button_up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
+    let col = c.to_rgb();
+    let bg = Color::BackGround.to_rgb();
+    let svg = format!(
+        "<svg width='{0}' height='{1}'>
+  <defs>
+    <linearGradient id='grad1' x1='0%' y1='0%' x2='0%' y2='100%'>
+      <stop offset='0%' style='stop-color:rgb({2},{3},{4});stop-opacity:{5}' />
+      <stop offset='100%' style='stop-color:rgb({6},{7},{8});stop-opacity:{5}' />
+    </linearGradient>
+  </defs>
+  <rect width='{0}' height='{1}' rx='{9}' fill='rgb({10},{11},{12})' />
+  <rect width='{0}' height='{1}' rx='{9}' fill='url(#grad1)' />
+    </svg>",
+        w,
+        h,
+        col.0,
+        col.1,
+        col.2,
+        if bg.0 > 230 && bg.1 > 230 && bg.2 > 230 {
+            1.0
+        } else {
+            63 as f64 / 255.0
+        },
+        col.0 - 10,
+        col.1 - 10,
+        col.2 - 10,
+        h / 4,
+        bg.0,
+        bg.1,
+        bg.2
+    );
+    let mut image = image::SvgImage::from_data(&svg).unwrap();
+    image.draw(x, y, w, h);
+}
+
+fn down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     let col = c.to_rgb();
     let svg = format!(
         "<svg width='{0}' height='{1}'>
@@ -277,13 +312,15 @@ fn radio_round_down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
 
 fn border_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     use crate::FromColor;
-    draw::draw_rect_fill(x, y, w, h, Color::from_tup(*self::dark::systemBlueColor));
+    draw::draw_box(FrameType::RFlatBox, x, y + 1, w - 1, h - 2, Color::from_tup(*self::dark::systemBlueColor));
 }
 
 fn use_scheme() {
     app::set_scheme(app::Scheme::Gtk);
-    app::set_frame_type_cb(FrameType::UpBox, button_up_box, 1, 1, 2, 2);
-    app::set_frame_type_cb(FrameType::DownBox, button_down_box, 1, 1, 2, 2);
+    app::set_frame_type_cb(FrameType::UpBox, up_box, 1, 1, 2, 2);
+    app::set_frame_type_cb(FrameType::DiamondUpBox, default_button_up_box, 1, 1, 2, 2);
+    app::set_frame_type_cb(FrameType::DownBox, down_box, 1, 1, 2, 2);
+    app::set_frame_type_cb(FrameType::DiamondDownBox, down_box, 1, 1, 2, 2);
     app::set_frame_type_cb(FrameType::RoundDownBox, radio_round_down_box, 2, 2, 4, 4);
     app::set_frame_type_cb(FrameType::BorderBox, border_box, 1, 1, 2, 2);
 }
@@ -292,4 +329,10 @@ pub(crate) fn use_aqua_scheme() {
     use_scheme();
     app::set_visible_focus(false);
     app::set_scrollbar_size(15);
+}
+
+pub mod frames {
+    use fltk::enums::FrameType::{self, *};
+    pub const OS_DEFAULT_BUTTON_UP_BOX: FrameType = DiamondUpBox;
+    pub const OS_DEFAULT_DEPRESSED_DOWN_BOX: FrameType = FrameType::DiamondDownBox;
 }
