@@ -109,7 +109,7 @@ impl ColorTheme {
         for elem in &self.0 {
             app::set_color(Color::by_index(elem.index), elem.r, elem.g, elem.b);
         }
-        app::reload_scheme().ok();
+        app::redraw();
     }
 }
 
