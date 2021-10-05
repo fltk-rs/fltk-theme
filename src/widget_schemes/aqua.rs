@@ -200,30 +200,21 @@ fn up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
         "<svg width='{0}' height='{1}'>
   <defs>
     <linearGradient id='grad1' x1='0%' y1='0%' x2='0%' y2='100%'>
-      <stop offset='0%' style='stop-color:rgb({2},{3},{4});stop-opacity:{5}' />
-      <stop offset='100%' style='stop-color:rgb({6},{7},{8});stop-opacity:{5}' />
+      <stop offset='0%' style='stop-color:rgb({2},{3},{4});stop-opacity:1' />
+      <stop offset='100%' style='stop-color:rgb({5},{6},{7});stop-opacity:1' />
     </linearGradient>
   </defs>
-  <rect width='{0}' height='{1}' rx='{9}' fill='rgb({10},{11},{12})' />
-  <rect width='{0}' height='{1}' rx='{9}' fill='url(#grad1)' />
+  <rect width='{0}' height='{1}' rx='{8}' fill='url(#grad1)' />
     </svg>",
         w,
         h,
         col.0,
         col.1,
         col.2,
-        if bg.0 > 230 && bg.1 > 230 && bg.2 > 230 {
-            1.0
-        } else {
-            63 as f64 / 255.0
-        },
         col.0 - 10,
         col.1 - 10,
         col.2 - 10,
         h / 4,
-        bg.0,
-        bg.1,
-        bg.2
     );
     let mut image = image::SvgImage::from_data(&svg).unwrap();
     image.draw(x, y, w, h);
@@ -236,30 +227,21 @@ fn default_button_up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
         "<svg width='{0}' height='{1}'>
   <defs>
     <linearGradient id='grad1' x1='0%' y1='0%' x2='0%' y2='100%'>
-      <stop offset='0%' style='stop-color:rgb({2},{3},{4});stop-opacity:{5}' />
-      <stop offset='100%' style='stop-color:rgb({6},{7},{8});stop-opacity:{5}' />
-    </linearGradient>
+      <stop offset='0%' style='stop-color:rgb({2},{3},{4});stop-opacity:1' />
+      <stop offset='100%' style='stop-color:rgb({5},{6},{7});stop-opacity:1' />
+    </linearGradient>s
   </defs>
-  <rect width='{0}' height='{1}' rx='{9}' fill='rgb({10},{11},{12})' />
-  <rect width='{0}' height='{1}' rx='{9}' fill='url(#grad1)' />
+  <rect width='{0}' height='{1}' rx='{8}' fill='url(#grad1)' />
     </svg>",
         w,
         h,
         col.0,
         col.1,
         col.2,
-        if bg.0 > 230 && bg.1 > 230 && bg.2 > 230 {
-            1.0
-        } else {
-            63 as f64 / 255.0
-        },
         col.0 - 10,
         col.1 - 10,
         col.2 - 10,
         h / 4,
-        bg.0,
-        bg.1,
-        bg.2
     );
     let mut image = image::SvgImage::from_data(&svg).unwrap();
     image.draw(x, y, w, h);
@@ -268,7 +250,7 @@ fn default_button_up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
 fn down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     let col = c.to_rgb();
     let svg = format!(
-        "<svg width='{0}' height='{1}'>
+        "<svg viewBox='-1 -1 {0} {1}'>
   <defs>
     <linearGradient id='grad1' x1='0%' y1='0%' x2='0%' y2='100%'>
       <stop offset='0%' style='stop-color:rgb({2},{3},{4});stop-opacity:1' />
@@ -277,8 +259,8 @@ fn down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
   </defs>
   <rect width='{0}' height='{1}' rx='{8}' fill='url(#grad1)' />
     </svg>",
-        w,
-        h,
+        w - 1,
+        h - 1,
         col.0 - 10,
         col.1 - 10,
         col.2 - 10,
@@ -312,7 +294,14 @@ fn radio_round_down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
 
 fn border_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     use crate::FromColor;
-    draw::draw_box(FrameType::RFlatBox, x, y + 1, w - 1, h - 2, Color::from_tup(*self::dark::systemBlueColor));
+    draw::draw_box(
+        FrameType::RFlatBox,
+        x,
+        y + 1,
+        w - 1,
+        h - 2,
+        Color::from_rgba(*self::dark::systemBlueColor),
+    );
 }
 
 fn use_scheme() {

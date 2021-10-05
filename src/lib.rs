@@ -220,11 +220,19 @@ impl WidgetScheme {
 }
 
 pub trait FromColor {
-    fn from_tup(tup: (u8, u8, u8, u8)) -> Color;
+    fn from_rgba(tup: (u8, u8, u8, u8)) -> Color;
 }
 
 impl FromColor for Color {
-    fn from_tup(tup: (u8, u8, u8, u8)) -> Color {
-        Color::from_rgb(tup.0, tup.1, tup.2)
+    fn from_rgba(tup: (u8, u8, u8, u8)) -> Color {
+        let bg_col = Color::BackGround.to_rgb();
+        let alpha = tup.3 as f32 / 255.0;
+        let r = alpha * tup.0 as f32 + (1.0 - alpha) * bg_col.0 as f32;
+        let r = r as u8;
+        let g = alpha * tup.1 as f32 + (1.0 - alpha) * bg_col.1 as f32;
+        let g = g as u8;
+        let b = alpha * tup.2 as f32 + (1.0 - alpha) * bg_col.2 as f32;
+        let b = b as u8;
+        Color::from_rgb(r, g, b)
     }
 }

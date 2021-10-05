@@ -23,7 +23,7 @@ fn main() {
     round.set_value(true);
     round.set_frame(FrameType::FlatBox);
     let mut toggle = button::ToggleButton::new(100, 220, 80, 30, "Toggle");
-    toggle.set_color(Color::from_tup(ACCENT_COLOR));
+    toggle.set_color(Color::from_rgba(ACCENT_COLOR));
     toggle.set_label_color(Color::White);
     toggle.set_selection_color(toggle.color().darker());
     let mut btn = button::Button::new(220, 220, 80, 30, "Hello");
