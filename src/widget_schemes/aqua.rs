@@ -250,7 +250,7 @@ fn default_button_up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
 fn down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     let col = c.to_rgb();
     let svg = format!(
-        "<svg viewBox='-1 -1 {0} {1}'>
+        "<svg viewBox='0 0 {0} {1}'>
   <defs>
     <linearGradient id='grad1' x1='0%' y1='0%' x2='0%' y2='100%'>
       <stop offset='0%' style='stop-color:rgb({2},{3},{4});stop-opacity:1' />
@@ -259,8 +259,8 @@ fn down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
   </defs>
   <rect width='{0}' height='{1}' rx='{8}' fill='url(#grad1)' />
     </svg>",
-        w - 1,
-        h - 1,
+        w,
+        h,
         col.0 - 10,
         col.1 - 10,
         col.2 - 10,
@@ -296,9 +296,9 @@ fn border_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     use crate::FromColor;
     draw::draw_box(
         FrameType::RFlatBox,
-        x,
+        x + 1,
         y + 1,
-        w - 1,
+        w - 2,
         h - 2,
         Color::from_rgba(*self::dark::systemBlueColor),
     );
@@ -308,8 +308,8 @@ fn use_scheme() {
     app::set_scheme(app::Scheme::Gtk);
     app::set_frame_type_cb(FrameType::UpBox, up_box, 1, 1, 2, 2);
     app::set_frame_type_cb(FrameType::DiamondUpBox, default_button_up_box, 1, 1, 2, 2);
-    app::set_frame_type_cb(FrameType::DownBox, down_box, 1, 1, 2, 2);
-    app::set_frame_type_cb(FrameType::DiamondDownBox, down_box, 1, 1, 2, 2);
+    app::set_frame_type_cb(FrameType::DownBox, down_box, 0, 0, 0, 0);
+    app::set_frame_type_cb(FrameType::DiamondDownBox, down_box, 0, 0, 0, 0);
     app::set_frame_type_cb(FrameType::RoundDownBox, radio_round_down_box, 2, 2, 4, 4);
     app::set_frame_type_cb(FrameType::BorderBox, border_box, 1, 1, 2, 2);
 }
