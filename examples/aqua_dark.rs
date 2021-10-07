@@ -3,7 +3,7 @@ use fltk_theme::{WidgetScheme, SchemeType};
 use fltk_theme::widget_schemes::aqua::frames::*;
 use fltk_theme::widget_schemes::aqua::dark::*; // get all the dark aqua colors
 // use fltk_theme::widget_schemes::aqua::light::*; // get all the light aqua colors
-// use fltk_theme::widget_schemes::aqua::system::*; // get all the system aqua colors, requires MacOS
+// use fltk_theme::widget_schemes::aqua::sys::*; // get all the system aqua colors, requires MacOS
 
 fn main() {
     let a = app::App::default();
@@ -28,7 +28,7 @@ fn main() {
     round.set_frame(enums::FrameType::FlatBox);
     let mut btn = button::Button::new(160, 230, 80, 30, "Hello");
     btn.set_color(Color::from_rgba(*controlColor));
-    btn.set_selection_color(Color::from_rgba(*systemCyanColor));
+    btn.set_selection_color(Color::from_rgba(*controlAccentColor));
     btn.set_frame(OS_DEFAULT_BUTTON_UP_BOX);
     win.end();
     win.make_resizable(true);

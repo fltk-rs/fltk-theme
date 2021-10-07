@@ -34,7 +34,7 @@ macro_rules! get_colors {
 }
 
 #[cfg(target_os = "macos")]
-mod sys {
+pub mod sys {
     use super::*;
     pub use crate::FromColor;
     lazy_static::lazy_static! {
