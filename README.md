@@ -176,7 +176,7 @@ These provide schemes for widgets without color theming. Currently there are 6 s
 ## Colors
 
 The crate also provides colors, namely html colors and aqua colors.
-The aqua colors are provided as lazy_static values and are named after the cocoa NSColor properties (such as windowBackgroundColor, systemBlueColor, controlAccentColor...etc). The html colors are provided in a lazy_static HashMap and can be accessed by their [html names](https://www.w3schools.com/tags/ref_colornames.asp).
+The aqua colors are provided as lazy_static values and are named after the cocoa NSColor properties (such as windowBackgroundColor, systemBlueColor, controlAccentColor...etc). The html colors are provided in a lazy_static HashMap and can be accessed by their [html names](https://www.w3schools.com/tags/ref_colornames.asp). Refer to the html_colors and aqua_dark examples to see how the colors are used.
 
 - ![alt_test](screenshots/html_colors.jpg)
 
