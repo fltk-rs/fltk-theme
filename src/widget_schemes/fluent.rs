@@ -160,7 +160,6 @@ pub mod frames {
 }
 
 pub mod colors {
-    pub use crate::FromColor;
     pub const ACCENT_COLOR: (u8, u8, u8, u8) = (0x00, 0x78, 0xD4, 0xff);
     pub const SELECTION_COLOR: (u8, u8, u8, u8) = (0x33, 0x99, 0xFF, 0xFF);
 }

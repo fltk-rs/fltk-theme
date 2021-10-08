@@ -9,7 +9,7 @@ A theming crate for fltk-rs.
 ```toml
 [dependencies]
 fltk = "1.2"
-fltk-theme = "0.2"
+fltk-theme = "0.4"
 ```
 
 ## Example
@@ -22,7 +22,7 @@ use fltk_theme::{ColorTheme, color_themes};
 
 fn main() {
     let a = app::App::default().with_scheme(app::Scheme::Gtk);
-    let theme = ColorTheme::from_colormap(color_themes::BLACK_THEME);
+    let theme = ColorTheme::new(color_themes::BLACK_THEME);
     theme.apply();
     let mut win = window::Window::default().with_size(400, 300);
     let mut btn = button::Button::new(160, 200, 80, 40, "Hello");
@@ -172,3 +172,11 @@ These provide schemes for widgets without color theming. Currently there are 6 s
 - SvgBased: This overrides FLTK's Base scheme round/rounded/oval FrameTypes which are drawn using scalable vector graphics.
 - ![alt_test](screenshots/svgbased.jpg)
 
+## Colors
+
+The crate also provides colors, namely html colors and aqua colors.
+The aqua colors are provided as lazy_static values and are named after the cocoa NSColor properties (such as windowBackgroundColor, systemBlueColor, controlAccentColor...etc). The html colors are provided in a lazy_static HashMap and can be accessed by their [html names](https://www.w3schools.com/tags/ref_colornames.asp).
+
+- ![alt_test](screenshots/html_colors)
+
+Colors and Color themes can also be used with widget schemes or even in a regular fltk-rs application.

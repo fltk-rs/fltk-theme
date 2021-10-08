@@ -10,7 +10,7 @@ A theming crate for fltk-rs.
 ```toml
 [dependencies]
 fltk = "1.2"
-fltk-theme = "0.2"
+fltk-theme = "0.4"
 ```
 
 ## Example
@@ -22,7 +22,7 @@ use fltk::{prelude::*, *};
 use fltk_theme::{ColorTheme, color_themes};
 
 let a = app::App::default().with_scheme(app::Scheme::Gtk);
-let theme = ColorTheme::from_colormap(color_themes::BLACK_THEME);
+let theme = ColorTheme::new(color_themes::BLACK_THEME);
 theme.apply();
 let mut win = window::Window::default().with_size(400, 300);
 let mut btn = button::Button::new(160, 200, 80, 40, "Hello");
@@ -72,6 +72,7 @@ use fltk::{app, enums::Color};
 pub mod color_themes;
 pub mod widget_schemes;
 pub mod widget_themes;
+pub mod colors;
 
 /// Color map struct. (index, r, g, b)
 #[derive(Default, Clone, Debug)]
@@ -101,6 +102,11 @@ pub struct ColorTheme(pub Vec<ColorMap>);
 impl ColorTheme {
     /// Load from a color map
     pub fn from_colormap(map: &[ColorMap]) -> ColorTheme {
+        ColorTheme(map.to_vec())
+    }
+
+    /// Load from a color map
+    pub fn new(map: &[ColorMap]) -> ColorTheme {
         ColorTheme(map.to_vec())
     }
 
@@ -216,15 +222,5 @@ impl WidgetScheme {
             SchemeType::Gleam => widget_schemes::gleam::use_gleam_scheme(),
             SchemeType::SvgBased => widget_schemes::svg_based::use_svg_based_scheme(),
         }
-    }
-}
-
-pub trait FromColor {
-    fn from_rgba(tup: (u8, u8, u8, u8)) -> Color;
-}
-
-impl FromColor for Color {
-    fn from_rgba(tup: (u8, u8, u8, u8)) -> Color {
-        Color::from_rgba_tuple(tup)
     }
 }

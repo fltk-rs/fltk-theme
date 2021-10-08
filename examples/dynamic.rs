@@ -19,7 +19,7 @@ fn main() {
         b += 9;
     }
     let a = app::App::default().with_scheme(app::Scheme::Gtk);
-    let theme = ColorTheme::from_colormap(&map);
+    let theme = ColorTheme::new(&map);
     theme.apply();
     let mut win = window::Window::default().with_size(400, 300);
     button::Button::new(160, 200, 80, 40, "Hello");

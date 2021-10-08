@@ -5,7 +5,7 @@ fn main() {
     let a = app::App::default().with_scheme(app::Scheme::Gtk);
     app::set_visible_focus(false);
 
-    let color_theme = ColorTheme::from_colormap(color_themes::BLACK_THEME);
+    let color_theme = ColorTheme::new(color_themes::BLACK_THEME);
     color_theme.apply();
     let mut win = window::Window::default().with_size(400, 300);
     let mut choice = menu::Choice::new(100, 100, 200, 30, None);
@@ -22,12 +22,12 @@ fn main() {
     win.show();
     choice.set_callback(|c| {
         let theme = match c.value() {
-            0 => ColorTheme::from_colormap(color_themes::BLACK_THEME),
-            1 => ColorTheme::from_colormap(color_themes::DARK_THEME),
-            2 => ColorTheme::from_colormap(color_themes::GRAY_THEME),
-            3 => ColorTheme::from_colormap(color_themes::SHAKE_THEME),
-            4 => ColorTheme::from_colormap(color_themes::TAN_THEME),
-            _ => ColorTheme::from_colormap(color_themes::BLACK_THEME),
+            0 => ColorTheme::new(color_themes::BLACK_THEME),
+            1 => ColorTheme::new(color_themes::DARK_THEME),
+            2 => ColorTheme::new(color_themes::GRAY_THEME),
+            3 => ColorTheme::new(color_themes::SHAKE_THEME),
+            4 => ColorTheme::new(color_themes::TAN_THEME),
+            _ => ColorTheme::new(color_themes::BLACK_THEME),
         };
         theme.apply();
     });

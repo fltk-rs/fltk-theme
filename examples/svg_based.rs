@@ -1,4 +1,8 @@
-use fltk::{enums::FrameType::{self, *}, prelude::*, *};
+use fltk::{
+    enums::FrameType::{self, *},
+    prelude::*,
+    *,
+};
 use fltk_theme::{SchemeType, WidgetScheme};
 
 const FRAMES: &[FrameType] = &[
