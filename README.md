@@ -153,13 +153,6 @@ You can check the frames example to see all `FrameType`'s you can apply to you w
 ## Widget Schemes
 
 These provide schemes for widgets without color theming. Currently there are 6 schemes:
-- Aqua: Tries to mimic the modern MacOS's styles.
-- ![alt_test](screenshots/aqua_scheme.jpg)
-
-- Fluent: Tries to mimic Window's 10 styles.
-- ![alt_test](screenshots/fluent.jpg)
-- ![alt_test](screenshots/fluent2.jpg)
-
 - Clean: Taken from NTK's clear scheme.
 - ![alt_test](screenshots/clean.jpg)
 
@@ -169,6 +162,14 @@ These provide schemes for widgets without color theming. Currently there are 6 s
 - Gleam: Taken from NTK's gleam scheme.
 - ![alt_test](screenshots/gleam.jpg)
 
+- Aqua: Tries to mimic the modern MacOS's styles.
+- ![alt_test](screenshots/aqua_scheme.jpg)
+- ![alt_test](screenshots/aqua_scheme2.jpg)
+
+- Fluent: Tries to mimic Window's 10 styles.
+- ![alt_test](screenshots/fluent.jpg)
+- ![alt_test](screenshots/fluent2.jpg)
+
 - SvgBased: This overrides FLTK's Base scheme round/rounded/oval FrameTypes which are drawn using scalable vector graphics.
 - ![alt_test](screenshots/svgbased.jpg)
 
@@ -177,6 +178,6 @@ These provide schemes for widgets without color theming. Currently there are 6 s
 The crate also provides colors, namely html colors and aqua colors.
 The aqua colors are provided as lazy_static values and are named after the cocoa NSColor properties (such as windowBackgroundColor, systemBlueColor, controlAccentColor...etc). The html colors are provided in a lazy_static HashMap and can be accessed by their [html names](https://www.w3schools.com/tags/ref_colornames.asp).
 
-- ![alt_test](screenshots/html_colors)
+- ![alt_test](screenshots/html_colors.jpg)
 
 Colors and Color themes can also be used with widget schemes or even in a regular fltk-rs application.

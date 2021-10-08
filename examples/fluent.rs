@@ -46,6 +46,7 @@ fn main() {
     let mut btn = button::Button::new(220, 220, 80, 30, "Hello");
     btn.set_frame(OS_DEFAULT_BUTTON_UP_BOX);
     btn.set_down_frame(OS_DEFAULT_DEPRESSED_DOWN_BOX);
+    // handle hover
     btn.handle(|b, ev| match ev {
         Event::Enter => {
             b.set_frame(OS_HOVERED_UP_BOX);
