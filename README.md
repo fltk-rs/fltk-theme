@@ -5,6 +5,19 @@ A theming crate for fltk-rs.
 - The color themes are based on work by [Greg Ercolano](https://groups.google.com/g/fltkgeneral/c/3A5VC_854ok/m/sDpJsmuLBAAJ).
 - Some of the widget schemes are based on work by the NTK GUI library, others are nouveau.
 
+## Definitions
+
+### Color theme
+- A color theme modify FLTK's color map without modifying any of the drawing routines of the widgets.
+
+### Widget scheme
+- A widget scheme modifies FLTK's drawing routines for widgets, thus changing their appearance, without changing their colors.
+
+### Widget theme
+- A widget theme modifies FLTK's drawing routines for widgets, as well as the color map, or default colors used for drawing widgets.
+
+As such, color themes can be combined with widget schemes. Widget schemes also enable individually changing the colors and selection colors of each widget. While widget themes have a fixed coloring for widgets, and these usually follow the theme they're named after.
+
 ## Usage
 ```toml
 [dependencies]
