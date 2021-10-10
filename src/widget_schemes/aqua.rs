@@ -23,9 +23,9 @@ fn up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
         col.0,
         col.1,
         col.2,
-        col.0 - 10,
-        col.1 - 10,
-        col.2 - 10,
+        col.0 - 5,
+        col.1 - 5,
+        col.2 - 5,
         h / 4,
     );
     let mut image = image::SvgImage::from_data(&svg).unwrap();
@@ -50,9 +50,9 @@ fn default_button_up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
         col.0,
         col.1,
         col.2,
-        col.0 - 10,
-        col.1 - 10,
-        col.2 - 10,
+        col.0 - 5,
+        col.1 - 5,
+        col.2 - 5,
         h / 4,
     );
     let mut image = image::SvgImage::from_data(&svg).unwrap();
@@ -73,9 +73,9 @@ fn down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     </svg>",
         w,
         h,
-        col.0 - 10,
-        col.1 - 10,
-        col.2 - 10,
+        col.0,
+        col.1,
+        col.2,
         col.0,
         col.1,
         col.2,
