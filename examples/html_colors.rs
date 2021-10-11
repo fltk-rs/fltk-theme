@@ -8,7 +8,7 @@ macro_rules! col {
 }
 
 fn main() {
-    let bg = *HTML_MAP.get("SeaShell").unwrap();
+    let bg = SeaShell;
 
     let a = app::App::default().with_scheme(app::Scheme::Gtk);
     app::background(bg.0, bg.1, bg.2);
