@@ -49,17 +49,14 @@ fn border_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
 }
 
 fn round_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
-    let col = Color::BackGround.to_rgb();
-    let fg = Color::contrast(Color::BackGround, Color::BackGround).to_rgb();
+    let col = Color::Background.to_rgb();
+    let fg = Color::contrast(Color::Background, Color::Background).to_rgb();
     let svg = format!(
-        "<svg width='{}' height='{}'>
-  <circle cx='{}' cy='{}' r='{}' stroke='rgb({},{},{})' stroke-width='1' fill='rgb({},{},{})'/>
+        "<svg viewBox='0 0 {} {}'>
+  <circle cx='50%' cy='48%' r='46%' stroke='rgb({},{},{})' stroke-width='0.5' fill='rgb({},{},{})'/>
     </svg>",
         w,
         h,
-        w / 2,
-        h / 2,
-        (w as f64 - 1.0) / 2.0,
         fg.0,
         fg.1,
         fg.2,
@@ -115,25 +112,25 @@ pub(crate) fn use_fluent_scheme() {
     use self::frames::*;
     use fltk::enums::FrameType::*;
     app::set_scheme(app::Scheme::Base);
-    app::set_frame_type_cb(UpBox, up_box, 1, 1, 2, 2);
-    app::set_frame_type_cb(DownBox, down_box, 1, 1, 2, 2);
-    app::set_frame_type_cb(ThinUpBox, up_box, 1, 1, 2, 2);
-    app::set_frame_type_cb(ThinDownBox, down_box, 1, 1, 2, 2);
-    app::set_frame_type_cb(UpFrame, up_frame, 1, 1, 2, 2);
-    app::set_frame_type_cb(DownFrame, down_frame, 1, 1, 2, 2);
-    app::set_frame_type_cb(RoundUpBox, round_box, 1, 1, 2, 2);
+    app::set_frame_type_cb(UpBox, up_box, 2, 2, 4, 4);
+    app::set_frame_type_cb(DownBox, down_box, 2, 2, 4, 4);
+    app::set_frame_type_cb(ThinUpBox, up_box, 2, 2, 4, 4);
+    app::set_frame_type_cb(ThinDownBox, down_box, 2, 2, 4, 4);
+    app::set_frame_type_cb(UpFrame, up_frame, 2, 2, 4, 4);
+    app::set_frame_type_cb(DownFrame, down_frame, 2, 2, 4, 4);
+    app::set_frame_type_cb(RoundUpBox, round_box, 2, 2, 4, 4);
     app::set_frame_type_cb(RoundDownBox, round_box, 1, 1, 2, 2);
-    app::set_frame_type_cb(BorderBox, border_box, 1, 1, 2, 2);
+    app::set_frame_type_cb(BorderBox, border_box, 2, 2, 4, 4);
     app::set_frame_type2(OS_BUTTON_UP_FRAME, UpFrame);
-    app::set_frame_type_cb(OS_DEFAULT_BUTTON_UP_BOX, default_up_box, 1, 1, 2, 2);
+    app::set_frame_type_cb(OS_DEFAULT_BUTTON_UP_BOX, default_up_box, 2, 2, 4, 4);
     app::set_frame_type2(OS_BUTTON_UP_BOX, UpBox);
     app::set_frame_type2(OS_CHECK_DOWN_BOX, DownBox);
     app::set_frame_type2(OS_CHECK_DOWN_FRAME, DownFrame);
-    app::set_frame_type_cb(OS_HOVERED_UP_FRAME, hover_up_frame, 1, 1, 2, 2);
-    app::set_frame_type_cb(OS_HOVERED_UP_BOX, hover_up_box, 1, 1, 2, 2);
+    app::set_frame_type_cb(OS_HOVERED_UP_FRAME, hover_up_frame, 2, 2, 4, 4);
+    app::set_frame_type_cb(OS_HOVERED_UP_BOX, hover_up_box, 2, 2, 4, 4);
     app::set_frame_type2(OS_RADIO_ROUND_DOWN_BOX, RoundDownBox);
-    app::set_frame_type_cb(OS_DEPRESSED_DOWN_FRAME, depressed_down_frame, 1, 1, 2, 2);
-    app::set_frame_type_cb(OS_DEPRESSED_DOWN_BOX, depressed_down_box, 1, 1, 2, 2);
+    app::set_frame_type_cb(OS_DEPRESSED_DOWN_FRAME, depressed_down_frame, 2, 2, 4, 4);
+    app::set_frame_type_cb(OS_DEPRESSED_DOWN_BOX, depressed_down_box, 2, 2, 4, 4);
     app::set_frame_type2(OS_DEFAULT_DEPRESSED_DOWN_BOX, OS_DEPRESSED_DOWN_BOX);
     app::set_frame_type2(OS_DEFAULT_HOVERED_UP_BOX, OS_HOVERED_UP_BOX);
     app::set_frame_type2(OS_INPUT_THIN_DOWN_FRAME, DownFrame);

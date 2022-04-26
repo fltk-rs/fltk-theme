@@ -22,11 +22,11 @@ fn main() {
     choice.set_value(0);
     choice.set_frame(FrameType::FlatBox);
     choice.draw(|c| {
-        draw::set_draw_color(Color::BackGround);
+        draw::set_draw_color(Color::Background);
         draw::draw_polygon(
-            c.x() + c.w() - 17,
+            c.x() + c.w() - 18,
             (c.y() + c.h() / 2) - 6,
-            c.x() + c.w() - 12,
+            c.x() + c.w() - 13,
             (c.y() + c.h() / 2) - 1,
             c.x() + c.w() - 7,
             (c.y() + c.h() / 2) - 6,

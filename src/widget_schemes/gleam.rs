@@ -2,7 +2,7 @@ use super::*;
 
 fn frame_rect(x: i32, y: i32, w: i32, h: i32, bc: Color) {
     // Draw the outline around the perimeter of the box
-    set_draw_color(Color::color_average(Color::Black, Color::BackGround, 0.1));
+    set_draw_color(Color::color_average(Color::Black, Color::Background, 0.1));
     draw_line(x, y, x + w, y);
     draw_line(x + w, y, x + w, y + h);
     draw_line(x + w, y + h, x, y + h);

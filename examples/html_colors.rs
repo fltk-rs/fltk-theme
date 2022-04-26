@@ -11,7 +11,8 @@ fn main() {
     let bg = SeaShell;
 
     let a = app::App::default().with_scheme(app::Scheme::Gtk);
-    app::background(bg.0, bg.1, bg.2);
+    let col = bg.to_rgb();
+    app::background(col.0, col.1, col.2);
 
     let mut win = window::Window::default().with_size(800, 600);
     {
@@ -24,7 +25,7 @@ fn main() {
                 .center_of_parent();
             pack.set_spacing(5);
             {
-                for i in HTML_MAP.iter() {
+                for i in color_maps::html::HTML_MAP.iter() {
                     let mut frame = frame::Frame::default().with_size(0, 40).with_label(i.0);
                     frame.set_frame(FrameType::RFlatBox);
                     frame.set_color(col!(*i.1));
