@@ -1,5 +1,5 @@
 use super::*;
-use fltk::{image, prelude::ImageExt};
+use fltk::{enums::FrameType, image, prelude::ImageExt};
 
 fn rounded_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
     let (r, g, b) = c.to_rgb();
@@ -68,13 +68,12 @@ fn oflat_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
 }
 
 pub(crate) fn use_svg_based_scheme() {
-    use fltk::enums::FrameType::*;
     app::reload_scheme().ok();
     app::set_scheme(app::Scheme::Base);
-    app::set_frame_type_cb(RoundedFrame, rounded_frame, 2, 2, 4, 4);
-    app::set_frame_type_cb(RoundedBox, rounded_box, 2, 2, 4, 4);
-    app::set_frame_type_cb(RFlatBox, rflat_box, 2, 2, 4, 4);
-    app::set_frame_type_cb(OvalBox, oval_box, 2, 2, 4, 4);
-    app::set_frame_type_cb(OvalFrame, oval_frame, 2, 2, 4, 4);
-    app::set_frame_type_cb(OFlatFrame, oflat_box, 2, 2, 4, 4);
+    app::set_frame_type_cb(FrameType::RoundedFrame, rounded_frame, 2, 2, 4, 4);
+    app::set_frame_type_cb(FrameType::RoundedBox, rounded_box, 2, 2, 4, 4);
+    app::set_frame_type_cb(FrameType::RFlatBox, rflat_box, 2, 2, 4, 4);
+    app::set_frame_type_cb(FrameType::OvalBox, oval_box, 2, 2, 4, 4);
+    app::set_frame_type_cb(FrameType::OvalFrame, oval_frame, 2, 2, 4, 4);
+    app::set_frame_type_cb(FrameType::OFlatBox, oflat_box, 2, 2, 4, 4);
 }

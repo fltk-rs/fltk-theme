@@ -420,7 +420,7 @@ fn use_aqua_classic_colors() {
     app::set_color(Color::Selection, 0x30, 0x60, 0xF6);
     app::set_color(Color::Free, 0xFB, 0xFB, 0xFB);
     Tooltip::set_color(Color::from_rgb(0xFF, 0xFF, 0xC7));
-    Tooltip::set_text_color(Color::ForeGround);
+    Tooltip::set_text_color(Color::Foreground);
 }
 
 pub(crate) fn use_aqua_classic_theme() {

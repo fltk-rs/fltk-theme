@@ -356,7 +356,7 @@ fn use_blue_colors() {
     app::set_color(Color::Selection, 0x33, 0x33, 0x33);
     app::set_color(Color::Free, 0xEA, 0xF1, 0xFA);
     Tooltip::set_color(Color::from_rgb(0xFF, 0xFF, 0xFF));
-    Tooltip::set_text_color(Color::ForeGround);
+    Tooltip::set_text_color(Color::Foreground);
 }
 
 pub(crate) fn use_blue_theme() {

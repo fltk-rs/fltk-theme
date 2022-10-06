@@ -264,7 +264,7 @@ fn use_high_contrast_colors() {
     app::set_color(Color::Selection, 0x00, 0xFF, 0xFF);
     app::set_color(Color::Free, 0x20, 0x20, 0x20);
     Tooltip::set_color(Color::from_rgb(0x00, 0x00, 0x00));
-    Tooltip::set_text_color(Color::ForeGround);
+    Tooltip::set_text_color(Color::Foreground);
 }
 
 pub(crate) fn use_high_contrast_theme() {

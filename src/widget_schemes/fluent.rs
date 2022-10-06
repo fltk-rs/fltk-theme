@@ -51,7 +51,7 @@ fn border_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
 fn round_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     let col = Color::Background.to_rgb();
     let fg = Color::contrast(Color::Background, Color::Background);
-    draw::draw_box(FrameType::OFlatFrame, x, y, w, h, Color::Background);
+    draw::draw_box(FrameType::OFlatBox, x, y, w, h, Color::Background);
     draw::draw_box(FrameType::OvalFrame, x, y, w, h, fg);
 }
 

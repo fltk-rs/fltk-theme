@@ -197,7 +197,7 @@ fn use_classic_colors() {
     app::set_color(Color::Selection, 0x0A, 0x24, 0x6A);
     app::set_color(Color::Free, 0xD4, 0xD0, 0xC8);
     Tooltip::set_color(Color::from_rgb(0xFF, 0xFF, 0xE1));
-    Tooltip::set_text_color(Color::ForeGround);
+    Tooltip::set_text_color(Color::Foreground);
 }
 
 pub(crate) fn use_classic_theme() {

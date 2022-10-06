@@ -475,7 +475,7 @@ pub(crate) fn use_aero_colors() {
     app::set_color(Color::Selection, 0x33, 0x99, 0xFF);
     app::set_color(Color::Free, 0xFF, 0xFF, 0xFF);
     Tooltip::set_color(Color::from_rgb(0xFF, 0xFF, 0xF0));
-    Tooltip::set_text_color(Color::ForeGround);
+    Tooltip::set_text_color(Color::Foreground);
 }
 
 pub(crate) fn use_aero_theme() {

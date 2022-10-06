@@ -23,7 +23,7 @@ fn down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
 
 fn radio_round_down_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     let col = c.to_rgb();
-    draw::draw_box(FrameType::OFlatFrame, x, y, w, h, c);
+    draw::draw_box(FrameType::OFlatBox, x, y, w, h, c);
 }
 
 fn border_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
