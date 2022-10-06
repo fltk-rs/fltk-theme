@@ -16,23 +16,11 @@ fn main() {
     );
     let theme = WidgetScheme::new(SchemeType::Fluent);
     theme.apply();
-    let mut win = window::Window::default().with_size(400, 300);
+    let mut win = window::SingleWindow::default().with_size(400, 300);
     let mut choice = menu::Choice::new(100, 100, 200, 30, None);
     choice.add_choice("Fluent");
     choice.set_value(0);
     choice.set_frame(FrameType::FlatBox);
-    choice.draw(|c| {
-        draw::set_draw_color(Color::Background);
-        draw::draw_polygon(
-            c.x() + c.w() - 18,
-            (c.y() + c.h() / 2) - 6,
-            c.x() + c.w() - 13,
-            (c.y() + c.h() / 2) - 1,
-            c.x() + c.w() - 7,
-            (c.y() + c.h() / 2) - 6,
-        );
-        draw::end_polygon();
-    });
     let mut check = button::CheckButton::new(160, 150, 80, 30, "  Check");
     check.set_value(true);
     check.set_frame(FrameType::FlatBox);

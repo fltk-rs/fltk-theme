@@ -72,4 +72,3 @@ lazy_static::lazy_static! {
     pub static ref systemBlueColor: (u8, u8, u8, u8) = get_colors!(get_systemBlueColor);
     // pub static ref systemCyanColor: (u8, u8, u8, u8) = get_colors!(get_systemCyanColor); // beta
 }
-

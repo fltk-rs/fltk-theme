@@ -1,5 +1,5 @@
 use super::*;
-use fltk::{image, prelude::ImageExt};
+use fltk::{draw, enums::FrameType};
 
 fn rect(x: i32, y: i32, w: i32, h: i32, c: Color) {
     draw_rect_fill(x, y, w, h, c);
@@ -50,22 +50,9 @@ fn border_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
 
 fn round_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     let col = Color::Background.to_rgb();
-    let fg = Color::contrast(Color::Background, Color::Background).to_rgb();
-    let svg = format!(
-        "<svg viewBox='0 0 {} {}'>
-  <circle cx='50%' cy='48%' r='46%' stroke='rgb({},{},{})' stroke-width='0.5' fill='rgb({},{},{})'/>
-    </svg>",
-        w,
-        h,
-        fg.0,
-        fg.1,
-        fg.2,
-        col.0,
-        col.1,
-        col.2
-    );
-    let mut image = image::SvgImage::from_data(&svg).unwrap();
-    image.draw(x, y, w, h);
+    let fg = Color::contrast(Color::Background, Color::Background);
+    draw::draw_box(FrameType::OFlatFrame, x, y, w, h, Color::Background);
+    draw::draw_box(FrameType::OvalFrame, x, y, w, h, fg);
 }
 
 fn hover_up_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {

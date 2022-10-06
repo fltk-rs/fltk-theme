@@ -49,5 +49,5 @@ lazy_static::lazy_static! {
     pub static ref systemTealColor: Color = Color::from_rgba_tuple((76, 187, 242, 255));
     pub static ref systemYellowColor: Color = Color::from_rgba_tuple((254, 207, 14, 255));
     pub static ref systemBlueColor: Color = Color::from_rgba_tuple((16, 106, 254, 255));
-    pub static ref systemCyanColor: Color = Color::from_rgba_tuple((90, 200, 245, 255));    
+    pub static ref systemCyanColor: Color = Color::from_rgba_tuple((90, 200, 245, 255));
 }

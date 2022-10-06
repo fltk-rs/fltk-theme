@@ -3,7 +3,7 @@ use fltk::{image, prelude::ImageExt};
 
 fn rounded_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
     let (r, g, b) = c.to_rgb();
-  let svg = format!("<svg viewBox='0 0 {} {}'>
+    let svg = format!("<svg viewBox='0 0 {} {}'>
   <rect x='1%' y='1%' stroke-width='2' rx='10%' width='96%' height='96%' stroke='rgb({}, {}, {})' fill='none' />
 </svg>",w, h, r, g, b);
     let mut image = image::SvgImage::from_data(&svg).unwrap();
@@ -12,27 +12,36 @@ fn rounded_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
 
 fn rounded_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     let (r, g, b) = c.to_rgb();
-    let svg = format!("<svg viewBox='0 0 {} {}'>
+    let svg = format!(
+        "<svg viewBox='0 0 {} {}'>
     <rect x='1%' y='1%' rx='10%' width='96%' height='96%' fill='rgb({}, {}, {})' />
-  </svg>",w, h, r, g, b);
+  </svg>",
+        w, h, r, g, b
+    );
     let mut image = image::SvgImage::from_data(&svg).unwrap();
     image.draw(x, y, w, h);
 }
 
 fn rflat_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     let (r, g, b) = c.to_rgb();
-    let svg = format!("<svg viewBox='0 0 {} {}'>
+    let svg = format!(
+        "<svg viewBox='0 0 {} {}'>
     <rect x='1%' y='1%' rx='10%' width='96%' height='96%' fill='rgb({}, {}, {})' />
-  </svg>",w, h, r, g, b);
+  </svg>",
+        w, h, r, g, b
+    );
     let mut image = image::SvgImage::from_data(&svg).unwrap();
     image.draw(x, y, w, h);
 }
 
 fn oval_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     let (r, g, b) = c.to_rgb();
-    let svg = format!("<svg viewBox='0 0 {} {}'>
+    let svg = format!(
+        "<svg viewBox='0 0 {} {}'>
     <rect x='1%' y='1%' rx='100%' width='96%' height='96%' fill='rgb({}, {}, {})' />
-  </svg>",w, h, r, g, b);
+  </svg>",
+        w, h, r, g, b
+    );
     let mut image = image::SvgImage::from_data(&svg).unwrap();
     image.draw(x, y, w, h);
 }
@@ -48,9 +57,12 @@ fn oval_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
 
 fn oflat_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     let (r, g, b) = c.to_rgb();
-    let svg = format!("<svg viewBox='0 0 {} {}'>
+    let svg = format!(
+        "<svg viewBox='0 0 {} {}'>
     <rect x='1%' y='1%' rx='100%' width='96%' height='96%' fill='rgb({}, {}, {})' />
-  </svg>",w, h, r, g, b);
+  </svg>",
+        w, h, r, g, b
+    );
     let mut image = image::SvgImage::from_data(&svg).unwrap();
     image.draw(x, y, w, h);
 }

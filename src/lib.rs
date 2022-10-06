@@ -70,9 +70,9 @@ fn main() {
 
 use fltk::{app, enums::Color};
 pub mod color_themes;
+pub mod colors;
 pub mod widget_schemes;
 pub mod widget_themes;
-pub mod colors;
 
 /// Color map struct. (index, r, g, b)
 #[derive(Default, Clone, Debug)]

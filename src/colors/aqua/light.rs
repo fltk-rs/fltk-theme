@@ -51,4 +51,3 @@ lazy_static::lazy_static! {
     pub static ref systemBlueColor: Color = Color::from_rgba_tuple((10, 95, 254, 255));
     pub static ref systemCyanColor: Color = Color::from_rgba_tuple((85, 190, 240, 255));
 }
-

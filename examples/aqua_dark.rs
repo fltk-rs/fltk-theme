@@ -11,17 +11,9 @@ use fltk_theme::colors::aqua::dark::*; // get all the dark aqua colors
 fn main() {
     let a = app::App::default();
     let bg = windowBackgroundColor.to_rgb();
-    app::background(
-        bg.0,
-        bg.1,
-        bg.2,
-    );
+    app::background(bg.0, bg.1, bg.2);
     let ctrl = controlAccentColor.to_rgb();
-    app::background2(
-        ctrl.0,
-        ctrl.1,
-        ctrl.2,
-    );
+    app::background2(ctrl.0, ctrl.1, ctrl.2);
     let lbl = labelColor.to_rgb();
     app::foreground(lbl.0, lbl.1, lbl.2);
     app::set_color(Color::Selection, 255, 255, 255);

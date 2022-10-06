@@ -4,7 +4,7 @@ use fltk_theme::colors::html::*;
 macro_rules! col {
     ($e: expr) => {
         Color::from_rgb($e.0, $e.1, $e.2)
-    }
+    };
 }
 
 fn main() {
