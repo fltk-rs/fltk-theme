@@ -101,4 +101,4 @@ pub static systemTealColor: Lazy<(u8, u8, u8, u8)> = Lazy::new(|| get_colors!(ge
 pub static systemYellowColor: Lazy<(u8, u8, u8, u8)> =
     Lazy::new(|| get_colors!(get_systemYellowColor));
 pub static systemBlueColor: Lazy<(u8, u8, u8, u8)> = Lazy::new(|| get_colors!(get_systemBlueColor));
-// pub static systemCyanColor: Lazy<(u8, u8, u8, u8)> = Lazy::new(|| get_colors!(get_systemCyanColor); // bet)a
+// pub static systemCyanColor: Lazy<(u8, u8, u8, u8)> = Lazy::new(|| get_colors!(get_systemCyanColor)); // beta
