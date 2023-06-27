@@ -21,15 +21,15 @@ As such, color themes can be combined with widget schemes. Widget schemes also e
 ## Usage
 ```toml
 [dependencies]
-fltk = "1.2"
-fltk-theme = "0.4"
+fltk = "1.4"
+fltk-theme = "0.7"
 ```
 
 ## Example
 
 Setting the color theme:
 
-```rust
+```rust,no_run
 use fltk::{prelude::*, *};
 use fltk_theme::{ColorTheme, color_themes};
 
@@ -48,7 +48,7 @@ fn main() {
 
 Setting the widget theme:
 
-```rust
+```rust,no_run
 use fltk::{prelude::*, *};
 use fltk_theme::{widget_themes, WidgetTheme, ThemeType};
 
@@ -66,7 +66,7 @@ fn main() {
 ```
 
 Setting the widget scheme:
-```rust
+```rust,no_run
 use fltk::{prelude::*, *};
 use fltk_theme::{WidgetScheme, SchemeType};
 
@@ -111,7 +111,7 @@ fn main() {
 ## Theme FrameTypes
 
 Choosing a WidgetTheme will also define a set of FrameTypes which can be used for your widgets.
-```
+```ignore
 OS_BUTTON_UP_BOX
 OS_CHECK_DOWN_BOX
 OS_BUTTON_UP_FRAME
