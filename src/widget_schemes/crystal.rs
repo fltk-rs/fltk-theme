@@ -1,4 +1,5 @@
 use super::*;
+use std::cmp::Ordering;
 
 fn shade_color(gc: Color, bc: Color) -> Color {
     Color::color_average(gc, bc, 0.25)
@@ -49,99 +50,102 @@ fn frame_round(x: i32, y: i32, w: i32, h: i32, c: &str, bc: Color) {
     if !app::draw_frame_active() {
         bc = bc.inactive();
     }
-
-    if w == h {
-        for i in b..1 {
-            let x = x + 1;
-            let y = y + 1;
-            let w = w - 2;
-            let h = h - 2;
-            set_draw_color(shade_color(
-                Color::gray_ramp(c.chars().nth(i as usize).unwrap() as i32),
-                bc,
-            ));
-            draw_arc(x, y, w, h, 45.0, 135.0);
-            set_draw_color(shade_color(
-                Color::gray_ramp(c.chars().nth(i as usize + 1).unwrap() as i32),
-                bc,
-            ));
-            draw_arc(x, y, w, h, 315.0, 405.0);
-            set_draw_color(shade_color(
-                Color::gray_ramp(c.chars().nth(i as usize + 2).unwrap() as i32),
-                bc,
-            ));
-            draw_arc(x, y, w, h, 225.0, 315.0);
-            set_draw_color(shade_color(
-                Color::gray_ramp(c.chars().nth(i as usize + 3).unwrap() as i32),
-                bc,
-            ));
-            draw_arc(x, y, w, h, 135.0, 225.0);
+    match w.cmp(&h) {
+        Ordering::Equal => {
+            for i in b..1 {
+                let x = x + 1;
+                let y = y + 1;
+                let w = w - 2;
+                let h = h - 2;
+                set_draw_color(shade_color(
+                    Color::gray_ramp(c.chars().nth(i).unwrap() as i32),
+                    bc,
+                ));
+                draw_arc(x, y, w, h, 45.0, 135.0);
+                set_draw_color(shade_color(
+                    Color::gray_ramp(c.chars().nth(i + 1).unwrap() as i32),
+                    bc,
+                ));
+                draw_arc(x, y, w, h, 315.0, 405.0);
+                set_draw_color(shade_color(
+                    Color::gray_ramp(c.chars().nth(i + 2).unwrap() as i32),
+                    bc,
+                ));
+                draw_arc(x, y, w, h, 225.0, 315.0);
+                set_draw_color(shade_color(
+                    Color::gray_ramp(c.chars().nth(i + 3).unwrap() as i32),
+                    bc,
+                ));
+                draw_arc(x, y, w, h, 135.0, 225.0);
+            }
         }
-    } else if w > h {
-        let d = h / 2;
-        for i in b..1 {
-            let x = x + 1;
-            let y = y + 1;
-            let w = w - 2;
-            let h = h - 2;
-            let d = d - 1;
-            set_draw_color(shade_color(
-                Color::gray_ramp(c.chars().nth(i as usize).unwrap() as i32),
-                bc,
-            ));
-            draw_arc(x, y, h, h, 90.0, 135.0);
-            draw_xyline(x + d, y, x + w - d);
-            draw_arc(x + w - h, y, h, h, 45.0, 90.0);
-            set_draw_color(shade_color(
-                Color::gray_ramp(c.chars().nth(i as usize + 1).unwrap() as i32),
-                bc,
-            ));
-            draw_arc(x + w - h, y, h, h, 315.0, 405.0);
-            set_draw_color(shade_color(
-                Color::gray_ramp(c.chars().nth(i as usize + 2).unwrap() as i32),
-                bc,
-            ));
-            draw_arc(x + w - h, y, h, h, 270.0, 315.0);
-            draw_xyline(x + d, y + h - 1, x + w - d);
-            draw_arc(x, y, h, h, 225.0, 270.0);
-            set_draw_color(shade_color(
-                Color::gray_ramp(c.chars().nth(i as usize + 3).unwrap() as i32),
-                bc,
-            ));
-            draw_arc(x, y, h, h, 135.0, 225.0);
+        Ordering::Greater => {
+            let d = h / 2;
+            for i in b..1 {
+                let x = x + 1;
+                let y = y + 1;
+                let w = w - 2;
+                let h = h - 2;
+                let d = d - 1;
+                set_draw_color(shade_color(
+                    Color::gray_ramp(c.chars().nth(i).unwrap() as i32),
+                    bc,
+                ));
+                draw_arc(x, y, h, h, 90.0, 135.0);
+                draw_xyline(x + d, y, x + w - d);
+                draw_arc(x + w - h, y, h, h, 45.0, 90.0);
+                set_draw_color(shade_color(
+                    Color::gray_ramp(c.chars().nth(i + 1).unwrap() as i32),
+                    bc,
+                ));
+                draw_arc(x + w - h, y, h, h, 315.0, 405.0);
+                set_draw_color(shade_color(
+                    Color::gray_ramp(c.chars().nth(i + 2).unwrap() as i32),
+                    bc,
+                ));
+                draw_arc(x + w - h, y, h, h, 270.0, 315.0);
+                draw_xyline(x + d, y + h - 1, x + w - d);
+                draw_arc(x, y, h, h, 225.0, 270.0);
+                set_draw_color(shade_color(
+                    Color::gray_ramp(c.chars().nth(i + 3).unwrap() as i32),
+                    bc,
+                ));
+                draw_arc(x, y, h, h, 135.0, 225.0);
+            }
         }
-    } else if w < h {
-        let d = w / 2;
-        for i in b..1 {
-            let x = x + 1;
-            let y = y + 1;
-            let w = w - 2;
-            let h = h - 2;
-            let d = d - 1;
-            set_draw_color(shade_color(
-                Color::gray_ramp(c.chars().nth(i as usize).unwrap() as i32),
-                bc,
-            ));
-            draw_arc(x, y, w, w, 45.0, 135.0);
-            set_draw_color(shade_color(
-                Color::gray_ramp(c.chars().nth(i as usize + 1).unwrap() as i32),
-                bc,
-            ));
-            draw_arc(x, y, w, w, 0.0, 45.0);
-            draw_yxline(x + w - 1, y + d, y + h - d);
-            draw_arc(x, y + h - w, w, w, 315.0, 360.0);
-            set_draw_color(shade_color(
-                Color::gray_ramp(c.chars().nth(i as usize + 2).unwrap() as i32),
-                bc,
-            ));
-            draw_arc(x, y + h - w, w, w, 225.0, 315.0);
-            set_draw_color(shade_color(
-                Color::gray_ramp(c.chars().nth(i as usize + 3).unwrap() as i32),
-                bc,
-            ));
-            draw_arc(x, y + h - w, w, w, 180.0, 225.0);
-            draw_yxline(x, y + d, y + h - d);
-            draw_arc(x, y, w, w, 135.0, 180.0);
+        Ordering::Less => {
+            let d = w / 2;
+            for i in b..1 {
+                let x = x + 1;
+                let y = y + 1;
+                let w = w - 2;
+                let h = h - 2;
+                let d = d - 1;
+                set_draw_color(shade_color(
+                    Color::gray_ramp(c.chars().nth(i).unwrap() as i32),
+                    bc,
+                ));
+                draw_arc(x, y, w, w, 45.0, 135.0);
+                set_draw_color(shade_color(
+                    Color::gray_ramp(c.chars().nth(i + 1).unwrap() as i32),
+                    bc,
+                ));
+                draw_arc(x, y, w, w, 0.0, 45.0);
+                draw_yxline(x + w - 1, y + d, y + h - d);
+                draw_arc(x, y + h - w, w, w, 315.0, 360.0);
+                set_draw_color(shade_color(
+                    Color::gray_ramp(c.chars().nth(i + 2).unwrap() as i32),
+                    bc,
+                ));
+                draw_arc(x, y + h - w, w, w, 225.0, 315.0);
+                set_draw_color(shade_color(
+                    Color::gray_ramp(c.chars().nth(i + 3).unwrap() as i32),
+                    bc,
+                ));
+                draw_arc(x, y + h - w, w, w, 180.0, 225.0);
+                draw_yxline(x, y + d, y + h - d);
+                draw_arc(x, y, w, w, 135.0, 180.0);
+            }
         }
     }
 }
@@ -187,13 +191,13 @@ fn shade_rect(x: i32, y: i32, w: i32, h: i32, c: &str, bc: Color) {
 
             // Draw the bottom line and points...
             set_draw_color(shade_color(
-                Color::gray_ramp(c.chars().nth(((clen - i) as usize) as usize).unwrap() as i32),
+                Color::gray_ramp(c.chars().nth((clen - i) as usize).unwrap() as i32),
                 bc,
             ));
             draw_xyline(x + 1, y + h - i, x + w - 2);
 
             set_draw_color(shade_color(
-                Color::gray_ramp(c.chars().nth(((clen - i) as usize) as usize).unwrap() as i32 - 2),
+                Color::gray_ramp(c.chars().nth((clen - i) as usize).unwrap() as i32 - 2),
                 bc,
             ));
             draw_point(x, y + h - i);
@@ -254,7 +258,7 @@ fn shade_rect(x: i32, y: i32, w: i32, h: i32, c: &str, bc: Color) {
         }
 
         // Draw the interiors, top, and bottom...
-        i = (chalf / cstep) as i32;
+        i = chalf / cstep;
 
         set_draw_color(shade_color(
             Color::gray_ramp(c.chars().nth(chalf as usize).unwrap() as i32),
@@ -286,14 +290,14 @@ fn shade_round(x: i32, y: i32, w: i32, h: i32, c: &str, bc: Color) {
             let w = w - 2;
             let h = h - 2;
             set_draw_color(shade_color(
-                Color::gray_ramp(c.chars().nth(i as usize).unwrap() as i32),
+                Color::gray_ramp(c.chars().nth(i).unwrap() as i32),
                 bc,
             ));
             draw_pie(x, y, h, h, 90.0, 135.0 + (i * na) as f64);
             draw_xyline(x + d, y, x + w - d);
             draw_pie(x + w - h, y, h, h, 45.0 + (i * na) as f64, 90.0);
             set_draw_color(shade_color(
-                Color::gray_ramp(c.chars().nth(i as usize).unwrap() as i32 - 2),
+                Color::gray_ramp(c.chars().nth(i).unwrap() as i32 - 2),
                 bc,
             ));
             draw_pie(
@@ -305,14 +309,14 @@ fn shade_round(x: i32, y: i32, w: i32, h: i32, c: &str, bc: Color) {
                 405.0 + (i * na) as f64,
             );
             set_draw_color(shade_color(
-                Color::gray_ramp(c.chars().nth((clen - i) as usize).unwrap() as i32),
+                Color::gray_ramp(c.chars().nth(clen - i).unwrap() as i32),
                 bc,
             ));
             draw_pie(x + w - h, y, h, h, 270.0, 315.0 + (i * na) as f64);
             draw_xyline(x + d, y + h - 1, x + w - d);
             draw_pie(x, y, h, h, 225.0 + (i * na) as f64, 270.0);
             set_draw_color(shade_color(
-                Color::gray_ramp(c.chars().nth((clen - i) as usize).unwrap() as i32 - 2),
+                Color::gray_ramp(c.chars().nth(clen - i).unwrap() as i32 - 2),
                 bc,
             ));
             draw_pie(x, y, h, h, 135.0 + (i * na) as f64, 225.0 + (i * na) as f64);
@@ -331,19 +335,19 @@ fn shade_round(x: i32, y: i32, w: i32, h: i32, c: &str, bc: Color) {
             let w = w - 2;
             let h = h - 2;
             set_draw_color(shade_color(
-                Color::gray_ramp(c.chars().nth(i as usize).unwrap() as i32),
+                Color::gray_ramp(c.chars().nth(i).unwrap() as i32),
                 bc,
             ));
             draw_pie(x, y, w, w, 45.0 + (i * na) as f64, 135.0 + (i * na) as f64);
             set_draw_color(shade_color(
-                Color::gray_ramp(c.chars().nth(i as usize).unwrap() as i32 - 2),
+                Color::gray_ramp(c.chars().nth(i).unwrap() as i32 - 2),
                 bc,
             ));
             draw_pie(x, y, w, w, 0.0, 45.0 + (i * na) as f64);
             draw_yxline(x + w - 1, y + d, y + h - d);
             draw_pie(x, y + h - w, w, w, 315.0 + (i * na) as f64, 360.0);
             set_draw_color(shade_color(
-                Color::gray_ramp(c.chars().nth((clen - i) as usize).unwrap() as i32),
+                Color::gray_ramp(c.chars().nth(clen - i).unwrap() as i32),
                 bc,
             ));
             draw_pie(
@@ -355,7 +359,7 @@ fn shade_round(x: i32, y: i32, w: i32, h: i32, c: &str, bc: Color) {
                 315.0 + (i * na) as f64,
             );
             set_draw_color(shade_color(
-                Color::gray_ramp(c.chars().nth((clen - i) as usize).unwrap() as i32 - 2),
+                Color::gray_ramp(c.chars().nth(clen - i).unwrap() as i32 - 2),
                 bc,
             ));
             draw_pie(x, y + h - w, w, w, 180.0, 225.0 + (i * na) as f64);
