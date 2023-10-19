@@ -5,7 +5,7 @@ use crate::activated_color;
 use fltk::{
     app,
     draw::*,
-    enums::{Color, FrameType},
+    enums::{Color, FrameType, UnmappedFrameType},
     misc::Tooltip,
 };
 
@@ -17,6 +17,8 @@ pub(crate) mod dark;
 pub(crate) mod greybird;
 pub(crate) mod high_contrast;
 pub(crate) mod metro;
+
+// const OS_BG_DOWN_BOX_TYPE: UnmappedFrameType = UnmappedFrameType::from_i32(FrameType::FreeBoxType.as_i32() + 1);
 
 pub const OS_BUTTON_UP_BOX: FrameType = FrameType::GtkUpBox;
 pub const OS_CHECK_DOWN_BOX: FrameType = FrameType::GtkDownBox;
@@ -45,6 +47,11 @@ pub const OS_TABS_BOX: FrameType = FrameType::EmbossedBox;
 pub const OS_SWATCH_BOX: FrameType = FrameType::EngravedBox;
 pub const OS_SWATCH_FRAME: FrameType = FrameType::EngravedFrame;
 pub const OS_BG_BOX: FrameType = FrameType::FreeBoxType;
+// TODO: replace with FreeBoxType.as_i32() when const fn possible (Rust 1.65)
+pub(crate) const OS_BG_DOWN_BOX: FrameType =
+    FrameType::UserFrameType(unsafe { UnmappedFrameType::from_i32(57) });
+pub(crate) const OS_TOOLBAR_FRAME: FrameType =
+    FrameType::UserFrameType(unsafe { UnmappedFrameType::from_i32(58) });
 
 pub const OS_FONT_SIZE: i32 = if cfg!(target_os = "window") { 12 } else { 13 };
 

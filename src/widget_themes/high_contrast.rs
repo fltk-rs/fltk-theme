@@ -96,6 +96,8 @@ fn high_contrast_hovered_up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
     high_contrast_hovered_up_frame(x, y, w, h, c);
 }
 
+fn dummy_box_frame(_x: i32, _y: i32, _w: i32, _h: i32, _c: Color) {}
+
 fn use_high_contrast_scheme() {
     app::set_scheme(app::Scheme::Base);
     app::set_frame_type_cb(OS_BUTTON_UP_BOX, high_contrast_button_up_box, 2, 2, 4, 4);
@@ -253,7 +255,8 @@ fn use_high_contrast_scheme() {
         4,
     );
     app::set_frame_type2(OS_BG_BOX, FrameType::FlatBox);
-    // app::set_frame_type_cb(OS_BG_DOWN_BOX, OS_BG_BOX);
+    app::set_frame_type2(OS_BG_DOWN_BOX, OS_BG_BOX);
+    app::set_frame_type_cb(OS_TOOLBAR_FRAME, dummy_box_frame, 1, 1, 2, 2);
 }
 
 fn use_high_contrast_colors() {

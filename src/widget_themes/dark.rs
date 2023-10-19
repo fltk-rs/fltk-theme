@@ -263,7 +263,8 @@ fn use_dark_scheme() {
     app::set_frame_type2(FrameType::DownBox, OS_BUTTON_UP_BOX);
     app::set_frame_type2(FrameType::RoundDownBox, OS_RADIO_ROUND_DOWN_BOX);
     app::set_frame_type2(OS_BG_BOX, FrameType::FlatBox);
-    // app::set_frame_type2(OS_BG_DOWN_BOX, OS_BG_BOX);
+    app::set_frame_type2(OS_BG_DOWN_BOX, OS_BG_BOX);
+    app::set_frame_type2(OS_TOOLBAR_FRAME, OS_PANEL_THIN_UP_FRAME);
 }
 
 fn use_dark_colors() {

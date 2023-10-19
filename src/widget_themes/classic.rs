@@ -187,6 +187,8 @@ fn use_classic_scheme() {
         4,
     );
     app::set_frame_type2(OS_BG_BOX, FrameType::FlatBox);
+    app::set_frame_type2(OS_BG_DOWN_BOX, OS_BG_BOX);
+    app::set_frame_type2(OS_TOOLBAR_FRAME, OS_PANEL_THIN_UP_FRAME);
 }
 
 fn use_classic_colors() {

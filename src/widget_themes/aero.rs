@@ -464,7 +464,8 @@ pub(crate) fn use_aero_scheme() {
     app::set_frame_type2(FrameType::DownBox, OS_CHECK_DOWN_BOX);
     app::set_frame_type2(FrameType::RoundDownBox, OS_RADIO_ROUND_DOWN_BOX);
     app::set_frame_type2(OS_BG_BOX, FrameType::FlatBox);
-    // app::set_frame_type_cb(OS_BG_DOWN_BOX, OS_BG_BOX);
+    app::set_frame_type2(OS_BG_DOWN_BOX, OS_BG_BOX);
+    app::set_frame_type2(OS_TOOLBAR_FRAME, OS_PANEL_THIN_UP_FRAME);
 }
 
 pub(crate) fn use_aero_colors() {
