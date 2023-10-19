@@ -10,29 +10,8 @@ fn frame_rect(x: i32, y: i32, w: i32, h: i32, bc: Color) {
 }
 
 fn shade_rect_up(x: i32, y: i32, w: i32, h: i32, bc: Color) {
-    // Draws the shiny
-    let third = h as f32 / 3.;
     set_draw_color(activated_color(bc));
-    draw_rectf(x, y, w, third as i32 + 1);
-
-    let step_size = 0.10 / (h as f32 - third);
-    let mut j = 0;
-
-    let mut k = 1.0;
-    loop {
-        if k >= 0.90 {
-            break;
-        }
-        j += 1;
-        set_draw_color(activated_color(Color::color_average(bc, Color::White, k)));
-        draw_line(
-            x,
-            y + j + third as i32 - 1,
-            x + w - 1,
-            y + j + third as i32 - 1,
-        );
-        k -= step_size;
-    }
+    draw_rectf(x, y, w, h);
 }
 
 fn frame_rect_up(x: i32, y: i32, w: i32, h: i32, bc: Color) {
@@ -86,7 +65,7 @@ fn up_frame(x: i32, y: i32, w: i32, h: i32, c: Color) {
 }
 
 fn up_box(x: i32, y: i32, w: i32, h: i32, c: Color) {
-    shade_rect_up(x + 1, y, w - 2, h - 1, c);
+    shade_rect_up(x + 1, y, w, h - 1, c);
     frame_rect_up(x, y, w - 1, h - 1, c.darker());
     //draw the inner rect.
     frame_rect(
