@@ -1,7 +1,7 @@
 #![doc = include_str!("../README.md")]
 #![allow(clippy::needless_doctest_main)]
 
-use fltk::{app, enums::Color};
+use fltk::{app, enums::Color, utils::oncelock::OnceCell};
 pub mod color_themes;
 pub mod colors;
 pub mod widget_schemes;
@@ -14,6 +14,18 @@ pub struct ColorMap {
     pub r: u8,
     pub g: u8,
     pub b: u8,
+}
+
+static DEFAULT_COLOR_MAP: OnceCell<Vec<ColorMap>> = OnceCell::new();
+
+/// Resets the current map to the default color map
+pub fn reset_color_map() {
+    if let Some(old_map) = DEFAULT_COLOR_MAP.get() {
+        for elem in old_map {
+            app::set_color(Color::by_index(elem.index), elem.r, elem.g, elem.b);
+        }
+        app::redraw();
+    }
 }
 
 #[macro_export]
@@ -45,6 +57,14 @@ impl ColorTheme {
 
     /// apply() the theme
     pub fn apply(&self) {
+        if DEFAULT_COLOR_MAP.get().is_none() {
+            let mut default_map = Vec::with_capacity(256);
+            for index in 0..=255 {
+                let (r, g, b) = Color::by_index(index).to_rgb();
+                default_map.push(ColorMap {index, r, g, b });
+            }
+            DEFAULT_COLOR_MAP.set(default_map).unwrap();
+        }
         for elem in &self.0 {
             app::set_color(Color::by_index(elem.index), elem.r, elem.g, elem.b);
         }

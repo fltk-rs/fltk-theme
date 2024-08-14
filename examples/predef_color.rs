@@ -1,5 +1,5 @@
 use fltk::{prelude::*, *};
-use fltk_theme::{color_themes, ColorTheme};
+use fltk_theme::{reset_color_map, color_themes, ColorTheme};
 
 fn main() {
     let a = app::App::default().with_scheme(app::Scheme::Gtk);
@@ -17,7 +17,8 @@ fn main() {
     let mut round = button::RoundButton::new(160, 180, 80, 30, "  Round");
     round.set_value(true);
     round.set_frame(enums::FrameType::FlatBox);
-    button::Button::new(160, 220, 80, 30, "Hello");
+    let mut button = button::Button::new(160, 220, 80, 30, "Hello");
+    button.set_callback(|_| reset_color_map());
     win.end();
     win.show();
     choice.set_callback(|c| {
