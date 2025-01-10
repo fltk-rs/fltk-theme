@@ -10,6 +10,7 @@ use fltk_theme::colors::aqua::dark::*; // get all the dark aqua colors
 
 fn main() {
     let a = app::App::default();
+    app::set_font_size(12);
     let bg = windowBackgroundColor.to_rgb();
     app::background(bg.0, bg.1, bg.2);
     let ctrl = controlAccentColor.to_rgb();
@@ -19,23 +20,32 @@ fn main() {
     app::set_color(Color::Selection, 255, 255, 255);
     let widget_scheme = WidgetScheme::new(SchemeType::Aqua);
     widget_scheme.apply();
-    let mut win = window::Window::default().with_size(400, 300);
-    let mut choice = menu::Choice::new(100, 50, 200, 30, None);
+    let mut win = window::Window::default()
+        .with_size(400, 300)
+        .with_label("Aqua Dark");
+    let mut col = group::Flex::default()
+        .with_size(340, 240)
+        .center_of_parent()
+        .column();
+    col.set_frame(FrameType::EngravedBox);
+    col.set_margins(100, 40, 100, 40);
+    let mut choice = menu::Choice::default();
     choice.set_color(*controlColor);
     choice.add_choice("Opt1|Opt2|Opt3");
     choice.set_value(2);
-    let mut inp = input::Input::new(50, 100, 300, 30, None);
+    let mut inp = input::Input::default();
     inp.set_color(*controlColor);
-    let mut check = button::CheckButton::new(160, 150, 80, 30, "  Check");
+    let mut check = button::CheckButton::default().with_label("  Check");
     check.set_value(true);
     check.set_frame(enums::FrameType::FlatBox);
-    let mut round = button::RoundButton::new(160, 180, 80, 30, "  Round");
+    let mut round = button::RoundButton::default().with_label("  Round");
     round.set_value(true);
     round.set_frame(enums::FrameType::FlatBox);
-    let mut btn = button::Button::new(160, 230, 80, 30, "Hello");
+    let mut btn = button::Button::default().with_label("Hello");
     btn.set_color(*controlColor);
     btn.set_selection_color(*controlAccentColor);
     btn.set_frame(OS_DEFAULT_BUTTON_UP_BOX);
+    col.end();
     win.end();
     win.make_resizable(true);
     win.show();

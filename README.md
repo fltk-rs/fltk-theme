@@ -181,7 +181,7 @@ These provide schemes for widgets without color theming. Currently there are 6 s
 
 - Fluent: Tries to mimic Window's 10 styles.
 - ![alt_test](screenshots/fluent.jpg)
-- ![alt_test](screenshots/fluent2.jpg)
+- ![alt_test](screenshots/fluent_dark.jpg)
 
 - SvgBased: This overrides FLTK's Base scheme round/rounded/oval FrameTypes which are drawn using scalable vector graphics.
 - ![alt_test](screenshots/svgbased.jpg)

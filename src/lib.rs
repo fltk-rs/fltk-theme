@@ -61,7 +61,7 @@ impl ColorTheme {
             let mut default_map = Vec::with_capacity(256);
             for index in 0..=255 {
                 let (r, g, b) = Color::by_index(index).to_rgb();
-                default_map.push(ColorMap {index, r, g, b });
+                default_map.push(ColorMap { index, r, g, b });
             }
             DEFAULT_COLOR_MAP.set(default_map).unwrap();
         }

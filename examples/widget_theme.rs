@@ -1,23 +1,32 @@
-use fltk::{prelude::*, *};
+use fltk::{enums::*, prelude::*, *};
 use fltk_theme::{widget_themes, ThemeType, WidgetTheme};
 
 fn main() {
     let a = app::App::default();
     let theme = WidgetTheme::new(ThemeType::AquaClassic);
     theme.apply();
-    let mut win = window::Window::default().with_size(400, 300);
-    let mut choice = menu::Choice::new(100, 100, 200, 30, None);
+    let mut win = window::Window::default()
+        .with_size(400, 300)
+        .with_label("Widget Theme");
+    let mut col = group::Flex::default()
+        .with_size(340, 240)
+        .center_of_parent()
+        .column();
+    col.set_frame(FrameType::EngravedBox);
+    col.set_margins(100, 60, 100, 60);
+    let mut choice = menu::Choice::default();
     choice.add_choice("Classic|Aero|Metro|AquaClassic|Greybird|Blue|HighContrast|Dark");
     choice.set_value(3);
     choice.set_frame(widget_themes::OS_PANEL_THIN_UP_BOX);
-    let mut check = button::CheckButton::new(160, 150, 80, 30, "  Check");
+    let mut check = button::CheckButton::default().with_label("  Check");
     check.set_value(true);
     check.set_frame(enums::FrameType::FlatBox);
-    let mut round = button::RoundButton::new(160, 180, 80, 30, "  Round");
+    let mut round = button::RoundButton::default().with_label("  Round");
     round.set_value(true);
     round.set_frame(enums::FrameType::FlatBox);
-    let mut btn = button::Button::new(160, 220, 80, 30, "Hello");
+    let mut btn = button::Button::default().with_label("Hello");
     btn.set_frame(widget_themes::OS_DEFAULT_BUTTON_UP_BOX);
+    col.end();
     win.end();
     win.show();
     choice.set_callback(|c| {

@@ -5,6 +5,7 @@ use fltk_theme::{SchemeType, WidgetScheme};
 
 fn main() {
     let a = app::App::default();
+    app::set_font_size(12);
     app::background(0x00, 0x00, 0x00);
     app::background2(0x00, 0x00, 0x00);
     app::foreground(0xff, 0xff, 0xff);
@@ -16,34 +17,42 @@ fn main() {
     );
     let theme = WidgetScheme::new(SchemeType::Fluent);
     theme.apply();
-    let mut win = window::Window::default().with_size(400, 300);
-    let mut choice = menu::Choice::new(100, 100, 200, 30, None);
+    let mut win = window::Window::default()
+        .with_size(400, 300)
+        .with_label("Fluent Dark");
+    let mut col = group::Flex::default()
+        .with_size(340, 240)
+        .center_of_parent()
+        .column();
+    col.set_frame(FrameType::EngravedBox);
+    col.set_margins(100, 60, 100, 60);
+    let mut choice = menu::Choice::default();
     choice.add_choice("Fluent");
     choice.set_value(0);
     choice.set_frame(FrameType::FlatBox);
-    choice.draw(|c| {
-        draw::set_draw_color(Color::Background);
-        draw::draw_polygon(
-            c.x() + c.w() - 18,
-            (c.y() + c.h() / 2) - 6,
-            c.x() + c.w() - 13,
-            (c.y() + c.h() / 2) - 1,
-            c.x() + c.w() - 7,
-            (c.y() + c.h() / 2) - 6,
-        );
-        draw::end_polygon();
-    });
-    let mut check = button::CheckButton::new(160, 150, 80, 30, "  Check");
+    // choice.draw(|c| {
+    //     draw::set_draw_color(Color::Background);
+    //     draw::draw_polygon(
+    //         c.x() + c.w() - 18,
+    //         (c.y() + c.h() / 2) - 6,
+    //         c.x() + c.w() - 13,
+    //         (c.y() + c.h() / 2) - 1,
+    //         c.x() + c.w() - 7,
+    //         (c.y() + c.h() / 2) - 6,
+    //     );
+    //     draw::end_polygon();
+    // });
+    let mut check = button::CheckButton::default().with_label("  Check");
     check.set_value(true);
     check.set_frame(FrameType::FlatBox);
-    let mut round = button::RoundButton::new(160, 180, 80, 30, "  Round");
+    let mut round = button::RoundButton::default().with_label("  Round");
     round.set_value(true);
     round.set_frame(FrameType::FlatBox);
-    let mut toggle = button::ToggleButton::new(100, 220, 80, 30, "Toggle");
+    let mut toggle = button::ToggleButton::default().with_label("Toggle");
     toggle.set_color(Color::from_rgba_tuple(ACCENT_COLOR));
     toggle.set_label_color(Color::White);
     toggle.set_selection_color(toggle.color().darker());
-    let mut btn = button::Button::new(220, 220, 80, 30, "Hello");
+    let mut btn = button::Button::default().with_label("Hello");
     btn.set_frame(OS_DEFAULT_BUTTON_UP_BOX);
     btn.set_down_frame(OS_DEFAULT_DEPRESSED_DOWN_BOX);
     // handle hover
@@ -60,6 +69,7 @@ fn main() {
         }
         _ => false,
     });
+    col.end();
     win.end();
     win.make_resizable(true);
     win.show();

@@ -1,24 +1,32 @@
-use fltk::{prelude::*, *};
-use fltk_theme::{reset_color_map, color_themes, ColorTheme};
+use fltk::{enums::*, prelude::*, *};
+use fltk_theme::{color_themes, reset_color_map, ColorTheme};
 
 fn main() {
     let a = app::App::default().with_scheme(app::Scheme::Gtk);
     app::set_visible_focus(false);
-
     let color_theme = ColorTheme::new(color_themes::BLACK_THEME);
     color_theme.apply();
-    let mut win = window::Window::default().with_size(400, 300);
-    let mut choice = menu::Choice::new(100, 100, 200, 30, None);
+    let mut win = window::Window::default()
+        .with_size(400, 300)
+        .with_label("Color Theme");
+    let mut col = group::Flex::default()
+        .with_size(340, 240)
+        .center_of_parent()
+        .column();
+    col.set_frame(FrameType::EngravedBox);
+    col.set_margins(100, 60, 100, 60);
+    let mut choice = menu::Choice::default();
     choice.add_choice("Black|Dark|Gray|Shake|Tan");
     choice.set_value(0);
-    let mut check = button::CheckButton::new(160, 150, 80, 30, "  Check");
+    let mut check = button::CheckButton::default().with_label("  Check");
     check.set_value(true);
     check.set_frame(enums::FrameType::FlatBox);
-    let mut round = button::RoundButton::new(160, 180, 80, 30, "  Round");
+    let mut round = button::RoundButton::default().with_label("  Round");
     round.set_value(true);
     round.set_frame(enums::FrameType::FlatBox);
-    let mut button = button::Button::new(160, 220, 80, 30, "Hello");
+    let mut button = button::Button::default().with_label("Hello");
     button.set_callback(|_| reset_color_map());
+    col.end();
     win.end();
     win.show();
     choice.set_callback(|c| {
