@@ -53,7 +53,7 @@ pub(crate) const OS_BG_DOWN_BOX: FrameType =
 pub(crate) const OS_TOOLBAR_FRAME: FrameType =
     FrameType::UserFrameType(unsafe { UnmappedFrameType::from_i32(58) });
 
-pub const OS_FONT_SIZE: i32 = if cfg!(target_os = "window") { 12 } else { 13 };
+pub const OS_FONT_SIZE: i32 = if cfg!(target_os = "windows") { 12 } else { 13 };
 
 pub(crate) fn use_native_settings() {
     app::set_visible_focus(false);
