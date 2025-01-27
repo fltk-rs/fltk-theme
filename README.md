@@ -165,7 +165,7 @@ You can check the frames example to see all `FrameType`'s you can apply to you w
 
 ## Widget Schemes
 
-These provide schemes for widgets without color theming. Currently there are 6 schemes:
+These provide schemes for widgets without color theming. Currently there are 7 schemes:
 - Clean: Taken from NTK's clear scheme.
 - ![alt_test](screenshots/clean.jpg)
 
@@ -185,6 +185,10 @@ These provide schemes for widgets without color theming. Currently there are 6 s
 
 - SvgBased: This overrides FLTK's Base scheme round/rounded/oval FrameTypes which are drawn using scalable vector graphics.
 - ![alt_test](screenshots/svgbased.jpg)
+
+- Sweet: Tries to mimic the Sweet theme for GNOME/KDE.
+- ![alt_test](screenshots/sweet_dark.png)
+- ![alt_test](screenshots/sweet_light.png)
 
 ## Colors
 
