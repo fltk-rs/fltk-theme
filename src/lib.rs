@@ -151,6 +151,8 @@ pub enum SchemeType {
     - OFlatFrame
     */
     SvgBased,
+    /// A scheme mimicking the Sweet theme for GNOME/KDE
+    Sweet,
 }
 
 /// A widget scheme sets the style of drawing a widget without interfering with coloring
@@ -174,6 +176,7 @@ impl WidgetScheme {
             SchemeType::Fluent => widget_schemes::fluent::use_fluent_scheme(),
             SchemeType::Gleam => widget_schemes::gleam::use_gleam_scheme(),
             SchemeType::SvgBased => widget_schemes::svg_based::use_svg_based_scheme(),
+            SchemeType::Sweet => widget_schemes::sweet::use_sweet_scheme(),
         }
     }
 }

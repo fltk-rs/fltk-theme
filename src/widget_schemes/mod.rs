@@ -10,3 +10,4 @@ pub(crate) mod crystal;
 pub mod fluent;
 pub(crate) mod gleam;
 pub(crate) mod svg_based;
+pub mod sweet;
