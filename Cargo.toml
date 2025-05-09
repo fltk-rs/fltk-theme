@@ -13,7 +13,7 @@ license = "MIT"
 exclude = ["/screenshots", "./examples"]
 
 [dependencies]
-fltk = {git = "https://github.com/fltk-rs/fltk-rs"}
+fltk = "1.5"
 
 [target.'cfg(target_os = "macos")'.dependencies]
 cocoa-colors = { version = "0.1.2", optional = true }
