@@ -65,10 +65,10 @@ pub static underPageBackgroundColor: Lazy<Color> =
 pub static findHighlightColor: Lazy<Color> =
     Lazy::new(|| Color::from_rgba_tuple((255, 106, 0, 255)));
 pub static highlightColor: Lazy<Color> = Lazy::new(|| Color::from_rgba_tuple((197, 14, 210, 255)));
-pub static shadowColor: Lazy<Color> = Lazy::new(|| Color::from_rgba_tuple((0, 0, 0, 255))); 
+pub static shadowColor: Lazy<Color> = Lazy::new(|| Color::from_rgba_tuple((0, 0, 0, 255)));
 pub static systemBrownColor: Lazy<Color> =
     Lazy::new(|| Color::from_rgba_tuple((155, 123, 85, 255)));
-pub static systemFuchsiaColor: Lazy<Color> = 
+pub static systemFuchsiaColor: Lazy<Color> =
     Lazy::new(|| Color::from_rgba_tuple((197, 14, 210, 255)));
 pub static systemGrayColor: Lazy<Color> =
     Lazy::new(|| Color::from_rgba_tuple((133, 133, 139, 255)));

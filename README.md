@@ -3,6 +3,7 @@
 A theming crate for fltk-rs.
 - The widget themes are based on work by [Remy Oukaour](https://github.com/roukaour/viz-brain-visualizer) and [Rangi42](https://github.com/Rangi42/tilemap-studio).
 - The color themes are based on work by [Greg Ercolano](https://groups.google.com/g/fltkgeneral/c/3A5VC_854ok/m/sDpJsmuLBAAJ).
+- The fleet color themes are based on [CyprinusCarpio FLEET library](https://github.com/CyprinusCarpio/fleet).
 - Some of the widget schemes are based on work by the NTK GUI library, others are nouveau.
 
 ## Definitions
@@ -162,6 +163,24 @@ You can check the frames example to see all `FrameType`'s you can apply to you w
 - Shake theme
 - ![alt_test](screenshots/shake.jpg)
 
+- Fleet themes:
+From the excellent [FLEET library](https://github.com/CyprinusCarpio/fleet):
+    - GRUVBOX_DARK
+    - ![Image](https://github.com/user-attachments/assets/807fe4d3-7446-4695-bf61-e47724b13dbb)
+
+    - DRACULA
+    - ![Image](https://github.com/user-attachments/assets/38aa0bd0-7765-4dc4-9dc6-521a1924a722)
+
+    - PURPLE_DUSK
+    - ![Image](https://github.com/user-attachments/assets/a5dcaa1f-74d6-4b4e-87ea-6c4e70120a35)
+
+    - MONOKAI
+    - ![Image](https://github.com/user-attachments/assets/dd6be717-565e-4e02-a8c1-cab3ceaf3803)
+
+    - CYBERPUNK
+    - ![Image](https://github.com/user-attachments/assets/f9ec7698-364a-4249-8bc6-36ee216c19bc)
+
+    - And others.
 
 ## Widget Schemes
 

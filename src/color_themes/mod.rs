@@ -1,5 +1,6 @@
 mod black;
 mod dark;
+pub mod fleet;
 mod gray;
 mod shake;
 mod tan;
