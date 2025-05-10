@@ -32,7 +32,7 @@ const FLEET_THEMES: &[&[ColorMap]] = &[
 fn main() {
     let a = app::App::default().with_scheme(app::Scheme::Gtk);
     app::set_visible_focus(false);
-    let color_theme = ColorTheme::new(color_themes::fleet::LIGHT);
+    let color_theme = ColorTheme::new(&*color_themes::fleet::GRUVBOX_DARK2);
     color_theme.apply();
     let mut win = window::Window::default()
         .with_size(400, 300)
