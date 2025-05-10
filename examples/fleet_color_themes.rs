@@ -1,6 +1,5 @@
-use fltk::{enums::*, prelude::*, *};
+use fltk::{prelude::*, *};
 use fltk_theme::{color_themes, reset_color_map, ColorMap, ColorTheme};
-use fltk_theme::{SchemeType, WidgetScheme};
 
 const FLEET_THEMES: &[&[ColorMap]] = &[
     color_themes::fleet::LIGHT,
@@ -37,12 +36,11 @@ fn main() {
     color_theme.apply();
     let mut win = window::Window::default()
         .with_size(400, 300)
-        .with_label("Color Theme");
+        .with_label("Fleet Color Theme");
     let mut col = group::Flex::default()
         .with_size(340, 240)
         .center_of_parent()
         .column();
-    col.set_frame(FrameType::EngravedBox);
     col.set_margins(80, 40, 80, 40);
     let mut choice = menu::Choice::default();
     choice.add_choice(
