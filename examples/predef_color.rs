@@ -25,11 +25,11 @@ fn main() {
     round.set_value(true);
     round.set_frame(enums::FrameType::FlatBox);
     let mut button = button::Button::default().with_label("Hello");
-    button.set_callback(|_| reset_color_map());
     col.end();
     win.end();
     win.show();
     choice.set_callback(|c| {
+        reset_color_map();
         let theme = match c.value() {
             0 => ColorTheme::new(color_themes::BLACK_THEME),
             1 => ColorTheme::new(color_themes::DARK_THEME),
@@ -40,6 +40,9 @@ fn main() {
         };
         theme.apply();
     });
-
+    button.set_callback(move |_| {
+        choice.set_value(-1);
+        reset_color_map();
+    });
     a.run().unwrap();
 }

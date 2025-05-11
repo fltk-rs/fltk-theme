@@ -83,31 +83,73 @@ fn main() {
 }
 ```
 
+
+## Color themes
+
+- Black theme
+- ![Image](https://github.com/user-attachments/assets/23da332d-c3e3-4e91-beff-bcb8f9bc3cb5)
+
+- Dark theme
+- ![Image](https://github.com/user-attachments/assets/c7bf424c-1aa9-4d5f-b039-1bbe75c7dd6a)
+
+- Plain gray theme
+- ![Image](https://github.com/user-attachments/assets/5a928515-8c30-400e-97aa-5c254949d09b)
+
+- Tan theme
+- ![Image](https://github.com/user-attachments/assets/d3951a56-a75e-4f1b-9c6c-19d552f8108e)
+
+- Shake theme
+- ![Image](https://github.com/user-attachments/assets/ffaa38c2-69f6-4dca-83eb-2a1e79063b05)
+
+- Fleet themes (From the excellent [FLEET library](https://github.com/CyprinusCarpio/fleet)):
+    - GRUVBOX_DARK
+    - ![Image](https://github.com/user-attachments/assets/e60d11fc-cd78-4963-a143-ccf7f6fdea60)
+
+    - DRACULA
+    - ![Image](https://github.com/user-attachments/assets/7727fdc7-407e-43b4-ab87-0f6b7a57d17a)
+
+    - PURPLE_DUSK
+    - ![Image](https://github.com/user-attachments/assets/9a7666a5-31b1-47cb-8975-99c3d8d7019c)
+
+    - MONOKAI
+    - ![Image](https://github.com/user-attachments/assets/50e9ee50-a526-45af-b9b4-ac7f7207fd5d)
+
+    - CYBERPUNK
+    - ![Image](https://github.com/user-attachments/assets/c54c7ff5-c7c5-43cb-bad6-71ed3b77128c)
+
+    - SOLARIZED_DARK
+    - ![Image](https://github.com/user-attachments/assets/c714b848-6e4b-4470-b31b-b9e4bc7cf24f)
+
+    - MATERIAL_DARK
+    - ![Image](https://github.com/user-attachments/assets/8f1aa700-14fe-4f06-921a-83a2ef6e9e15)
+
+    - And others.
+
 ## Widget themes
 
 - Classic (old Windows theme)
-- ![alt_test](screenshots/classic.jpg)
+- ![Image](https://github.com/user-attachments/assets/6f259e62-0f1e-49e6-8611-dbb91f86c219)
 
 - Aero (Windows 7 theme)
-- ![alt_test](screenshots/aero.jpg)
+- ![Image](https://github.com/user-attachments/assets/4dd10bde-91f0-4c83-a5e6-95eb26182a4d)
 
 - AquaClassic (classic MacOS theme),
-- ![alt_test](screenshots/aqua_classic.jpg)
+- ![Image](https://github.com/user-attachments/assets/846ab758-e6e5-4389-9bc8-111f64864248)
 
 - Dark
-- ![alt_test](screenshots/dark.jpg)
+- ![Image](https://github.com/user-attachments/assets/9094dfe7-4fd5-4957-9888-8476e8266df4)
 
 - High Contrast
-- ![alt_test](screenshots/high_contrast.jpg)
+- ![Image](https://github.com/user-attachments/assets/e0b0adfc-6d93-4c1c-863c-59c6352ded24)
 
 - Blue
-- ![alt_test](screenshots/blue.jpg)
+- ![Image](https://github.com/user-attachments/assets/4aa320b6-38d8-4d99-9d87-f91b8492af16)
 
 - Metro (Windows 8 theme)
-- ![alt_test](screenshots/metro.jpg)
+- ![Image](https://github.com/user-attachments/assets/f545e8bb-8317-43ce-b05c-6ce23bf6a956)
 
 - Greybird (Gnome xfce)
-- ![alt_test](screenshots/greybird.jpg)
+- ![Image](https://github.com/user-attachments/assets/98778e37-24e6-4b02-bac7-b478854d99d7)
 
 ## Theme FrameTypes
 
@@ -143,61 +185,12 @@ OS_BG_BOX
 ```
 
 You can check the frames example to see all `FrameType`'s you can apply to you widgets.
-- ![alt_test](screenshots/frames.jpg)
-
-
-## Color themes
-
-- Black theme
-- ![alt_test](screenshots/black.jpg)
-
-- Dark theme
-- ![alt_test](screenshots/dark_color.jpg)
-
-- Plain gray theme
-- ![alt_test](screenshots/plain-gray.jpg)
-
-- Tan theme
-- ![alt_test](screenshots/tan.jpg)
-
-- Shake theme
-- ![alt_test](screenshots/shake.jpg)
-
-- Fleet themes (From the excellent [FLEET library](https://github.com/CyprinusCarpio/fleet)):
-    - GRUVBOX_DARK
-    - ![Image](https://github.com/user-attachments/assets/e60d11fc-cd78-4963-a143-ccf7f6fdea60)
-
-    - DRACULA
-    - ![Image](https://github.com/user-attachments/assets/7727fdc7-407e-43b4-ab87-0f6b7a57d17a)
-
-    - PURPLE_DUSK
-    - ![Image](https://github.com/user-attachments/assets/9a7666a5-31b1-47cb-8975-99c3d8d7019c)
-
-    - MONOKAI
-    - ![Image](https://github.com/user-attachments/assets/50e9ee50-a526-45af-b9b4-ac7f7207fd5d)
-
-    - CYBERPUNK
-    - ![Image](https://github.com/user-attachments/assets/c54c7ff5-c7c5-43cb-bad6-71ed3b77128c)
-
-    - SOLARIZED_DARK
-    - ![Image](https://github.com/user-attachments/assets/c714b848-6e4b-4470-b31b-b9e4bc7cf24f)
-
-    - MATERIAL_DARK
-    - ![Image](https://github.com/user-attachments/assets/8f1aa700-14fe-4f06-921a-83a2ef6e9e15)
-
-    - And others.
 
 ## Widget Schemes
 
 These provide schemes for widgets without color theming. Currently there are 7 schemes:
 - Clean: Taken from NTK's clear scheme.
-- ![alt_test](screenshots/clean.jpg)
-
-- Crystal: Taken from NTK's crystal scheme.
-- ![alt_test](screenshots/crystal.jpg)
-
-- Gleam: Taken from NTK's gleam scheme.
-- ![alt_test](screenshots/gleam.jpg)
+- ![Image](https://github.com/user-attachments/assets/2c0bc8da-2d8c-4283-8bbf-2148a2cdc6a2)
 
 - Aqua: Tries to mimic the modern MacOS's styles.
 - ![alt_test](screenshots/aqua_scheme.jpg)
@@ -218,7 +211,5 @@ These provide schemes for widgets without color theming. Currently there are 7 s
 
 The crate also provides colors, namely html colors and aqua colors.
 The aqua colors are provided as static values and are named after the cocoa NSColor properties (such as windowBackgroundColor, systemBlueColor, controlAccentColor...etc). The html colors are provided in a static HashMap and can be accessed by their [html names](https://www.w3schools.com/tags/ref_colornames.asp). Refer to the html_colors and aqua_dark examples to see how the colors are used.
-
-- ![alt_test](screenshots/html_colors.jpg)
 
 Colors and Color themes can also be used with widget schemes or even in a regular fltk-rs application.
