@@ -165,25 +165,25 @@ You can check the frames example to see all `FrameType`'s you can apply to you w
 
 - Fleet themes (From the excellent [FLEET library](https://github.com/CyprinusCarpio/fleet)):
     - GRUVBOX_DARK
-    - ![Image](https://github.com/user-attachments/assets/7e0b21ee-2e07-4271-8846-20ccae6bff3c)
+    - ![Image](https://github.com/user-attachments/assets/e60d11fc-cd78-4963-a143-ccf7f6fdea60)
 
     - DRACULA
-    - ![Image](https://github.com/user-attachments/assets/06925fad-b7d8-4e87-a693-a58074e924a8)
+    - ![Image](https://github.com/user-attachments/assets/7727fdc7-407e-43b4-ab87-0f6b7a57d17a)
 
     - PURPLE_DUSK
-    - ![Image](https://github.com/user-attachments/assets/1a6660e2-887c-45b4-88f7-67d6ecbe5f3a)
+    - ![Image](https://github.com/user-attachments/assets/9a7666a5-31b1-47cb-8975-99c3d8d7019c)
 
     - MONOKAI
-    - ![Image](https://github.com/user-attachments/assets/8cde497e-e72f-407a-b2b9-078eecafb12b)
+    - ![Image](https://github.com/user-attachments/assets/50e9ee50-a526-45af-b9b4-ac7f7207fd5d)
 
     - CYBERPUNK
-    - ![Image](https://github.com/user-attachments/assets/cc2f8bb4-a805-4eb5-a25d-0752f4cdfbf2)
+    - ![Image](https://github.com/user-attachments/assets/c54c7ff5-c7c5-43cb-bad6-71ed3b77128c)
 
     - SOLARIZED_DARK
-    - ![Image](https://github.com/user-attachments/assets/c964fd73-2a54-47c2-8a49-62ed5f9874f1)
+    - ![Image](https://github.com/user-attachments/assets/c714b848-6e4b-4470-b31b-b9e4bc7cf24f)
 
     - MATERIAL_DARK
-    - ![Image](https://github.com/user-attachments/assets/617643fc-9e30-4879-b2e2-b46fb3721bde)
+    - ![Image](https://github.com/user-attachments/assets/8f1aa700-14fe-4f06-921a-83a2ef6e9e15)
 
     - And others.
 
