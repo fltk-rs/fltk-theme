@@ -1,37 +1,38 @@
 use fltk::{prelude::*, *};
-use fltk_theme::{color_themes, reset_color_map, ColorTheme};
+use fltk_theme::{color_themes, reset_color_map, ColorMap, ColorTheme};
+
+const FLEET_THEMES: &[&[ColorMap]] = &[
+    &color_themes::fleet::LIGHT,
+    &color_themes::fleet::DARK1,
+    &color_themes::fleet::DARK2,
+    &color_themes::fleet::TAN,
+    &color_themes::fleet::DARK_TAN,
+    &color_themes::fleet::MARINE,
+    &color_themes::fleet::BLUEISH,
+    &color_themes::fleet::NORD,
+    &color_themes::fleet::HIGH_CONTRAST,
+    &color_themes::fleet::FOREST,
+    &color_themes::fleet::PURPLE_DUSK,
+    &color_themes::fleet::SOLARIZED_LIGHT,
+    &color_themes::fleet::SOLARIZED_DARK,
+    &color_themes::fleet::MONOKAI,
+    &color_themes::fleet::GRUVBOX_LIGHT,
+    &color_themes::fleet::GRUVBOX_DARK,
+    &color_themes::fleet::DRACULA,
+    &color_themes::fleet::OCEANIC_NEXT,
+    &color_themes::fleet::MINIMALIST,
+    &color_themes::fleet::AUTUMN,
+    &color_themes::fleet::CYBERPUNK,
+    &color_themes::fleet::MATERIAL_DARK,
+    &color_themes::fleet::MINT,
+    &color_themes::fleet::VINTAGE,
+    &color_themes::fleet::GRAY,
+];
 
 fn main() {
-    let themes = [
-        color_themes::fleet::LIGHT.clone(),
-        color_themes::fleet::DARK1.clone(),
-        color_themes::fleet::DARK2.clone(),
-        color_themes::fleet::TAN.clone(),
-        color_themes::fleet::DARK_TAN.clone(),
-        color_themes::fleet::MARINE.clone(),
-        color_themes::fleet::BLUEISH.clone(),
-        color_themes::fleet::NORD.clone(),
-        color_themes::fleet::HIGH_CONTRAST.clone(),
-        color_themes::fleet::FOREST.clone(),
-        color_themes::fleet::PURPLE_DUSK.clone(),
-        color_themes::fleet::SOLARIZED_LIGHT.clone(),
-        color_themes::fleet::SOLARIZED_DARK.clone(),
-        color_themes::fleet::MONOKAI.clone(),
-        color_themes::fleet::GRUVBOX_LIGHT.clone(),
-        color_themes::fleet::GRUVBOX_DARK.clone(),
-        color_themes::fleet::DRACULA.clone(),
-        color_themes::fleet::OCEANIC_NEXT.clone(),
-        color_themes::fleet::MINIMALIST.clone(),
-        color_themes::fleet::AUTUMN.clone(),
-        color_themes::fleet::CYBERPUNK.clone(),
-        color_themes::fleet::MATERIAL_DARK.clone(),
-        color_themes::fleet::MINT.clone(),
-        color_themes::fleet::VINTAGE.clone(),
-        color_themes::fleet::GRAY.clone(),
-    ];
     let a = app::App::default().with_scheme(app::Scheme::Gtk);
     app::set_visible_focus(false);
-    let color_theme = ColorTheme::new(&*color_themes::fleet::LIGHT);
+    let color_theme = ColorTheme::new(&color_themes::fleet::LIGHT);
     color_theme.apply();
     let mut win = window::Window::default()
         .with_size(400, 300)
@@ -61,7 +62,7 @@ fn main() {
     win.show();
     choice.set_callback(move |c| {
         reset_color_map();
-        let theme = ColorTheme::new(&themes[c.value() as usize]);
+        let theme = ColorTheme::new(FLEET_THEMES[c.value() as usize]);
         theme.apply();
     });
     button.set_callback(move |_| {

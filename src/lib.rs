@@ -8,7 +8,7 @@ pub mod widget_schemes;
 pub mod widget_themes;
 
 /// Color map struct. (index, r, g, b)
-#[derive(Default, Clone, Debug)]
+#[derive(Copy, Default, Clone, Debug)]
 pub struct ColorMap {
     pub index: u8,
     pub r: u8,
