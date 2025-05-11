@@ -163,8 +163,7 @@ You can check the frames example to see all `FrameType`'s you can apply to you w
 - Shake theme
 - ![alt_test](screenshots/shake.jpg)
 
-- Fleet themes:
-From the excellent [FLEET library](https://github.com/CyprinusCarpio/fleet):
+- Fleet themes (From the excellent [FLEET library](https://github.com/CyprinusCarpio/fleet)):
     - GRUVBOX_DARK
     - ![Image](https://github.com/user-attachments/assets/7e0b21ee-2e07-4271-8846-20ccae6bff3c)
 
