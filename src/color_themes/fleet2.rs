@@ -141,3 +141,144 @@ pub const SOLARIZED_LIGHT: Lazy<[ColorMap; 256]> = make_light_theme(
     (200, 255),   // gray ramp: 32 = #C8C8C8, 55 = #FFFFFF
     180,          // cube max: keep shadows mildly muted
 );
+
+/*
+#pragma once
+#include <array>
+#include <cstdint>
+#include <initializer_list>
+#include <utility>
+
+/* A single entry in the colormap */
+struct ColorMap {
+    std::uint8_t index;
+    std::uint8_t r, g, b;
+};
+
+constexpr std::uint8_t gray_ramp(std::uint8_t dark,
+                                 std::uint8_t light,
+                                 std::uint8_t n)              /* 0‥23 */
+{
+
+    return static_cast<std::uint8_t>(
+        dark + ((light - dark) * n + 11) / 23);
+}
+
+constexpr std::uint8_t gray_ramp_inv(std::uint8_t light,
+                                     std::uint8_t dark,
+                                     std::uint8_t n)          /* 0‥23 */
+{
+    return static_cast<std::uint8_t>(
+        light - ((light - dark) * n + 11) / 23);
+}
+
+constexpr std::uint8_t cube_chan(std::uint8_t i,    /* 0‥steps-1   */
+                                 std::uint8_t steps,
+                                 std::uint8_t max)  /* 0‥=max      */
+{
+    return static_cast<std::uint8_t>(
+        (i * max + (steps - 1) / 2) / (steps - 1));
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  2.  Theme builders
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+namespace detail {
+inline bool lookup_override(std::uint8_t idx,
+    const std::initializer_list<ColorMap>& ov,
+    std::uint8_t& r, std::uint8_t& g, std::uint8_t& b)
+{
+    for (auto it = ov.end(); it-- != ov.begin(); ) {   // reverse scan
+        if (it->index == idx) { r = it->r; g = it->g; b = it->b; return true; }
+    }
+    return false;
+}
+} // namespace detail
+
+inline std::array<ColorMap, 256>
+make_dark_theme(std::initializer_list<ColorMap> overrides,
+                std::pair<std::uint8_t, std::uint8_t> ramp_light_dark,
+                std::uint8_t cube_max = 110)
+{
+    const auto [light, dark] = ramp_light_dark;
+    std::array<ColorMap, 256> cmap{};
+
+    for (std::uint16_t idx = 0; idx < 256; ++idx) {
+        std::uint8_t r = 0, g = 0, b = 0;
+
+        if (detail::lookup_override(static_cast<std::uint8_t>(idx),
+                                    overrides, r, g, b)) {
+            cmap[idx] = { static_cast<std::uint8_t>(idx), r, g, b };
+            continue;
+        }
+
+        if (idx >= 32 && idx <= 55) {
+            std::uint8_t v = gray_ramp_inv(light, dark,
+                                           static_cast<std::uint8_t>(idx - 32));
+            cmap[idx] = { static_cast<std::uint8_t>(idx), v, v, v };
+            continue;
+        }
+
+        if (idx >= 56) {
+            std::uint8_t n = static_cast<std::uint8_t>(idx - 56);
+            std::uint8_t b_ = n / (5 * 8);
+            std::uint8_t r_ = (n / 8) % 5;
+            std::uint8_t g_ = n % 8;
+            cmap[idx] = {
+                static_cast<std::uint8_t>(idx),
+                cube_chan(r_, 5, cube_max),
+                cube_chan(g_, 8, cube_max),
+                cube_chan(b_, 5, cube_max)
+            };
+            continue;
+        }
+
+        cmap[idx] = { static_cast<std::uint8_t>(idx), 0, 0, 0 };
+    }
+    return cmap;
+}
+
+inline std::array<ColorMap, 256>
+make_light_theme(std::initializer_list<ColorMap> overrides,
+                 std::pair<std::uint8_t, std::uint8_t> ramp_dark_light,
+                 std::uint8_t cube_max = 200)
+{
+    const auto [dark, light] = ramp_dark_light;
+    std::array<ColorMap, 256> cmap{};
+
+    for (std::uint16_t idx = 0; idx < 256; ++idx) {
+        std::uint8_t r = 0, g = 0, b = 0;
+
+        if (detail::lookup_override(static_cast<std::uint8_t>(idx),
+                                    overrides, r, g, b)) {
+            cmap[idx] = { static_cast<std::uint8_t>(idx), r, g, b };
+            continue;
+        }
+
+        if (idx >= 32 && idx <= 55) {
+            std::uint8_t v = gray_ramp(dark, light,
+                                       static_cast<std::uint8_t>(idx - 32));
+            cmap[idx] = { static_cast<std::uint8_t>(idx), v, v, v };
+            continue;
+        }
+
+        if (idx >= 56) {
+            std::uint8_t n = static_cast<std::uint8_t>(idx - 56);
+            std::uint8_t b_ = n / (5 * 8);
+            std::uint8_t r_ = (n / 8) % 5;
+            std::uint8_t g_ = n % 8;
+            cmap[idx] = {
+                static_cast<std::uint8_t>(idx),
+                cube_chan(r_, 5, cube_max),
+                cube_chan(g_, 8, cube_max),
+                cube_chan(b_, 5, cube_max)
+            };
+            continue;
+        }
+
+        cmap[idx] = { static_cast<std::uint8_t>(idx), 0, 0, 0 };
+    }
+    return cmap;
+}
+
+*/
