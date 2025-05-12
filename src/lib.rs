@@ -153,6 +153,10 @@ pub enum SchemeType {
     SvgBased,
     /// A scheme mimicking the Sweet theme for GNOME/KDE
     Sweet,
+    /// A 3D scheme designed for good looks in both dark and light colors
+    Fleet1,
+    /// A gradient scheme designed for good looks in both dark and light colors
+    Fleet2,
 }
 
 /// A widget scheme sets the style of drawing a widget without interfering with coloring
@@ -177,6 +181,8 @@ impl WidgetScheme {
             SchemeType::Gleam => widget_schemes::gleam::use_gleam_scheme(),
             SchemeType::SvgBased => widget_schemes::svg_based::use_svg_based_scheme(),
             SchemeType::Sweet => widget_schemes::sweet::use_sweet_scheme(),
+            SchemeType::Fleet1 => widget_schemes::fleet::use_fleet_scheme1(),
+            SchemeType::Fleet2 => widget_schemes::fleet::use_fleet_scheme2(),
         }
     }
 }

@@ -4,7 +4,7 @@ A theming crate for fltk-rs.
 - The widget themes are based on work by [Remy Oukaour](https://github.com/roukaour/viz-brain-visualizer) and [Rangi42](https://github.com/Rangi42/tilemap-studio).
 - The color themes are based on work by [Greg Ercolano](https://groups.google.com/g/fltkgeneral/c/3A5VC_854ok/m/sDpJsmuLBAAJ).
 - The fleet color themes are based on [CyprinusCarpio FLEET library](https://github.com/CyprinusCarpio/fleet).
-- Some of the widget schemes are based on work by the NTK GUI library, others are nouveau.
+- Some of the widget schemes are based on work by the NTK GUI library, the fleet schemes are based on the [FLEET library](https://github.com/CyprinusCarpio/fleet). Others are nouveau.
 
 ## Definitions
 
@@ -206,6 +206,9 @@ These provide schemes for widgets without color theming. Currently there are 7 s
 - Sweet: Tries to mimic the Sweet theme for GNOME/KDE.
 - ![alt_test](screenshots/sweet_dark.png)
 - ![alt_test](screenshots/sweet_light.png)
+
+- Fleet1: A 3D scheme designed for good looks in both dark and light colors.
+- Fleet2: A gradient scheme designed for good looks in both dark and light colors.
 
 ## Colors
 

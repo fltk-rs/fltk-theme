@@ -1,5 +1,6 @@
 use fltk::{prelude::*, *};
 use fltk_theme::{color_themes, reset_color_map, ColorMap, ColorTheme};
+use fltk_theme::{SchemeType, WidgetScheme};
 
 const FLEET_THEMES: &[&[ColorMap]] = &[
     &color_themes::fleet::LIGHT,
@@ -30,10 +31,13 @@ const FLEET_THEMES: &[&[ColorMap]] = &[
 ];
 
 fn main() {
-    let a = app::App::default().with_scheme(app::Scheme::Gtk);
+    let a = app::App::default();
     app::set_visible_focus(false);
     let color_theme = ColorTheme::new(&color_themes::fleet::LIGHT);
     color_theme.apply();
+    // Optional Fleet scheme as well
+    let scheme = WidgetScheme::new(SchemeType::Fleet1);
+    scheme.apply();
     let mut win = window::Window::default()
         .with_size(400, 300)
         .with_label("Fleet Color Theme");

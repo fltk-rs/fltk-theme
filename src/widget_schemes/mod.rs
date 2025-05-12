@@ -7,6 +7,7 @@ use fltk::{app, draw::*, enums::Color};
 pub mod aqua;
 pub(crate) mod clean;
 pub(crate) mod crystal;
+pub(crate) mod fleet;
 pub mod fluent;
 pub(crate) mod gleam;
 pub(crate) mod svg_based;
